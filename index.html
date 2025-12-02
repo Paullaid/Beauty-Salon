@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Satisfy&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Satisfy&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link href="./output.css" rel="stylesheet">  
+    <title>Beauty Salon</title>  
+    <style>
+        .satisfy-regular {
+            font-family: "Satisfy", cursive;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .patrick-hand-regular {
+            font-family: "Patrick Hand", cursive;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        
+        .source-serif-4-<uniquifier> {
+            font-family: "Source Serif 4", serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .font {
+            font-family: "Satisfy", cursive;
+        }
+        .font2 {
+            font-family: "Patrick Hand", cursive;
+        }
+        .font3 {
+            font-family: "Source Serif 4", serif;
+        }
+    </style>    
+</head>
+<body>
+                        <!-- ========== Start Section ========== -->
+                                        <!-- Nar Bar -->
+                        <!-- ========== End Section ========== -->          
+    <section class="absolute z-10 w-full">
+        <nav class="shadow-xl backdrop-blur-2xl brightness-103">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16">
+                    <!-- Logo / Brand -->
+                    <div class="flex items-center">
+                    <a href="#" class="text-2xl font-bold text-indigo-600">MySite</a>
+                    </div>
+
+                    <!-- Desktop Navigation -->
+                    <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="group flex flex-col items-center text-gray-700 px-3 py-2 text-lg tracking-wide font-medium"> <div class=" w-3 h-3 bg-linear-to-t from-violet-400 to-red-400   rounded-full animate-bounce"></div> <div class="text-violet-300 group-hover:text-violet-700 group-hover:animate-pulse transition duration-500"> Home</div> </a>
+                    <a href="#" class="group flex flex-col items-center text-gray-700 px-3 py-2 text-lg tracking-wide font-medium"> <div class="hidden group-hover:block w-3 h-3 bg-linear-to-t from-violet-400 to-red-400   rounded-full group-hover:animate-bounce"></div> <div class="text-violet-300 group-hover:text-violet-700 group-hover:animate-pulse transition duration-500"> About</div> </a>
+                                        <div class="group">
+                    <button href="#" class="relative flex flex-col items-center text-gray-700 px-3 py-2 text-lg tracking-wide font-medium"> <div class="hidden group-hover:block w-3 h-3 bg-linear-to-t from-violet-400 to-red-400   rounded-full group-hover:animate-bounce"></div> <div class="text-violet-300 group-hover:text-violet-700 group-hover:animate-pulse transition duration-500"> Pages</div> </button>
+                        <div class="hidden group-hover:flex group-hover:-translate-y-1 absolute translate-y-3 -translate-x-10 flex flex-col items-start space-y-5 bg-linear-to-br from-purple-200 to-violet-50 py-4 px-7 rounded-sm transition duration-500">
+                            <a href="" class="text-md font-medium text-slate-700 trackng-wide hover:violet-400 hover:animate-pulse transition duration-600">Photo Gallery</a>
+                            <a href="" class="text-md font-medium text-slate-700 tracking-wide hover:violet-400 hover:animate-pulse transition duration-600">Beauty Blog</a>
+                            <a href="" class="text-md font-medium text-slate-700 tracking-wide hover:violet-400 hover:animate-pulse transition duration-600">Our Team</a>
+                            <a href="" class="text-md font-medium text-slate-700 tracking-wide hover:violet-400 hover:animate-pulse transition duration-600">Testimonial</a>
+                            <a href="" class="text-md font-medium text-slate-700 tracking-wide hover:violet-400 hover:animate-pulse transition duration-600">404 Page</a>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="group flex flex-col items-center text-gray-700 px-3 py-2 text-lg tracking-wide font-medium"> <div class="hidden group-hover:block w-3 h-3 bg-linear-to-t from-violet-400 to-red-400   rounded-full group-hover:animate-bounce"></div> <div class="text-violet-300 group-hover:text-violet-700 group-hover:animate-pulse transition duration-500"> Contact Us</div> </a>
+                    </div>
+
+                    <!-- Mobile menu button -->
+                    <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-indigo-600 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu (hidden by default) -->
+            <div id="mobile-menu" class="md:hidden hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="#" class="block text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium">Home</a>
+                    <a href="#" class="block text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium">About</a>
+                    
+                    <!-- Mobile Dropdown -->
+                    <div x-data="{ open: false }">
+                    <button @click="open = !open" class="w-full text-left flex justify-between items-center text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium">
+                        Services
+                        <svg class="h-5 w-5 transition-transform duration-200" :class="{ 'rotate-180': open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div x-show="open" x-transition class="pl-8 space-y-1">
+                        <a href="#" class="block text-gray-600 hover:text-indigo-600 py-1">Web Design</a>
+                        <a href="#" class="block text-gray-600 hover:text-indigo-600 py-1">Development</a>
+                        <a href="#" class="block text-gray-600 hover:text-indigo-600 py-1">SEO</a>
+                        <a href="#" class="block text-gray-600 hover:text-indigo-600 py-1">Consulting</a>
+                    </div>
+                    </div>
+
+                    <a href="#" class="block text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+                        <!-- ========== Start Section ========== -->
+                                            <!-- Hero Section  -->
+                        <!-- ========== End Section ========== -->
+    <section class="bg-cover bg-center bg-fixed lg:h-screen h-full" style="background-image: url(./image/braids1.4.jpg);" >
+        <div class="md:pt-73 pt-53 pb-12 pl-4 bg-black/70 lg:h-screen h-full">
+            <h1 class="font bg-gradient-to-b from-amber-500 via-violet-600/40 to-violet-700/50 text-transparent bg-clip-text md:w-3/4 text-8xl text-pretty">
+              Welcome to Hair Glow  
+            </h1>
+            <p class="font2 bg-gradient-to-r from-slate-200 to-pink-600/70  text-transparent bg-clip-text text-4xl pt-8 lg:pt-4 ">
+                Were Luxury gets comfort
+            </p>
+            <div class="pt-4 flex flex-col lg:flex-row items-start space-y-5 lg:space-x-12">
+                <button class=" flex space-x-4 bg-linear-to-r from-amber-700/80 via-violet-600/10 to-purple-900/60 py-1 px-2 rounded-md text-2xl text-purple-300"><img src="./image/phone svg.svg" alt="Phone SVG" class="bg-white/80 p-1 rounded-md"> <span>07058748480</span> </button>
+                <button class="flex space-x-4 bg-linear-to-r from-amber-700/80 via-violet-600/10 to-purple-900/60 py-1 px-2 rounded-md text-2xl text-purple-300"><img src="./image/location svg.svg" alt="Location SVG" class="bg-white/80 p-1 rounded-md"> <span>Estate Gate</span> </button>
+            </div>
+
+             <!-- Decorative blob -->
+             <div class="absolute top-0 right-0 w-56 h-56 bg-pink-200 rounded-full opacity-40 blur-3xl"></div>
+        </div>
+    </section>
+
+                        <!-- ========== Start Section ========== -->
+                                        <!-- About Us  -->
+                        <!-- ========== End Section ========== -->
+    
+    <section style="background-image: url(./image/tools1.0.jpg);" class="bg-center bg-cover bg-fixed h-full">
+        <div class="bg-slate-200/85 h-full w-full py-24 px-8 grid lg:grid-cols-2 gap-12 items-center">    
+            <!-- Image Part-->
+            <div class="w-full relative flex flex-col items-center">
+                <div class="absolute z-1 -top-6 -left-6 w-40 h-40 bg-pink-300 rounded-full opacity-70 blur-2xl"></div>
+                <img src="./image/gallery-6.jpg" alt="Salon Image"  class="rounded-3xl shadow-lg md:280 lg:w-320 h-90 object-cover hover:scale-104 transition duration-1000">
+
+                <aside class="w-fit lg:w-full max-lg:pr-8 mt-4 flex items-end bg-linear-to-br from-zinc-50/90 to-pink-200 rounded-sm">
+                    <img src="./image/braids1.3.jpg" alt="" class="w-28 h-32">
+                    <div class="flex flex-col pl-5 text-slate-800">
+                        <span class="text-2xl md:text-3xl font3 mb-3">+2349063123479</span>
+                        <span class="text-lg font3 mb-3 tracking-wide">Call us direct 24/7 for get a free consultation</span>
+                    </div>
+                </aside>
+            </div> 
+
+            <!-- Text Content -->
+            <div class="space-y-6">
+                <h2 class="text-5xl tracking-wide font font-extrabold leading-wide text-gray-800" >
+                    About <span class="text-pink-600">Us</span>
+                </h2>
+                
+                <p class="text-slate-800 font3 leading-relaxed text-xl">
+                    At <strong>GlamourTouch Salon</strong>, beauty is more than a service—it's an experience. 
+                    Founded with passion and elegance, we provide premium hairstyling, makeup artistry, 
+                    spa treatments, and personalized beauty care that bring out your confidence and natural glow.
+                </p>
+
+                <p class="text-slate-800 font3 leading-relaxed text-xl">
+                    Our team consists of certified stylists and beauty experts committed to excellence. 
+                    Every visit is tailored to your unique style, ensuring you leave feeling refreshed, 
+                    empowered, and absolutely stunning.
+                </p>
+
+                <!-- Stats -->
+                <div class="grid grid-cols-3 gap-6 text-center">
+                    <div class="group bg-slate-200/70 py-8 px-4 rounded-sm transition duration-500">
+                        <h3 class="text-4xl font3 font-bold text-pink-600 group-hover:scale-120 transition duration-500">12+</h3>
+                        <p class="text-gray-600 text-sm group-hover:text-md group-hover:mt-2 group-hover:text-gray-900 transition duration-500">Yr's Experience</p>
+                    </div>
+                    <div class="group bg-slate-200/70 py-8 px-4 rounded-sm transition duration-500">
+                        <h3 class="text-4xl font3 font-bold text-pink-600 group-hover:scale-120 transition duration-500">100+</h3>
+                        <p class="text-gray-600 text-sm group-hover:text-md group-hover:mt-2 group-hover:text-gray-900 transition duration-500">Happy Clients</p>
+                    </div>
+                    <div class="group bg-slate-200/70 py-8 px-4 rounded-sm transition duration-500">
+                        <h3 class="text-4xl font3 font-bold text-pink-600 group-hover:scale-120 transition duration-500">15+</h3>
+                        <p class="text-gray-600 text-sm group-hover:text-md group-hover:mt-2 group-hover:text-gray-900 transition duration-500">Beauty Services</p>
+                    </div>
+                </div>
+
+                <!-- Button -->
+                <a href="#services" 
+                    class="inline-block mt-4 text-xl text-pink-100 font2 font-medium px-8
+                     py-4 rounded-full shadow-lg bg-linear-to-br from-amber-500/90 to-pink-600/90 hover:bg-pink-700 hover:tracking-wide transition duration-500">
+                    Explore Our Services
+                </a>
+            </div>
+        </div>
+    </section>
+
+    
+                        <!-- ========== Start Section ========== -->
+                                        <!-- Our Services Section  -->
+                        <!-- ========== End Section ========== -->
+
+    <section class="bg-zinc-50">
+        <div class="container mx-auto px-6 w-full pt-24 pb-10">
+            <header class="flex flex-col justify-center items-center pb-8">
+                <span class="text-5xl font font-bold tracking-wide text-slate-800">Our Services</span>
+                <span class="mt-4 text-2xl font2 font-medium tracking-wide text-slate-800">Explore Our Services</span>
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3">
+                <div class="flex flex-col items-center space-y-4 p-6 m-4 bg-white rounded-lg shadow-2xl shadow-amber-900/70 hover:scale-105 transition duration-500">
+                    <img src="./image/hair-care.png" alt="Hair Braiding"></img>
+                    <h2 class="text-2xl font3 font-bold tracking-wide text-slate-800">Hair Braiding</h2>
+                    <p class="text-slate-800 text-center font3 leading-relaxed text-xl">
+                        Experience the artistry of hair braiding with our expert stylists. 
+                    </p>
+                    <a href="#" class="px-4 py-2 bg-linear-to-b from-yellow-700 to-amber-700 hover:bg-linear-to-t hover:from-amber-600 hover:to-yellow-800 text-stone-100 hover:text-white font-medium hover:font-bold tracking-wide rounded-sm  shadow-2xl hover:shadow-stone-600 transition duration-500">Book Now</a>
+                </div>
+                <div class="flex flex-col items-center space-y-4 p-6 m-4 bg-white rounded-lg shadow-2xl shadow-amber-900/70 hover:scale-105 transition duration-500">
+                    <img src="./image/makeup.png" alt="Makeup img"></img>
+                    <h2 class="text-2xl font3 font-bold tracking-wide text-slate-800">Makeup</h2>
+                    <p class="text-slate-800 text-center font3 leading-relaxed text-xl">
+                        We bring out the beauty hidden deep within you. Like the princess you truly are.
+                    </p>
+                    <a href="#" class="px-4 py-2 bg-linear-to-b from-yellow-700 to-amber-700 hover:bg-linear-to-t hover:from-amber-600 hover:to-yellow-800 text-stone-100 hover:text-white font-medium hover:font-bold tracking-wide rounded-sm  shadow-2xl hover:shadow-stone-600 transition duration-500">Book Now</a>
+                </div>   
+                <div class="flex flex-col items-center space-y-4 p-6 m-4 bg-white rounded-lg shadow-2xl shadow-amber-900/70 hover:scale-105 transition duration-500">
+                    <img src="./image/manicure.png" alt="Manicure Image"></img>
+                    <h2 class="text-2xl font3 font-bold tracking-wide text-slate-800">Manicure</h2>
+                    <p class="text-slate-800 text-center font3 leading-relaxed text-xl">
+                        We bring out the beauty hidden deep within your hands. Like the princess you truly are.
+                    </p>
+                    <a href="#" class="px-4 py-2 bg-linear-to-b from-yellow-700 to-amber-700 hover:bg-linear-to-t hover:from-amber-600 hover:to-yellow-800 text-stone-100 hover:text-white font-medium hover:font-bold tracking-wide rounded-sm  shadow-2xl hover:shadow-stone-600 transition duration-500">Book Now</a>
+                </div>
+                <div class="flex flex-col items-center space-y-4 p-6 m-4 bg-white rounded-lg shadow-2xl shadow-amber-900/70 hover:scale-105 transition duration-500">
+                    <img src="./image/pedicure.png" alt="Pedicure Image"></img>
+                    <h2 class="text-2xl font3 font-bold tracking-wide text-slate-800">Pedicure</h2>
+                    <p class="text-slate-800 text-center font3 leading-relaxed text-xl">
+                        We bring out the beauty hidden deep within your feets. Like the princess you truly are.
+                    </p>
+                    <a href="#" class="px-4 py-2 bg-linear-to-b from-yellow-700 to-amber-700 hover:bg-linear-to-t hover:from-amber-600 hover:to-yellow-800 text-stone-100 hover:text-white font-medium hover:font-bold tracking-wide rounded-sm  shadow-2xl hover:shadow-stone-600 transition duration-500">Book Now</a>
+                </div>
+                <div class="flex flex-col items-center space-y-4 p-6 m-4 bg-white rounded-lg shadow-2xl shadow-amber-900/70 hover:scale-105 transition duration-500">
+                    <img src="./image/skin-care.png" alt="Skin care Image"></img>
+                    <h2 class="text-2xl font3 font-bold tracking-wide text-slate-800">skin-Care</h2>
+                    <p class="text-slate-800 text-center font3 leading-relaxed text-xl">
+                        We bring out the beauty hidden deep within your Skin. Like the princess you truly are.
+                    </p>
+                    <a href="#" class="px-4 py-2 bg-linear-to-b from-yellow-700 to-amber-700 hover:bg-linear-to-t hover:from-amber-600 hover:to-yellow-800 text-stone-100 hover:text-white font-medium hover:font-bold tracking-wide rounded-sm  shadow-2xl hover:shadow-stone-600 transition duration-500">Book Now</a>
+                </div>
+                <div class="flex flex-col items-center space-y-4 p-6 m-4 bg-white rounded-lg shadow-2xl shadow-amber-900/70 hover:scale-105 transition duration-500">
+                    <img src="./image/blow-dry.png" alt="Hair Dryer Image"></img>
+                    <h2 class="text-2xl font3 font-bold tracking-wide text-slate-800">Blow-Dry</h2>
+                    <p class="text-slate-800 text-center font3 leading-relaxed text-xl">
+                        We bring out the beauty hidden deep within your Hair. Like the princess you truly are.
+                    </p>
+                    <a href="#" class="px-4 py-2 bg-linear-to-b from-yellow-700 to-amber-700 hover:bg-linear-to-t hover:from-amber-600 hover:to-yellow-800 text-stone-100 hover:text-white font-medium hover:font-bold tracking-wide rounded-sm  shadow-2xl hover:shadow-stone-600 transition duration-500">Book Now</a>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+
+                        <!-- ========== Start Section ========== -->
+                                        <!-- Pricing Section      -->
+                        <!-- ========== End Section ========== -->
+    
+    <section class="bg-yellow-950">
+        <div class="container mx-auto px-6 pt-24 pb-13 flex flex-col md:flex-row max-lg:space-y-12">
+                        <!-- Discount -->
+            <div class="grid grid-cols-1 lg:grid-cols-2">
+                <div>      <!-- Description -->
+                    <h1 class="text-6xl tracking-wider text-yellow-100 font2">Pricing</h1>
+                    <h2 class="pt-3 text-5xl tracking-wide text-white font3 translate-x-12">Hair Glow</h2>
+                    <p class="pt-3 text-3xl text-amber-200  translate-x-16">Get a Discount of 12% per Booking</p>
+                    <img class="h-110 w-90 lg:w-180 mt-14 rounded-sm border-3 border-yellow-800 bg-amber-900 border-dotted p-8" src="./image/gallery-1.jpg" alt="Hair Treatement">
+                </div>                            
+                <div>   <!-- Details  -->
+
+                </div>
+            </div>
+                        <!-- Prices  -->
+            <ul class="w-full space-y-5 flex flex-col md:transform md:translate-x-7 lg:translate-0">
+                <li class="bg-gradient-to-br from-yellow-700/70 to-amber-900/70 flex justify-between transform lg:-translate-x-12">
+                    <img class="w-20" src="./image/braids1.2.webp" alt="braids"></img>
+                    <div class="mr-6 flex flex-col justify-start items-end">
+                        <h2 class="font3 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Braids</h2>
+                        <p class="font3 text-2xl text-white tracking-wide">$15</p>
+                    </div>
+                </li>
+                <li class="bg-gradient-to-br from-yellow-700/70 to-amber-900/70 flex justify-between transform lg:-translate-x-9">
+                    <img class="w-20" src="./image/braids1.2.webp" alt="braids"></img>
+                    <div class="mr-6 flex flex-col justify-start items-end">
+                        <h2 class="font3 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Braids</h2>
+                        <p class="font3 text-2xl text-white tracking-wide">$15</p>
+                    </div>
+                </li>
+                <li class="bg-gradient-to-br from-yellow-700/70 to-amber-900/70 flex justify-between transform lg:-translate-x-6">
+                    <img class="w-20" src="./image/braids1.2.webp" alt="braids"></img>
+                    <div class="mr-6 flex flex-col justify-start items-end">
+                        <h2 class="font3 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Braids</h2>
+                        <p class="font3 text-2xl text-white tracking-wide">$15</p>
+                    </div>
+                </li>
+                <li class="bg-gradient-to-br from-yellow-700/70 to-amber-900/70 flex justify-between transform lg:-translate-x-3">
+                    <img class="w-20" src="./image/braids1.2.webp" alt="braids"></img>
+                    <div class="mr-6 flex flex-col justify-start items-end">
+                        <h2 class="font3 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Braids</h2>
+                        <p class="font3 text-2xl text-white tracking-wide">$15</p>
+                    </div>
+                </li>
+                <li class="bg-gradient-to-br from-yellow-700/70 to-amber-900/70 flex justify-between transform lg:-translate-x-0">
+                    <img class="w-20" src="./image/braids1.2.webp" alt="braids"></img>
+                    <div class="mr-6 flex flex-col justify-start items-end">
+                        <h2 class="font3 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Braids</h2>
+                        <p class="font3 text-2xl text-white tracking-wide">$15</p>
+                    </div>
+                </li>
+                <li class="bg-gradient-to-br from-yellow-700/70 to-amber-900/70 flex justify-between transform lg:translate-x-3">
+                    <img class="w-20" src="./image/braids1.2.webp" alt="braids"></img>
+                    <div class="mr-6 flex flex-col justify-start items-end">
+                        <h2 class="font3 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Braids</h2>
+                        <p class="font3 text-2xl text-white tracking-wide">$15</p>
+                    </div>
+                </li>
+            </ul>
+            
+        </div>
+    </section>
+
+
+                        <!-- ========== Start Section ========== -->
+                                <!-- Gallery section -->
+                        <!-- ========== End Section ========== -->
+    
+    <section class="bg-linear-to-br from-slate-100 to-pink-200">
+        <div class="container mx-auto px-6 pt-12">
+            <h1>OBI IS A BOYAT LOVES ANIME</h1>
+        </div>
+    </section>
+
+</body>
+</html>
