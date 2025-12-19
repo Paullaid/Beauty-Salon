@@ -16,8 +16,13 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link href="./output.css" rel="stylesheet">  
-    <title>Beauty Salon</title>  
-    <style>
+     <link rel=" icon" href="image/logo 2.jpeg" style="width: 50px;" >
+    <title>
+        
+        Beauty Salon
+    </title>  
+
+     <style>       <!-- My styles -->
         .satisfy-regular {
             font-family: "Satisfy", cursive;
             font-weight: 400;
@@ -30,8 +35,8 @@
             font-style: normal;
         }
 
-        
-        .source-serif-4-<uniquifier> {
+
+        .source-serif-4-regular {
             font-family: "Source Serif 4", serif;
             font-optical-sizing: auto;
             font-weight: 400;
@@ -47,8 +52,64 @@
         .font3 {
             font-family: "Source Serif 4", serif;
         }
-    </style>    
-</head>
+    </style> 
+  
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+        
+                
+                
+        .gallery-section {
+            scroll-margin-top: 2rem;
+        }
+        
+        /* Custom styles for hover effects */
+        .gallery-item {
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Beauty color palette */
+        .beauty-pink { background-color: #f8e2e7; }
+        .beauty-gold { background-color: #f5e6d3; }
+        .beauty-lavender { background-color: #e8e3f0; }
+        .beauty-mint { background-color: #e0f0e8; }
+        .beauty-peach { background-color: #f9e4d4; }
+        
+        .filter-btn.active {
+            background-color: #d4a574;
+            color: white;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #d4a574;
+            border-radius: 4px;
+        }
+        
+        /* Animation for new items */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fadeIn {
+            animation: fadeIn 0.5s ease forwards;
+        }
+    </style> 
+
+    </head>
 <body>
                         <!-- ========== Start Section ========== -->
                                         <!-- Nar Bar -->
@@ -59,7 +120,7 @@
                 <div class="flex justify-between h-16">
                     <!-- Logo / Brand -->
                     <div class="flex items-center">
-                    <a href="#" class="text-2xl font-bold text-indigo-600">MySite</a>
+                    <a href="#" class="text-2xl font-bold text-indigo-600"><img class="h-14 w-30 bg-linear-to-r from-amber-700/70 via-amber-600/50 to-iniogo-200/20 rounded-l-lg hover:transform hover:-translate-x-5 transition duration-500" src="./image/logo1.1.png" alt=""></a>
                     </div>
 
                     <!-- Desktop Navigation -->
@@ -283,7 +344,7 @@
                     <h1 class="text-6xl tracking-wider text-yellow-100 font2">Pricing</h1>
                     <h2 class="pt-3 text-5xl tracking-wide text-white font3 translate-x-12">Hair Glow</h2>
                     <p class="pt-3 text-3xl text-amber-200  translate-x-16">Get a Discount of 12% per Booking</p>
-                    <img class="h-110 w-90 lg:w-180 mt-14 rounded-sm border-3 border-yellow-800 bg-amber-900 border-dotted p-8" src="./image/gallery-1.jpg" alt="Hair Treatement">
+                    <img class="h-110 w-90 lg:w-180 mt-14 rounded-sm border-3 border-yellow-800 bg-linear-to-tl to-amber-600/40 border-dotted p-8" src="./image/skinclinic1.jpeg" alt="Hair Treatement">
                 </div>                            
                 <div>   <!-- Details  -->
 
@@ -292,45 +353,46 @@
                         <!-- Prices  -->
             <ul class="w-full space-y-5 flex flex-col md:transform md:translate-x-7 lg:translate-0">
                 <li class="bg-gradient-to-br from-yellow-700/70 to-amber-900/70 flex justify-between transform lg:-translate-x-12">
-                    <img class="w-20" src="./image/braids1.2.webp" alt="braids"></img>
+                    <img class="w-20" src="./image/beauty21.jpeg" alt="braids"></img>
                     <div class="mr-6 flex flex-col justify-start items-end">
-                        <h2 class="font3 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Braids</h2>
-                        <p class="font3 text-2xl text-white tracking-wide">$15</p>
+                        <h2 class="font3 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Corn Row</h2>
+                        <p class="font3 text-2xl text-white tracking-wide">₦2,500-₦12,000</p>
                     </div>
                 </li>
                 <li class="bg-gradient-to-br from-yellow-700/70 to-amber-900/70 flex justify-between transform lg:-translate-x-9">
-                    <img class="w-20" src="./image/braids1.2.webp" alt="braids"></img>
+                    <img class="w-20" src="./image/beauty20.jpeg" alt="braids"></img>
                     <div class="mr-6 flex flex-col justify-start items-end">
-                        <h2 class="font3 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Braids</h2>
-                        <p class="font3 text-2xl text-white tracking-wide">$15</p>
+                        <h2 class="font3 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Wig Attachment</h2>
+                        <p class="font3 text-2xl text-white tracking-wide">+₦15,000</p>
                     </div>
                 </li>
                 <li class="bg-gradient-to-br from-yellow-700/70 to-amber-900/70 flex justify-between transform lg:-translate-x-6">
-                    <img class="w-20" src="./image/braids1.2.webp" alt="braids"></img>
+                    <img class="w-20" src="./image/makeup2.png" alt="braids"></img>
                     <div class="mr-6 flex flex-col justify-start items-end">
-                        <h2 class="font3 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Braids</h2>
-                        <p class="font3 text-2xl text-white tracking-wide">$15</p>
+                        <h2 class="font3 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Makeup</h2>
+                        <p class="font3 text-2xl text-white tracking-wide">₦5,000-₦25,000 </p>
                     </div>
                 </li>
                 <li class="bg-gradient-to-br from-yellow-700/70 to-amber-900/70 flex justify-between transform lg:-translate-x-3">
-                    <img class="w-20" src="./image/braids1.2.webp" alt="braids"></img>
+                    <img class="w-20" src="./image/man3.jpeg" alt="braids"></img>
                     <div class="mr-6 flex flex-col justify-start items-end">
-                        <h2 class="font3 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Braids</h2>
-                        <p class="font3 text-2xl text-white tracking-wide">$15</p>
+                        <h2 class="font3 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Manicure</h2>
+                        <p class="font3 text-2xl text-white tracking-wide">₦3,500-₦20,000</p>
                     </div>
                 </li>
                 <li class="bg-gradient-to-br from-yellow-700/70 to-amber-900/70 flex justify-between transform lg:-translate-x-0">
-                    <img class="w-20" src="./image/braids1.2.webp" alt="braids"></img>
+                    
+                    <img class="w-20" src="./image/ped2.jpeg" alt="braids"></img>
                     <div class="mr-6 flex flex-col justify-start items-end">
-                        <h2 class="font3 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Braids</h2>
-                        <p class="font3 text-2xl text-white tracking-wide">$15</p>
+                        <h2 class="font3 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Pedicure</h2>
+                        <p class="font3 text-2xl text-white tracking-wide">₦2,500-₦15,000</p>
                     </div>
                 </li>
                 <li class="bg-gradient-to-br from-yellow-700/70 to-amber-900/70 flex justify-between transform lg:translate-x-3">
-                    <img class="w-20" src="./image/braids1.2.webp" alt="braids"></img>
+                    <img class="w-20" src="./image/skincare3.jpeg" alt="braids"></img>
                     <div class="mr-6 flex flex-col justify-start items-end">
-                        <h2 class="font3 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Braids</h2>
-                        <p class="font3 text-2xl text-white tracking-wide">$15</p>
+                        <h2 class="font3 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Skincare</h2>
+                        <p class="font3 text-2xl text-white tracking-wide">₦15,000-₦30,000</p>
                     </div>
                 </li>
             </ul>
@@ -342,12 +404,38 @@
                         <!-- ========== Start Section ========== -->
                                 <!-- Gallery section -->
                         <!-- ========== End Section ========== -->
-    
-    <section class="bg-linear-to-br from-slate-100 to-pink-200">
-        <div class="container mx-auto px-6 pt-12">
-            <h1>OBI IS A BOYAT LOVES ANIME</h1>
+    <section style="background-image: url(./image/tools1.3.jpg);" class="bg-cover bg-fixed bg-center">
+        <div class="bg-white/90 bg-blend-saturation  px-6 pt-24">
+            <div class="flex flex-col items-center">
+                <h1 class="text-4xl text-amber-600/80 font2 mb-3 tracking-wider">Gallery</h1>
+                <h2 class="text-2xl text-slate-800 tracking-wide font ">Our Latest Works</h2>
+            </div>
+            
+           <section class="py-20 px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="col-span-2 row-span-2">
+                <img src="./image/beauty3.png" class="w-full h-full object-cover rounded-2xl" />
+                </div>
+                <img src="./image/beauty17.png" class="rounded-2xl object-cover" />
+                <img src="./image/ped1.jpeg" class="rounded-2xl object-cover" />
+                <img src="./image/skincare1.png" class="rounded-2xl object-cover" />
+                <img src="./image/makeup3.jpeg" class="rounded-2xl object-cover" />
+            </div>
+            <div class="mt-25 text-center">
+                <button class="px-6 py-3 bg-rose-800 text-white rounded-full font3 font-medium hover:bg-rose-900 transition">View All Products</button>
+            </div>
+           </section>             
         </div>
     </section>
-
+  
+                        <!-- ========== Start Section ========== -->
+                                    <!-- Testimonial Section -->
+                        <!-- ========== End Section ========== -->
+    <section class="bg-zinc-50 pt-18">
+        <div class="container px-6  mx-auto">            
+                
+            
+        </div>
+    </section>
 </body>
 </html>

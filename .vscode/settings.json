@@ -1,3 +1,4 @@
 {
-    "livePreview.defaultPreviewPath": "/Hair Styles.html"
+    "livePreview.defaultPreviewPath": "/Hair Styles.html",
+    "gitdoc.enabled": false
 }
