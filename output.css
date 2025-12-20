@@ -4026,6 +4026,26 @@
       padding-top: calc(var(--spacing) * 18);
     }
   }
+  .max-md\:opacity-0 {
+    @media (width < 48rem) {
+      opacity: 0%;
+    }
+  }
+  .max-md\:opacity-80 {
+    @media (width < 48rem) {
+      opacity: 80%;
+    }
+  }
+  .max-md\:opacity-100 {
+    @media (width < 48rem) {
+      opacity: 100%;
+    }
+  }
+  .max-md\:opacity-800 {
+    @media (width < 48rem) {
+      opacity: 800%;
+    }
+  }
   .sm\:hidden {
     @media (width >= 40rem) {
       display: none;
@@ -4450,6 +4470,11 @@
   .lg\:pb-64 {
     @media (width >= 64rem) {
       padding-bottom: calc(var(--spacing) * 64);
+    }
+  }
+  .lg\:opacity-0 {
+    @media (width >= 64rem) {
+      opacity: 0%;
     }
   }
 }
