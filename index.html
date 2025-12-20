@@ -15,8 +15,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Satisfy&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link href="./output.css" rel="stylesheet">  
-     <link rel=" icon" href="image/logo 2.jpeg" style="width: 50px;" >
+    <link href="./output.css" rel="stylesheet">  
+    <link rel=" icon" href="image/logo 2.jpeg" style="width: 50px;" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <title>
         
         Beauty Salon
@@ -54,61 +56,102 @@
         }
     </style> 
   
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
-        
-                
-                
-        .gallery-section {
-            scroll-margin-top: 2rem;
+    <style>        <!-- Testimonial styles -->
+        .perspective-1000 {
+            perspective: 1000px;
         }
         
-        /* Custom styles for hover effects */
-        .gallery-item {
+        .salon-tool {
+            position: absolute;
+            z-index: 0;
+            opacity: 0.3;
             transition: all 0.3s ease;
         }
-        
-        .gallery-item:hover {
-            transform: translateY(-5px);
+        .salon-tool:hover {
+            opacity: 0.5;
+            transform: scale(1.05);
         }
         
-        /* Beauty color palette */
-        .beauty-pink { background-color: #f8e2e7; }
-        .beauty-gold { background-color: #f5e6d3; }
-        .beauty-lavender { background-color: #e8e3f0; }
-        .beauty-mint { background-color: #e0f0e8; }
-        .beauty-peach { background-color: #f9e4d4; }
-        
-        .filter-btn.active {
-            background-color: #d4a574;
-            color: white;
-        }
-        
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: #d4a574;
-            border-radius: 4px;
-        }
-        
-        /* Animation for new items */
+    </style>
+
+    <style>        <!-- Gallery styles -->
+        /* Custom animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
-        .animate-fadeIn {
-            animation: fadeIn 0.5s ease forwards;
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
         }
-    </style> 
-
+        
+        .animation-delay-200 { animation-delay: 0.2s; opacity: 0; }
+        .animation-delay-400 { animation-delay: 0.4s; opacity: 0; }
+        .animation-delay-600 { animation-delay: 0.6s; opacity: 0; }
+        
+        /* Gallery item hover effects (from Salone template) */
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .gallery-item img {
+            transition: transform 0.5s ease;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.2);
+        }
+        
+        .gallery-icon {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 0;
+            height: 0;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.7);
+            transition: all 0.5s ease;
+            z-index: 1;
+            border-radius: 1rem;
+        }
+        
+        .gallery-item:hover .gallery-icon {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .gallery-icon .btn {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .gallery-item:hover .gallery-icon .btn {
+            opacity: 1;
+            transition-delay: 0.3s;
+        }
+        
+        /* Custom fonts if needed */
+        .font2 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .font3 {
+            font-family: 'Work Sans', sans-serif;
+        }
+        
+        /* Smooth transitions */
+        .transition-all-custom {
+            transition: all 0.3s ease;
+        }
+    </style>
     </head>
 <body>
                         <!-- ========== Start Section ========== -->
@@ -185,15 +228,15 @@
                         <!-- ========== End Section ========== -->
     <section class="bg-cover bg-center bg-fixed lg:h-screen h-full" style="background-image: url(./image/braids1.4.jpg);" >
         <div class="md:pt-73 pt-53 pb-12 pl-4 bg-black/70 lg:h-screen h-full">
-            <h1 class="font bg-gradient-to-b from-amber-500 via-violet-600/40 to-violet-700/50 text-transparent bg-clip-text md:w-3/4 text-8xl text-pretty">
+            <h1 class="font bg-gradient-to-b from-amber-500  to-rose-700/50 text-transparent bg-clip-text md:w-3/4 text-8xl text-pretty">
               Welcome to Hair Glow  
             </h1>
-            <p class="font2 bg-gradient-to-r from-slate-200 to-pink-600/70  text-transparent bg-clip-text text-4xl pt-8 lg:pt-4 ">
+            <p class="font2 bg-gradient-to-r from-slate-200 to-rose-600/70  text-transparent bg-clip-text text-4xl pt-8 lg:pt-4 ">
                 Were Luxury gets comfort
             </p>
-            <div class="pt-4 flex flex-col lg:flex-row items-start space-y-5 lg:space-x-12">
-                <button class=" flex space-x-4 bg-linear-to-r from-amber-700/80 via-violet-600/10 to-purple-900/60 py-1 px-2 rounded-md text-2xl text-purple-300"><img src="./image/phone svg.svg" alt="Phone SVG" class="bg-white/80 p-1 rounded-md"> <span>07058748480</span> </button>
-                <button class="flex space-x-4 bg-linear-to-r from-amber-700/80 via-violet-600/10 to-purple-900/60 py-1 px-2 rounded-md text-2xl text-purple-300"><img src="./image/location svg.svg" alt="Location SVG" class="bg-white/80 p-1 rounded-md"> <span>Estate Gate</span> </button>
+            <div class="pt-4 flex flex-col lg:flex-row items-start space-y-5 lg:space-x-12 lg:pt-7">
+                <button class=" flex space-x-4 bg-linear-to-r from-amber-700/80  to-rose-800/60 py-1 px-2 rounded-md text-2xl text-white"><img src="./image/phone svg.svg" alt="Phone SVG" class="bg-white/80 p-1 rounded-md"> <span>07058748480</span> </button>
+                <button class="flex space-x-4 bg-linear-to-r from-amber-700/80  to-rose-800/60 py-1 px-2 rounded-md text-2xl text-white"><img src="./image/location svg.svg" alt="Location SVG" class="bg-white/80 p-1 rounded-md"> <span>Estate Gate</span> </button>
             </div>
 
              <!-- Decorative blob -->
@@ -223,8 +266,8 @@
 
             <!-- Text Content -->
             <div class="space-y-6">
-                <h2 class="text-5xl tracking-wide font font-extrabold leading-wide text-gray-800" >
-                    About <span class="text-pink-600">Us</span>
+                <h2 class="text-5xl tracking-wide font font-extrabold leading-wide text-slate-700" >
+                    About <span class="text-amber-500">Us</span>
                 </h2>
                 
                 <p class="text-slate-800 font3 leading-relaxed text-xl">
@@ -242,15 +285,15 @@
                 <!-- Stats -->
                 <div class="grid grid-cols-3 gap-6 text-center">
                     <div class="group bg-slate-200/70 py-8 px-4 rounded-sm transition duration-500">
-                        <h3 class="text-4xl font3 font-bold text-pink-600 group-hover:scale-120 transition duration-500">12+</h3>
+                        <h3 class="text-4xl font3 font-bold text-amber-500 group-hover:scale-120 transition duration-500">12+</h3>
                         <p class="text-gray-600 text-sm group-hover:text-md group-hover:mt-2 group-hover:text-gray-900 transition duration-500">Yr's Experience</p>
                     </div>
                     <div class="group bg-slate-200/70 py-8 px-4 rounded-sm transition duration-500">
-                        <h3 class="text-4xl font3 font-bold text-pink-600 group-hover:scale-120 transition duration-500">100+</h3>
+                        <h3 class="text-4xl font3 font-bold text-amber-500 group-hover:scale-120 transition duration-500">100+</h3>
                         <p class="text-gray-600 text-sm group-hover:text-md group-hover:mt-2 group-hover:text-gray-900 transition duration-500">Happy Clients</p>
                     </div>
                     <div class="group bg-slate-200/70 py-8 px-4 rounded-sm transition duration-500">
-                        <h3 class="text-4xl font3 font-bold text-pink-600 group-hover:scale-120 transition duration-500">15+</h3>
+                        <h3 class="text-4xl font3 font-bold text-amber-500 group-hover:scale-120 transition duration-500">15+</h3>
                         <p class="text-gray-600 text-sm group-hover:text-md group-hover:mt-2 group-hover:text-gray-900 transition duration-500">Beauty Services</p>
                     </div>
                 </div>
@@ -258,7 +301,7 @@
                 <!-- Button -->
                 <a href="#services" 
                     class="inline-block mt-4 text-xl text-pink-100 font2 font-medium px-8
-                     py-4 rounded-full shadow-lg bg-linear-to-br from-amber-500/90 to-pink-600/90 hover:bg-pink-700 hover:tracking-wide transition duration-500">
+                     py-4 rounded-lg shadow-lg bg-linear-to-br from-amber-500/90 to-rose-600/90 hover:bg-pink-700 hover:tracking-wide transition duration-500">
                     Explore Our Services
                 </a>
             </div>
@@ -336,7 +379,7 @@
                                         <!-- Pricing Section      -->
                         <!-- ========== End Section ========== -->
     
-    <section class="bg-yellow-950">
+    <section class="bg-orange-950">
         <div class="container mx-auto px-6 pt-24 pb-13 flex flex-col md:flex-row max-lg:space-y-12">
                         <!-- Discount -->
             <div class="grid grid-cols-1 lg:grid-cols-2">
@@ -352,47 +395,47 @@
             </div>
                         <!-- Prices  -->
             <ul class="w-full space-y-5 flex flex-col md:transform md:translate-x-7 lg:translate-0">
-                <li class="bg-gradient-to-br from-yellow-700/70 to-amber-900/70 flex justify-between transform lg:-translate-x-12">
+                <li class="bg-gradient-to-br from-orange-700/70 to-amber-800/70 flex justify-between transform lg:-translate-x-12">
                     <img class="w-20" src="./image/beauty21.jpeg" alt="braids"></img>
                     <div class="mr-6 flex flex-col justify-start items-end">
-                        <h2 class="font3 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Corn Row</h2>
-                        <p class="font3 text-2xl text-white tracking-wide">₦2,500-₦12,000</p>
+                        <h2 class="font2 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Corn Row</h2>
+                        <p class="font2 text-xl text-white tracking-wide">₦2,500-₦12,000</p>
                     </div>
                 </li>
-                <li class="bg-gradient-to-br from-yellow-700/70 to-amber-900/70 flex justify-between transform lg:-translate-x-9">
+                <li class="bg-gradient-to-br from-orange-700/70 to-amber-800/70 flex justify-between transform lg:-translate-x-9">
                     <img class="w-20" src="./image/beauty20.jpeg" alt="braids"></img>
                     <div class="mr-6 flex flex-col justify-start items-end">
-                        <h2 class="font3 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Wig Attachment</h2>
-                        <p class="font3 text-2xl text-white tracking-wide">+₦15,000</p>
+                        <h2 class="font2 text-xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Wig Attachment</h2>
+                        <p class="font2 text-2xl text-white tracking-wide">+₦15,000</p>
                     </div>
                 </li>
-                <li class="bg-gradient-to-br from-yellow-700/70 to-amber-900/70 flex justify-between transform lg:-translate-x-6">
+                <li class="bg-gradient-to-br from-orange-700/70 to-amber-800/70 flex justify-between transform lg:-translate-x-6">
                     <img class="w-20" src="./image/makeup2.png" alt="braids"></img>
                     <div class="mr-6 flex flex-col justify-start items-end">
-                        <h2 class="font3 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Makeup</h2>
-                        <p class="font3 text-2xl text-white tracking-wide">₦5,000-₦25,000 </p>
+                        <h2 class="font2 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Makeup</h2>
+                        <p class="font2 text-xl text-white tracking-wide">₦5,000-₦25,000 </p>
                     </div>
                 </li>
-                <li class="bg-gradient-to-br from-yellow-700/70 to-amber-900/70 flex justify-between transform lg:-translate-x-3">
+                <li class="bg-gradient-to-br from-orange-700/70 to-amber-800/70 flex justify-between transform lg:-translate-x-3">
                     <img class="w-20" src="./image/man3.jpeg" alt="braids"></img>
                     <div class="mr-6 flex flex-col justify-start items-end">
-                        <h2 class="font3 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Manicure</h2>
-                        <p class="font3 text-2xl text-white tracking-wide">₦3,500-₦20,000</p>
+                        <h2 class="font2 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Manicure</h2>
+                        <p class="font2 text-xl text-white tracking-wide">₦3,500-₦20,000</p>
                     </div>
                 </li>
-                <li class="bg-gradient-to-br from-yellow-700/70 to-amber-900/70 flex justify-between transform lg:-translate-x-0">
+                <li class="bg-gradient-to-br from-orange-700/70 to-amber-800/70 flex justify-between transform lg:-translate-x-0">
                     
                     <img class="w-20" src="./image/ped2.jpeg" alt="braids"></img>
                     <div class="mr-6 flex flex-col justify-start items-end">
-                        <h2 class="font3 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Pedicure</h2>
-                        <p class="font3 text-2xl text-white tracking-wide">₦2,500-₦15,000</p>
+                        <h2 class="font2 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Pedicure</h2>
+                        <p class="font2 text-xl text-white tracking-wide">₦2,500-₦15,000</p>
                     </div>
                 </li>
-                <li class="bg-gradient-to-br from-yellow-700/70 to-amber-900/70 flex justify-between transform lg:translate-x-3">
+                <li class="bg-gradient-to-br from-orange-700/70 to-amber-800/70 flex justify-between transform lg:translate-x-3">
                     <img class="w-20" src="./image/skincare3.jpeg" alt="braids"></img>
                     <div class="mr-6 flex flex-col justify-start items-end">
-                        <h2 class="font3 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Skincare</h2>
-                        <p class="font3 text-2xl text-white tracking-wide">₦15,000-₦30,000</p>
+                        <h2 class="font2 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Skincare</h2>
+                        <p class="font2 text-xl text-white tracking-wide">₦15,000-₦30,000</p>
                     </div>
                 </li>
             </ul>
@@ -400,42 +443,634 @@
         </div>
     </section>
 
+     
+
 
                         <!-- ========== Start Section ========== -->
                                 <!-- Gallery section -->
                         <!-- ========== End Section ========== -->
     <section style="background-image: url(./image/tools1.3.jpg);" class="bg-cover bg-fixed bg-center">
-        <div class="bg-white/90 bg-blend-saturation  px-6 pt-24">
-            <div class="flex flex-col items-center">
-                <h1 class="text-4xl text-amber-600/80 font2 mb-3 tracking-wider">Gallery</h1>
-                <h2 class="text-2xl text-slate-800 tracking-wide font ">Our Latest Works</h2>
+    <div class="bg-white/90 bg-blend-saturation px-6 pt-24">
+        <div class="flex flex-col items-center animate-fade-in">
+            <h1 class="text-4xl text-amber-600/80 font2 mb-3 tracking-wider">Gallery</h1>
+            <h2 class="text-2xl text-slate-800 tracking-wide font">Our Latest Works</h2>
+        </div>
+        
+        <section class="py-20 px-6">
+        <!-- Gallery Grid - Your original layout with Salone effects -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <!-- Item 1 (Large - spans 2 columns, 2 rows) -->
+            <div class="col-span-2 row-span-2 gallery-item rounded-2xl animate-fade-in animation-delay-200">
+                <img src="./image/beauty3.png" class="w-full h-full object-cover" />
+                <div class="gallery-icon">
+                    <a href="./image/beauty3.png" 
+                        class="btn bg-amber-600 hover:bg-amber-700 text-white w-16 h-16 rounded-full flex items-center justify-center transition-all-custom transform hover:scale-110"
+                        data-lightbox="gallery" 
+                        data-title="Premium Beauty Treatment">
+                        <i class="fas fa-eye text-2xl"></i>
+                    </a>
+                </div>
             </div>
             
-           <section class="py-20 px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="col-span-2 row-span-2">
-                <img src="./image/beauty3.png" class="w-full h-full object-cover rounded-2xl" />
+            <!-- Item 2 -->
+            <div class="gallery-item rounded-2xl animate-fade-in animation-delay-400">
+                <img src="./image/beauty17.png" class="w-full h-48 md:h-64 object-cover" />
+                <div class="gallery-icon">
+                    <a href="./image/beauty17.png" 
+                        class="btn bg-amber-600 hover:bg-amber-700 text-white w-14 h-14 rounded-full flex items-center justify-center transition-all-custom transform hover:scale-110"
+                        data-lightbox="gallery" 
+                        data-title="Professional Makeup">
+                        <i class="fas fa-eye text-xl"></i>
+                    </a>
                 </div>
-                <img src="./image/beauty17.png" class="rounded-2xl object-cover" />
-                <img src="./image/ped1.jpeg" class="rounded-2xl object-cover" />
-                <img src="./image/skincare1.png" class="rounded-2xl object-cover" />
-                <img src="./image/makeup3.jpeg" class="rounded-2xl object-cover" />
             </div>
-            <div class="mt-25 text-center">
-                <button class="px-6 py-3 bg-rose-800 text-white rounded-full font3 font-medium hover:bg-rose-900 transition">View All Products</button>
+            
+            <!-- Item 3 -->
+            <div class="gallery-item rounded-2xl animate-fade-in animation-delay-600">
+                <img src="./image/ped1.jpeg" class="w-full h-48 md:h-64 object-cover" />
+                <div class="gallery-icon">
+                    <a href="./image/ped1.jpeg" 
+                        class="btn bg-amber-600 hover:bg-amber-700 text-white w-14 h-14 rounded-full flex items-center justify-center transition-all-custom transform hover:scale-110"
+                        data-lightbox="gallery" 
+                        data-title="Luxury Pedicure">
+                        <i class="fas fa-eye text-xl"></i>
+                    </a>
+                </div>
             </div>
-           </section>             
+            
+            <!-- Item 4 -->
+            <div class="gallery-item rounded-2xl animate-fade-in animation-delay-200">
+                <img src="./image/skincare1.png" class="w-full h-48 md:h-64 object-cover" />
+                <div class="gallery-icon">
+                    <a href="./image/skincare1.png" 
+                        class="btn bg-amber-600 hover:bg-amber-700 text-white w-14 h-14 rounded-full flex items-center justify-center transition-all-custom transform hover:scale-110"
+                        data-lightbox="gallery" 
+                        data-title="Skincare Therapy">
+                        <i class="fas fa-eye text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Item 5 -->
+            <div class="gallery-item rounded-2xl animate-fade-in animation-delay-400">
+                <img src="./image/makeup3.jpeg" class="w-full h-48 md:h-64 object-cover" />
+                <div class="gallery-icon">
+                    <a href="./image/makeup3.jpeg" 
+                        class="btn bg-amber-amber-600 hover:bg-amber-700 text-white w-14 h-14 rounded-full flex items-center justify-center transition-all-custom transform hover:scale-110"
+                        data-lightbox="gallery" 
+                        data-title="Glam Makeover">
+                        <i class="fas fa-eye text-xl"></i>
+                    </a>
+                </div>
+            </div>
         </div>
+        
+        <div class="mt-12 text-center animate-fade-in animation-delay-600">
+            <button class="px-6 py-3 bg-orange-800 text-white rounded-full font3 font-medium hover:bg-orange-900 transition-all-custom transform hover:-translate-y-1 hover:shadow-lg">
+                View All Products
+            </button>
+            
+            <!-- Gallery stats (optional addition) -->
+            <div class="mt-6 text-gray-600 text-sm">
+                <p>Click on any image to view in full screen • Use arrow keys to navigate</p>
+            </div>
+        </div>
+        </section>             
+    </div>
     </section>
   
                         <!-- ========== Start Section ========== -->
                                     <!-- Testimonial Section -->
                         <!-- ========== End Section ========== -->
-    <section class="bg-zinc-50 pt-18">
-        <div class="container px-6  mx-auto">            
-                
-            
+    <section class="p-6 pt-18 relative bg-linear-to-br from-white via-pink-50/70 to-rose-100/70">
+    <!-- Salon Tool Decorations -->
+    <div class="salon-tool top-10 left-10 text-4xl text-pink-400">
+        <i class="fas fa-spa"></i>
+    </div>
+    <div class="salon-tool top-20 right-16 text-3xl text-rose-300">
+        <i class="fas fa-hand-sparkles"></i>
+    </div>
+    <div class="salon-tool bottom-20 left-20 text-5xl text-pink-300">
+        <i class="fas fa-crown"></i>
+    </div>
+    <div class="salon-tool bottom-32 right-10 text-2xl text-rose-400">
+        <i class="fas fa-cut"></i>
+    </div>
+    <div class="salon-tool top-1/3 left-1/4 text-3xl text-pink-200">
+        <i class="fas fa-feather-alt"></i>
+    </div>
+    <div class="salon-tool top-40 right-1/3 text-4xl text-rose-200">
+        <i class="fas fa-magic"></i>
+    </div>
+    <div class="salon-tool bottom-40 left-1/3 text-2xl text-pink-300">
+        <i class="fas fa-paint-brush"></i>
+    </div>
+    <div class="salon-tool top-1/4 right-1/4 text-3xl text-rose-300">
+        <i class="fas fa-heart"></i>
+    </div>
+    <div class="salon-tool top-3/4 left-16 text-4xl text-pink-200">
+        <i class="fas fa-star"></i>
+    </div>
+    <div class="salon-tool bottom-16 right-1/4 text-3xl text-rose-400">
+        <i class="fas fa-gem"></i>
+    </div>
+
+    <div class="max-w-5xl mx-auto relative z-10">
+        <!-- Testimonial Section -->
+        <div class="text-center pb-10">
+            <h1 class="text-4xl font2 font-bold text-amber-600/80 mb-3 tracking-wider">              
+                 Testimonials
+            </h1>
+            <p class="font text-slate-900/80 text-2xl max-w-2xl mx-auto tracking-wider pb-7">
+                Discover what our beautiful clients say about their transformation
+            </p>
         </div>
+
+        <div id="testimonial-section" class="relative">
+            <div class="h-[500px] relative perspective-1000 overflow-hidden flex items-center justify-center">
+                <div id="testimonial-3d" class="relative w-full h-full flex items-center justify-center">
+                    <!-- Testimonial cards will be added via JS -->
+                </div>
+            </div>
+            
+            <!-- Indicator dots styled like makeup brushes -->
+            <div class="flex justify-center space-x-3 mt-6">
+                <div id="indicator-0" class="w-8 h-1 bg-pink-500 rounded-full cursor-pointer transition-all duration-300"></div>
+                <div id="indicator-1" class="w-3 h-1 bg-pink-300 rounded-full cursor-pointer transition-all duration-300"></div>
+                <div id="indicator-2" class="w-3 h-1 bg-pink-300 rounded-full cursor-pointer transition-all duration-300"></div>
+                <div id="indicator-3" class="w-3 h-1 bg-pink-300 rounded-full cursor-pointer transition-all duration-300"></div>
+                <div id="indicator-4" class="w-3 h-1 bg-pink-300 rounded-full cursor-pointer transition-all duration-300"></div>
+            </div>
+            
+            <!-- Testimonial title display with salon theme -->
+            <div id="testimonial-title" class="text-center mt-8">
+                <h3 class="text-xl font3 font-bold text-pink-800">Ebose Foody</h3>
+                <p class="text-pink-600 mt-2">
+                    <i class="fas fa-medal text-pink-500 mr-2"></i>
+                    Testimonial 1 of 5
+                    <i class="fas fa-medal text-pink-500 ml-2"></i>
+                </p>
+            </div>
     </section>
+
+                        <!-- ========== Start Section ========== -->
+                                <!-- Team Members Section Section -->
+                        <!-- ========== End Section ========== -->
+    <section class="bg-linear-to-br from-rose-100/70 via-pink-50/70 to-white ">
+        <div class="container mx-auto px-6 pt-24 pb-10">
+            <!-- head section -->
+            <div class="mb-12 flex flex-col justify-center items-center text-center">                
+                <h2 class="mb-6 text-4xl font2 font-bold leading-tight text-amber-600 sm:text-4xl tracking-wider">
+                Skilled Beauty Professionals
+                </h2>
+                <p class="text-slate-800/80 font text-2xl leading-loose">
+                Our team of certified beauty experts brings years of experience and passion to every service.
+                </p>
+            </div>
+            <!-- body section -->
+            <div class="grid gap-8 mx-auto sm:grid-cols-2 lg:grid-cols-4 lg:max-w-screen-lg">
+                <!-- Team Member 1 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl">
+                    <div class="relative h-80 overflow-hidden">
+                        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                        src="./image/skinclinic1.jpeg" alt="Senior Stylist" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                    <div class="text-white">
+                    <h3 class="text-xl font-bold">Sophia Williams</h3>
+                    <p class="text-amber-300 text-sm mt-1">Senior Hair Stylist</p>
+                </div>
+            </div>
+                <div class="absolute top-4 right-9 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div class="flex space-x-2">
+                    <a href="#" class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center space-x-5 text-white hover:bg-white/30 transition">
+                        <i class="fab fa-instagram"></i>                        
+                    </a>
+                    <a href="#" class="w-10 h-10 backdrop-blur-sm rounded-full flex items-center justify-center space-x-5 text-white hover:bg-white/30 transition">
+                        <i class="fab fa-facebook"></i>                        
+                    </a>
+                    <a href="#" class="w-10 h-10 backdrop-blur-sm rounded-full flex items-center justify-center space-x-5 text-white hover:bg-white/30 transition">
+                        <i class="fab fa-tiktok"></i>                        
+                    </a>
+                </div>
+                </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl">
+                <div class="relative h-80 overflow-hidden">
+                    <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                        src="./image/skincare.png" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                    <div class="text-white">
+                    <h3 class="text-xl font-bold">Michael Chen</h3>
+                    <p class="text-amber-300 text-sm mt-1">Makeup Artist</p>
+                    </div>
+                </div>
+                <div class="absolute top-4 right-9 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div class="flex space-x-2">
+                    <a href="#" class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center space-x-5 text-white hover:bg-white/30 transition">
+                        <i class="fab fa-instagram"></i>                        
+                    </a>
+                    <a href="#" class="w-10 h-10 backdrop-blur-sm rounded-full flex items-center justify-center space-x-5 text-white hover:bg-white/30 transition">
+                        <i class="fab fa-facebook"></i>                        
+                    </a>
+                    <a href="#" class="w-10 h-10 backdrop-blur-sm rounded-full flex items-center justify-center space-x-5 text-white hover:bg-white/30 transition">
+                        <i class="fab fa-tiktok"></i>                        
+                    </a>
+                </div>
+                </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="max-md:hidden group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl">
+                <div class="relative h-80 overflow-hidden">
+                    <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                        src="./image/beauty18.png" alt="Nail Technician" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                    <div class="text-white">
+                    <h3 class="text-xl font-bold">Emma Rodriguez</h3>
+                    <p class="text-amber-300 text-sm mt-1">Nail Technician</p>
+                    </div>
+                </div>
+                <div class="absolute top-4 right-9 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div class="flex space-x-2">
+                    <a href="#" class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center space-x-5 text-white hover:bg-white/30 transition">
+                        <i class="fab fa-instagram"></i>                        
+                    </a>
+                    <a href="#" class="w-10 h-10 backdrop-blur-sm rounded-full flex items-center justify-center space-x-5 text-white hover:bg-white/30 transition">
+                        <i class="fab fa-facebook"></i>                        
+                    </a>
+                    <a href="#" class="w-10 h-10 backdrop-blur-sm rounded-full flex items-center justify-center space-x-5 text-white hover:bg-white/30 transition">
+                        <i class="fab fa-tiktok"></i>                        
+                    </a>
+                </div>
+                </div>
+                </div>
+
+                <!-- Team Member 4 -->
+                <div class="max-md:hidden group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl">
+                <div class="relative h-80 overflow-hidden">
+                    <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                        src="./image/beauty22.jpeg" alt="Spa Therapist" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                    <div class="text-white">
+                    <h3 class="text-xl font-bold">Isabella Park</h3>
+                    <p class="text-amber-300 font2 text-sm mt-1">Spa Therapist</p>
+                    </div>
+                </div>
+                <div class="absolute top-4 right-9 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div class="flex space-x-2">
+                    <a href="#" class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center space-x-5 text-white hover:bg-white/30 transition">
+                        <i class="fab fa-instagram"></i>                        
+                    </a>
+                    <a href="#" class="w-10 h-10 backdrop-blur-sm rounded-full flex items-center justify-center space-x-5 text-white hover:bg-white/30 transition">
+                        <i class="fab fa-facebook"></i>                        
+                    </a>
+                    <a href="#" class="w-10 h-10 backdrop-blur-sm rounded-full flex items-center justify-center space-x-5 text-white hover:bg-white/30 transition">
+                        <i class="fab fa-tiktok"></i>                        
+                    </a>
+                </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+    </section>     
+    
+
+    <script>// Testimonial data for beauty salon
+        
+        const testimonialData = [
+            { 
+                id: 1, 
+                name: "Ebose Foody",
+                role: "Medicine Student",
+                quote: "I enjoyed the pedicure and manicure service I got, I will definitely come back for more. The attention to detail was amazing!",
+                image: "./image/beauty.png"
+            },
+            { 
+                id: 2, 
+                name: "Sophia Williams",
+                role: "Fashion Designer",
+                quote: "Best salon experience ever! My hair transformation was exactly what I wanted. Professional and friendly staff.",
+                image: "./image/beauty2.png"
+            },
+            { 
+                id: 3, 
+                name: "Isabella Chen",
+                role: "Beauty Influencer",
+                quote: "The makeup artists are truly talented! I felt like a princess on my wedding day. Highly recommended!",
+                image: "./image/beauty3.png"
+            },
+            { 
+                id: 4, 
+                name: "Emma Rodriguez",
+                role: "Yoga Instructor",
+                quote: "The spa treatment was incredibly relaxing. I left feeling rejuvenated and refreshed. Pure bliss!",
+                image: "./image/beauty4.png"
+            },
+            { 
+                id: 5, 
+                name: "Olivia Parker",
+                role: "Event Planner",
+                quote: "Consistently excellent service! I've been coming here for years and they never disappoint. Perfection!",
+                image: "./image/beauty5.png"
+            }
+        ];
+
+        // Initialize Testimonial 3D Carousel
+        function initTestimonialCarousel() {
+            const container = document.getElementById('testimonial-3d');
+            container.innerHTML = '';
+            
+            const items = testimonialData;
+            const total = items.length;
+            const radius = 220;
+            let angle = 0;
+            let currentFrontIndex = 0;
+            
+            items.forEach((testimonial, i) => {
+                const item = document.createElement('div');
+                item.className = 'absolute w-[320px] rounded-xl shadow-lg transition-all duration-700 cursor-pointer transform hover:scale-105';
+                item.innerHTML = `
+                    <div class=" bg-linear-to-b from-orange-500 to-orange-700 text-white flex flex-col items-center shadow-lg p-6 rounded-lg">
+                        <img src="${testimonial.image}" alt="${testimonial.name}" class=" w-18 h-18 rounded-full transform -translate-y-14 border-4 border-white shadow-lg">
+                        <div class="text-center mt-2">
+                            <h1 class="text-xl font3 font-bold pb-1 tracking-wide">${testimonial.name}</h1>
+                            <h2 class="text-md pb-4 text-pink-100 font3 tracking-wide">
+                                <i class="fas fa-user-tag mr-2 "></i>${testimonial.role}
+                            </h2>
+                            <p class="text-center font2 mb-4 text-pink-50 leading-relaxed tracking-wide">
+                                <i class="fas fa-quote-left text-pink-200 mr-2"></i>
+                                ${testimonial.quote}
+                                <i class="fas fa-quote-right text-pink-200 ml-2"></i>
+                            </p>
+                        </div>
+                        <div class="flex text-yellow-300 mt-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(item);
+                
+                // Add click event to each testimonial card
+                item.addEventListener('click', () => {
+                    const stepsToFront = (currentFrontIndex - i + total) % total;
+                    angle += stepsToFront * (Math.PI * 2 / total);
+                    currentFrontIndex = i;
+                    updateCarousel();
+                    updateIndicators();
+                    updateTitle();
+                });
+            });
+            
+            function updateCarousel() {
+                const testimonialItems = container.children;
+                const angleStep = (Math.PI * 2) / total;
+                
+                for (let i = 0; i < testimonialItems.length; i++) {
+                    const item = testimonialItems[i];
+                    const itemAngle = angle + i * angleStep;
+                    
+                    // Calculate 3D positions
+                    const x = Math.sin(itemAngle) * radius;
+                    const z = Math.cos(itemAngle) * radius;
+                    const scale = 0.7 + (z + radius) / (2 * radius) * 0.6;
+                    const opacity = 0.6 + (z + radius) / (2 * radius) * 0.4;
+                    
+                    // Apply 3D transformations
+                    item.style.transform = `translateX(${x}px) translateZ(${z}px) scale(${scale})`;
+                    item.style.opacity = opacity;
+                    item.style.zIndex = Math.round(z + radius);
+                    
+                    // Find which testimonial is currently at the front
+                    if (z > radius - 30) {
+                        currentFrontIndex = i;
+                        item.classList.add('ring-3', 'ring-yellow-400');
+                        item.classList.remove('opacity-70');
+                    } else {
+                        item.classList.remove('ring-3', 'ring-yellow-400');
+                        item.classList.add('opacity-70');
+                    }
+                }
+            }
+            
+            function updateIndicators() {
+                for (let i = 0; i < total; i++) {
+                    const indicator = document.getElementById(`indicator-${i}`);
+                    if (i === currentFrontIndex) {
+                        indicator.className = 'w-8 h-1 bg-orange-600 rounded-full cursor-pointer transition-all duration-300';
+                    } else {
+                        indicator.className = 'w-3 h-1 bg-orange-300 rounded-full cursor-pointer transition-all duration-300';
+                    }
+                    
+                    // Add click event to indicators
+                    indicator.onclick = () => {
+                        const stepsToFront = (currentFrontIndex - i + total) % total;
+                        angle += stepsToFront * (Math.PI * 2 / total);
+                        currentFrontIndex = i;
+                        updateCarousel();
+                        updateIndicators();
+                        updateTitle();
+                    };
+                }
+            }
+            
+            function updateTitle() {
+                document.getElementById('testimonial-title').innerHTML = `
+                    <h3 class="text-3xl font3 font-bold text-orange-600">${testimonialData[currentFrontIndex].name}</h3>
+                    <p class="text-yellow-700 font2 mt-2">                        
+                        Testimonial ${currentFrontIndex + 1} of ${total}                        
+                    </p>
+                `;
+            }
+            
+            // Auto-rotation
+            let autoRotate = setInterval(() => {
+                angle -= Math.PI / (total / 2) / 50;
+                updateCarousel();
+                updateIndicators();
+                updateTitle();
+            }, 100);
+            
+            // Pause auto-rotation on hover
+            container.addEventListener('mouseenter', () => {
+                clearInterval(autoRotate);
+            });
+            
+            container.addEventListener('mouseleave', () => {
+                autoRotate = setInterval(() => {
+                    angle -= Math.PI / (total / 2) / 50;
+                    updateCarousel();
+                    updateIndicators();
+                    updateTitle();
+                }, 100);
+            });
+            
+            // Initial updates
+            updateCarousel();
+            updateIndicators();
+            updateTitle();
+        }
+        
+        // Initialize the testimonial carousel
+        document.addEventListener('DOMContentLoaded', () => {
+            initTestimonialCarousel();
+            
+            // Add floating animation to salon tools
+            const tools = document.querySelectorAll('.salon-tool');
+            tools.forEach((tool, index) => {
+                tool.style.animation = `float ${3 + index * 0.5}s ease-in-out infinite alternate`;
+            });
+        });
+        
+        // Add floating animation keyframes
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                0% { transform: translateY(0px) rotate(0deg); }
+                100% { transform: translateY(-15px) rotate(5deg); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>  
+    
+    <!-- Gallery Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+    
+    <script>
+        // Lightbox configuration
+        lightbox.option({
+            'resizeDuration': 300,
+            'wrapAround': true,
+            'albumLabel': 'Image %1 of %2',
+            'fadeDuration': 300,
+            'imageFadeDuration': 300,
+            'showImageNumberLabel': true
+        });
+
+        // Scroll animation trigger
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.animate-fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const delay = entry.target.classList.contains('animation-delay-200') ? 200 :
+                                     entry.target.classList.contains('animation-delay-400') ? 400 :
+                                     entry.target.classList.contains('animation-delay-600') ? 600 : 0;
+                        
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                        }, delay);
+                        
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+
+            // Make entire gallery item clickable (not just the eye icon)
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    // Don't trigger if clicking the button itself
+                    if (!e.target.closest('a.btn')) {
+                        const link = this.querySelector('a[data-lightbox]');
+                        if (link) {
+                            link.click();
+                        }
+                    }
+                });
+            });
+
+            // View All Products button functionality
+            document.querySelector('button.bg-orange-800').addEventListener('click', function() {
+                // Open the first image in lightbox
+                const firstImage = document.querySelector('a[data-lightbox]');
+                if (firstImage) {
+                    firstImage.click();
+                }
+                
+                // Or you could add functionality to load more images here
+                alert('View All Products feature would load more images here');
+            });
+
+            // Keyboard navigation for lightbox
+            document.addEventListener('keydown', function(e) {
+                if (document.querySelector('.lightboxOverlay')) {
+                    if (e.key === 'ArrowRight') {
+                        document.querySelector('.lb-next')?.click();
+                    } else if (e.key === 'ArrowLeft') {
+                        document.querySelector('.lb-prev')?.click();
+                    } else if (e.key === 'Escape') {
+                        document.querySelector('.lb-close')?.click();
+                    }
+                }
+            });
+
+            // Touch/swipe support for mobile lightbox
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            document.addEventListener('touchstart', e => {
+                if (document.querySelector('.lightboxOverlay')) {
+                    touchStartX = e.changedTouches[0].screenX;
+                }
+            }, false);
+
+            document.addEventListener('touchend', e => {
+                if (document.querySelector('.lightboxOverlay')) {
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipe();
+                }
+            }, false);
+
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = touchStartX - touchEndX;
+
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        // Swipe left - next image
+                        document.querySelector('.lb-next')?.click();
+                    } else {
+                        // Swipe right - previous image
+                        document.querySelector('.lb-prev')?.click();
+                    }
+                }
+            }
+        });
+
+        // Add hover effect for gallery items
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-4px)';
+                this.style.transition = 'transform 0.3s ease';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
 </body>
 </html>

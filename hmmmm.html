@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beauty Salon Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Lightbox CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+    
+    <style>
+    /* 3D Flip Effect for Design 5 */
+    .perspective-1000 {
+        perspective: 1000px;
+    }
+    
+    .preserve-3d {
+        transform-style: preserve-3d;
+    }
+    
+    .backface-hidden {
+        backface-visibility: hidden;
+    }
+    
+    .rotate-y-180 {
+        transform: rotateY(180deg);
+    }
+    
+    /* Add Font Awesome for icons */
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+    </style>    
+
+    <style>
+        .perspective-1000 { perspective: 1000px; }
+        .preserve-3d { transform-style: preserve-3d; }
+        .backface-hidden { backface-visibility: hidden; }
+        .rotate-y-180 { transform: rotateY(180deg); }
+    </style>
+</head>
+<body>
+    <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+    <div class="mx-auto mb-12 lg:max-w-xl sm:text-center">
+        <p class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-amber-800 uppercase rounded-full bg-amber-200">
+        Meet Our Experts
+        </p>
+        <h2 class="mb-6 text-3xl font-bold leading-tight text-gray-900 sm:text-4xl md:mx-auto">
+        Skilled Beauty Professionals
+        </h2>
+        <p class="text-base text-gray-700 md:text-lg">
+        Our team of certified beauty experts brings years of experience and passion to every service.
+        </p>
+    </div>
+    <div class="grid gap-8 mx-auto sm:grid-cols-2 lg:grid-cols-4 lg:max-w-screen-lg">
+        <!-- Team Member 1 -->
+        <div class="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl">
+        <div class="relative h-80 overflow-hidden">
+            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Senior Stylist" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+            <div class="text-white">
+            <h3 class="text-xl font-bold">Sophia Williams</h3>
+            <p class="text-amber-300 text-sm mt-1">Senior Hair Stylist</p>
+            </div>
+        </div>
+        <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div class="flex space-x-2">
+            <a href="#" class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition">
+                <i class="fab fa-instagram"></i>
+            </a>
+            </div>
+        </div>
+        </div>
+
+        <!-- Team Member 2 -->
+        <div class="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl">
+        <div class="relative h-80 overflow-hidden">
+            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Makeup Artist" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+            <div class="text-white">
+            <h3 class="text-xl font-bold">Michael Chen</h3>
+            <p class="text-amber-300 text-sm mt-1">Makeup Artist</p>
+            </div>
+        </div>
+        <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div class="flex space-x-2">
+            <a href="#" class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition">
+                <i class="fab fa-instagram"></i>
+            </a>
+            </div>
+        </div>
+        </div>
+
+        <!-- Team Member 3 -->
+        <div class="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl">
+        <div class="relative h-80 overflow-hidden">
+            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Nail Technician" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+            <div class="text-white">
+            <h3 class="text-xl font-bold">Emma Rodriguez</h3>
+            <p class="text-amber-300 text-sm mt-1">Nail Technician</p>
+            </div>
+        </div>
+        <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div class="flex space-x-2">
+            <a href="#" class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition">
+                <i class="fab fa-instagram"></i>
+            </a>
+            </div>
+        </div>
+        </div>
+
+        <!-- Team Member 4 -->
+        <div class="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl">
+        <div class="relative h-80 overflow-hidden">
+            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Spa Therapist" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+            <div class="text-white">
+            <h3 class="text-xl font-bold">Isabella Park</h3>
+            <p class="text-amber-300 text-sm mt-1">Spa Therapist</p>
+            </div>
+        </div>
+        <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div class="flex space-x-2">
+            <a href="#" class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition">
+                <i class="fab fa-instagram"></i>
+            </a>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>    
+    
+   
+
+
+<div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+  <div class="mx-auto mb-12 lg:max-w-xl text-center">
+    <p class="inline-block px-4 py-2 mb-4 text-sm font-semibold tracking-wider text-pink-600 uppercase rounded-full bg-pink-50">
+      Meet Our Experts
+    </p>
+    <h2 class="mb-6 text-4xl font-bold leading-tight text-gray-900">
+      Beauty Specialists Team
+    </h2>
+    <p class="text-gray-600">
+      Our certified professionals bring years of experience and passion to every service.
+    </p>
+  </div>
+  <div class="grid gap-8 mx-auto sm:grid-cols-2 lg:grid-cols-4">
+    <!-- Member 1 -->
+    <div class="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl">
+      <div class="relative h-80 overflow-hidden">
+        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+             src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Hair Stylist" />
+      </div>
+      <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+        <h3 class="text-xl font-bold text-white mb-1">Sophia Williams</h3>
+        <p class="text-pink-300 text-sm mb-3">Senior Hair Stylist</p>
+        <p class="text-gray-200 text-sm mb-4">Specializes in color correction and custom haircuts.</p>
+        <div class="flex space-x-3">
+          <a href="#" class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/30 transition">
+            <i class="fab fa-instagram text-sm"></i>
+          </a>
+          <a href="#" class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/30 transition">
+            <i class="fab fa-facebook-f text-sm"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Add 3 more similar cards -->
+  </div>
+</div>
+
+
+</body>
+</html>
