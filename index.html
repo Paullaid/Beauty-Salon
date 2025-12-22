@@ -153,7 +153,45 @@
             transition: all 0.3s ease;
         }
     </style>
-    </head>
+
+    <style>        <!-- Forms styles -->
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .service-option {
+            transition: all 0.2s ease;
+        }
+        .service-option:hover {
+            transform: translateY(-2px);
+        }
+        .service-option.selected {
+            border-color: #ddc913;
+            background-color: #f8faf4;
+        }
+        .checkbox-custom:checked {
+            background-color: #f6ec5c;
+            border-color: #e3f57a 88%, 67%), 246, 92);
+        }
+        .btn-submit {
+            transition: all 0.3s ease;
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
+        }
+        .modal {
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
 <body>
                         <!-- ========== Start Section ========== -->
                                         <!-- Nar Bar -->
@@ -444,19 +482,16 @@
         </div>
     </section>
 
-     
-
-
                         <!-- ========== Start Section ========== -->
-                                <!-- Gallery section -->
+                        <!-- Gallery section -->
                         <!-- ========== End Section ========== -->
     <section style="background-image: url(./image/tools1.3.jpg);" class="bg-cover bg-fixed bg-center">
-    <div class="bg-white/90 bg-blend-saturation px-6 pt-24">
-        <div class="flex flex-col items-center animate-fade-in">
-            <h1 class="text-4xl text-amber-600/80 font2 mb-3 tracking-wider">Gallery</h1>
-            <h2 class="text-2xl text-slate-800 tracking-wide font">Our Latest Works</h2>
-        </div>
-        
+        <div class="bg-white/90 bg-blend-saturation px-6 pt-24">
+            <div class="flex flex-col items-center animate-fade-in">
+                <h1 class="text-4xl text-amber-600/80 font2 mb-3 tracking-wider">Gallery</h1>
+                <h2 class="text-2xl text-slate-800 tracking-wide font">Our Latest Works</h2>
+            </div>
+
         <section class="py-20 px-6">
         <!-- Gallery Grid - Your original layout with Salone effects -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -544,74 +579,76 @@
                                     <!-- Testimonial Section -->
                         <!-- ========== End Section ========== -->
     <section class="p-6 pt-18 relative bg-linear-to-br from-white via-pink-50/70 to-rose-100/70">
-    <!-- Salon Tool Decorations -->
-    <div class="salon-tool top-10 left-10 text-4xl text-pink-400">
-        <i class="fas fa-spa"></i>
-    </div>
-    <div class="salon-tool top-20 right-16 text-3xl text-rose-300">
-        <i class="fas fa-hand-sparkles"></i>
-    </div>
-    <div class="salon-tool bottom-20 left-20 text-5xl text-pink-300">
-        <i class="fas fa-crown"></i>
-    </div>
-    <div class="salon-tool bottom-32 right-10 text-2xl text-rose-400">
-        <i class="fas fa-cut"></i>
-    </div>
-    <div class="salon-tool top-1/3 left-1/4 text-3xl text-pink-200">
-        <i class="fas fa-feather-alt"></i>
-    </div>
-    <div class="salon-tool top-40 right-1/3 text-4xl text-rose-200">
-        <i class="fas fa-magic"></i>
-    </div>
-    <div class="salon-tool bottom-40 left-1/3 text-2xl text-pink-300">
-        <i class="fas fa-paint-brush"></i>
-    </div>
-    <div class="salon-tool top-1/4 right-1/4 text-3xl text-rose-300">
-        <i class="fas fa-heart"></i>
-    </div>
-    <div class="salon-tool top-3/4 left-16 text-4xl text-pink-200">
-        <i class="fas fa-star"></i>
-    </div>
-    <div class="salon-tool bottom-16 right-1/4 text-3xl text-rose-400">
-        <i class="fas fa-gem"></i>
-    </div>
-
-    <div class="max-w-5xl mx-auto relative z-10">
-        <!-- Testimonial Section -->
-        <div class="text-center pb-10">
-            <h1 class="text-4xl font2 font-bold text-amber-600/80 mb-3 tracking-wider">              
-                 Testimonials
-            </h1>
-            <p class="font text-slate-900/80 text-2xl max-w-2xl mx-auto tracking-wider pb-7">
-                Discover what our beautiful clients say about their transformation
-            </p>
+        <!-- Salon Tool Decorations -->
+        <div class="salon-tool top-10 left-10 text-4xl text-pink-400">
+            <i class="fas fa-spa"></i>
+        </div>
+        <div class="salon-tool top-20 right-16 text-3xl text-rose-300">
+            <i class="fas fa-hand-sparkles"></i>
+        </div>
+        <div class="salon-tool bottom-20 left-20 text-5xl text-pink-300">
+            <i class="fas fa-crown"></i>
+        </div>
+        <div class="salon-tool bottom-32 right-10 text-2xl text-rose-400">
+            <i class="fas fa-cut"></i>
+        </div>
+        <div class="salon-tool top-1/3 left-1/4 text-3xl text-pink-200">
+            <i class="fas fa-feather-alt"></i>
+        </div>
+        <div class="salon-tool top-40 right-1/3 text-4xl text-rose-200">
+            <i class="fas fa-magic"></i>
+        </div>
+        <div class="salon-tool bottom-40 left-1/3 text-2xl text-pink-300">
+            <i class="fas fa-paint-brush"></i>
+        </div>
+        <div class="salon-tool top-1/4 right-1/4 text-3xl text-rose-300">
+            <i class="fas fa-heart"></i>
+        </div>
+        <div class="salon-tool top-3/4 left-16 text-4xl text-pink-200">
+            <i class="fas fa-star"></i>
+        </div>
+        <div class="salon-tool bottom-16 right-1/4 text-3xl text-rose-400">
+            <i class="fas fa-gem"></i>
         </div>
 
-        <div id="testimonial-section" class="relative">
-            <div class="h-[500px] relative perspective-1000 overflow-hidden flex items-center justify-center">
-                <div id="testimonial-3d" class="relative w-full h-full flex items-center justify-center">
-                    <!-- Testimonial cards will be added via JS -->
-                </div>
-            </div>
-            
-            <!-- Indicator dots styled like makeup brushes -->
-            <div class="flex justify-center space-x-3 mt-6">
-                <div id="indicator-0" class="w-8 h-1 bg-pink-500 rounded-full cursor-pointer transition-all duration-300"></div>
-                <div id="indicator-1" class="w-3 h-1 bg-pink-300 rounded-full cursor-pointer transition-all duration-300"></div>
-                <div id="indicator-2" class="w-3 h-1 bg-pink-300 rounded-full cursor-pointer transition-all duration-300"></div>
-                <div id="indicator-3" class="w-3 h-1 bg-pink-300 rounded-full cursor-pointer transition-all duration-300"></div>
-                <div id="indicator-4" class="w-3 h-1 bg-pink-300 rounded-full cursor-pointer transition-all duration-300"></div>
-            </div>
-            
-            <!-- Testimonial title display with salon theme -->
-            <div id="testimonial-title" class="text-center mt-8">
-                <h3 class="text-xl font3 font-bold text-pink-800">Ebose Foody</h3>
-                <p class="text-pink-600 mt-2">
-                    <i class="fas fa-medal text-pink-500 mr-2"></i>
-                    Testimonial 1 of 5
-                    <i class="fas fa-medal text-pink-500 ml-2"></i>
+        <div class="max-w-5xl mx-auto relative z-10">
+            <!-- Testimonial Section -->
+            <div class="text-center pb-10">
+                <h1 class="text-4xl font2 font-bold text-amber-600/80 mb-3 tracking-wider">              
+                    Testimonials
+                </h1>
+                <p class="font text-slate-900/80 text-2xl max-w-2xl mx-auto tracking-wider pb-7">
+                    Discover what our beautiful clients say about their transformation
                 </p>
             </div>
+
+            <div id="testimonial-section" class="relative">
+                <div class="h-[500px] relative perspective-1000 overflow-hidden flex items-center justify-center">
+                    <div id="testimonial-3d" class="relative w-full h-full flex items-center justify-center">
+                        <!-- Testimonial cards will be added via JS -->
+                    </div>
+                </div>
+                
+                <!-- Indicator dots styled like makeup brushes -->
+                <div class="flex justify-center space-x-3 mt-6">
+                    <div id="indicator-0" class="w-8 h-1 bg-pink-500 rounded-full cursor-pointer transition-all duration-300"></div>
+                    <div id="indicator-1" class="w-3 h-1 bg-pink-300 rounded-full cursor-pointer transition-all duration-300"></div>
+                    <div id="indicator-2" class="w-3 h-1 bg-pink-300 rounded-full cursor-pointer transition-all duration-300"></div>
+                    <div id="indicator-3" class="w-3 h-1 bg-pink-300 rounded-full cursor-pointer transition-all duration-300"></div>
+                    <div id="indicator-4" class="w-3 h-1 bg-pink-300 rounded-full cursor-pointer transition-all duration-300"></div>
+                </div>
+                
+                <!-- Testimonial title display with salon theme -->
+                <div id="testimonial-title" class="text-center mt-8">
+                    <h3 class="text-xl font3 font-bold text-pink-800">Ebose Foody</h3>
+                    <p class="text-pink-600 mt-2">
+                        <i class="fas fa-medal text-pink-500 mr-2"></i>
+                        Testimonial 1 of 5
+                        <i class="fas fa-medal text-pink-500 ml-2"></i>
+                    </p>
+                </div>
+            </div>
+        </div>
     </section>
 
                         <!-- ========== Start Section ========== -->
@@ -746,8 +783,176 @@
 
     </section>     
     
+                        <!-- ========== Start Section ========== -->
+                                <!--Client Goggle map(location) and Form Section Section -->
+                        <!-- ========== End Section ========== -->
+    <section>      
+        <div class="container mx-auto px-6 pt-24 pb-10 flex flex-col md:flex-row max-lg:space-y-12">
+                    <!-- Form Section -->
+            <div class="form-container">
+                <!-- Header -->
+                <div class="text-center mb-8">
+                    <div class="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-spa text-orange-400 text-2xl"></i>
+                    </div>
+                    <h1 class="text-3xl font font-light tracking-wide text-gray-800 mb-2">Beauty Salon Booking</h1>
+                    <p class="text-gray-600 font2 tracking-wider">Book your appointment with elegance</p>
+                </div>
 
-    <script>// Testimonial data for beauty salon
+                <!-- Booking Form -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                    <form id="bookingForm" class="space-y-6">
+                        <!-- Name Field -->
+                        <div class="relative z-0 w-full mb-5 group">
+                            <input type="text" name="full_name" id="full_name" 
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-slate-700 peer" placeholder=" " required />
+                            <label for="full_name" 
+                            class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-7 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-amber-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                Full Name
+                            </label>
+                        </div>
+                        
+                        <!-- Services Section -->
+                        <div>
+                            <label class="block text-gray-700 text-sm font-medium mb-3">
+                                Select Services
+                            </label>
+                            <div class="space-y-2">
+                                <!-- Hair Braiding Service -->
+                                <label class="service-option flex items-center p-3 border-0 border-b-2 border-gray-300 hover:border-amber-300 cursor-pointer">
+                                    <input type="checkbox" name="services[]" value="Corn Row Braiding" class="hidden">
+                                    <div class="flex items-center justify-center w-5 h-5 border border-gray-300 rounded mr-3 checkbox-placeholder"></div> <!--check box -->
+                                        <div class="flex-1">
+                                            <span class="text-slate-800 font2 font-medium">Corn Row Braiding</span>
+                                            <span class="text-slate-500 font2 text-sm ml-2">Varies by style</span>
+                                        </div>
+                                    <span class="text-amber-600 font2 font-medium">₦2,500-₦12,000</span>
+                                </label>
+
+                                <!-- Wig Attachment Service -->
+                                <label class="service-option flex items-center p-3 border-0 border-b-2 border-gray-300 hover:border-amber-300 cursor-pointer">
+                                    <input type="checkbox" name="services[]" value="Wig Attachment" class="hidden">
+                                    <div class="flex items-center justify-center w-5 h-5 border border-slate-300 rounded mr-3 checkbox-placeholder"></div>
+                                    <div class="flex-1">
+                                        <span class="text-slate-800 font2 font-medium">Wig Attachment</span>
+                                        <span class="text-slate-500 font2 text-sm ml-2">Professional fitting</span>
+                                    </div>
+                                    <span class="text-amber-600 font2 font-medium">+₦15,000</span>
+                                </label>
+
+                                <!-- Makeup Service -->
+                                <label class="service-option flex items-center p-3 border-0 border-b-2 border-gray-300 hover:border-amber-300 cursor-pointer">
+                                    <input type="checkbox" name="services[]" value="Makeup Artistry" class="hidden">
+                                    <div class="flex items-center justify-center w-5 h-5 border border-slate-300 rounded mr-3 checkbox-placeholder"></div>
+                                    <div class="flex-1">
+                                        <span class="text-slate-800 font2 font-medium">Makeup Artistry</span>
+                                        <span class="text-slate-500 font2 text-sm ml-2">For special occasions</span>
+                                    </div>
+                                    <span class="text-amber-600 font2 font-medium">₦5,000-₦25,000</span>
+                                </label>
+
+                                <!-- Manicure Service -->
+                                <label class="service-option flex items-center p-3 border-0 border-b-2 border-gray-300 hover:border-amber-300 cursor-pointer">
+                                    <input type="checkbox" name="services[]" value="Manicure" class="hidden">
+                                    <div class="flex items-center justify-center w-5 h-5 border border-slate-300 rounded mr-3 checkbox-placeholder"></div>
+                                    <div class="flex-1">
+                                        <span class="text-slate-800 font2 font-medium">Manicure</span>
+                                        <span class="text-slate-500 font2 text-sm ml-2">Hand care & nail styling</span>
+                                    </div>
+                                    <span class="text-amber-600 font2 font-medium">₦3,500-₦20,000</span>
+                                </label>
+
+                                <!-- Pedicure Service -->
+                                <label class="service-option flex items-center p-3 border-0 border-b-2 border-gray-300 hover:border-amber-300 cursor-pointer">
+                                    <input type="checkbox" name="services[]" value="Pedicure" class="hidden">
+                                    <div class="flex items-center justify-center w-5 h-5 border border-slate-300 rounded mr-3 checkbox-placeholder"></div>
+                                    <div class="flex-1">
+                                        <span class="text-slate-800 font2 font-medium">Pedicure</span>
+                                        <span class="text-slate-500 font2 text-sm ml-2">Foot care & nail styling</span>
+                                    </div>
+                                    <span class="text-amber-600 font2 font-medium">₦2,500-₦15,000</span>
+                                </label>
+
+                                <!-- Skincare Service -->
+                                <label class="service-option flex items-center p-3 border-0 border-b-2 border-gray-300 hover:border-amber-300 cursor-pointer">
+                                    <input type="checkbox" name="services[]" value="Skincare Treatment" class="hidden">
+                                    <div class="flex items-center justify-center w-5 h-5 border border-gray-300 rounded mr-3 checkbox-placeholder"></div>
+                                    <div class="flex-1">
+                                        <span class="text-slate-800 font2 font-medium">Skincare Treatment</span>
+                                        <span class="text-slate-500 font2 text-sm ml-2">Special facial care</span>
+                                    </div>
+                                    <span class="text-amber-600 font2 font-medium">₦15,000-₦30,000</span>
+                                </label>
+                            </div>
+                            
+                            <div id="selectedCount" class="text-sm text-gray-500 mt-3">
+                                0 services selected
+                            </div>
+                        </div>
+                        
+                        <!-- Message Section -->
+                        <div>
+                            <label class="block text-slate-700 text-sm font-medium mb-2" for="message">
+                                Your Message (Optional)
+                            </label>
+                            <textarea id="message" name="message" rows="3"
+                                    class="w-full px-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:border-amber-300 focus:ring-1 focus:ring-amber-300 transition resize-none"
+                                    placeholder="Any special requests, allergies, or preferences..."></textarea>
+                            <div class="flex justify-between items-center mt-2">
+                                <span class="text-xs text-slate-500">Optional</span>
+                                <span id="charCount" class="text-xs text-slate-500">0/200</span>
+                            </div>
+                        </div>
+
+                        <!-- Email Field -->
+                        <div class="relative z-0 w-full mb-5 group">
+                            <input type="email" name="email" id="email" required
+                                class="block py-2.5 px-0 w-full text-sm text-slate-900 bg-transparent border-0 border-b-2 border-slate-300 appearance-none focus:outline-none focus:ring-0 focus:border-slate-700 peer" placeholder=" " />
+                            <label for="email"
+                                class="peer-focus:font-medium absolute tracking-wide text-sm text-slate-500 duration-300 transform -translate-y-7 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-amber-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                Email Address
+                            </label>
+                        </div>
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn-submit w-full bg-amber-400 text-white py-3 rounded-lg font-medium text-sm hover:bg-amber-500 transition shadow-sm">
+                            <i class="fab fa-whatsapp mr-2"></i> Send Booking to WhatsApp
+                        </button>
+
+                        <p class="text-xs text-gray-500 text-center mt-4">
+                            Your information will only be used for booking purposes
+                        </p>
+                    </form>
+                </div>
+                
+                <!-- Footer Note -->
+                <div class="text-center mt-6">
+                    <p class="text-sm text-slate-500">
+                        <i class="fas fa-clock text-slate-400 mr-1"></i>
+                        Open Monday - Saturday, 9AM - 8PM
+                    </p>
+                </div>
+            </div>
+                    <!-- location Section -->
+            <div class="md:w-1/2 md:pl-8">
+                <h2 class="text-3xl text-amber-400 font font-bold mb-4 text-center">Our Location</h2>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1981.1608176473123!2d5.389934889972215!3d6.730556509528993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10476b3a73a647af%3A0x1f5e1479db602eac!2sPizzaplus!5e0!3m2!1sen!2sng!4v1766385687851!5m2!1sen!2sng" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+
+                </iframe>
+            </div>
+        </div>        
+    </section>
+
+
+                        <!-- ========== Start Section ========== -->
+                                <!--Footer Section Section -->
+                        <!-- ========== End Section ========== -->
+    <section class="bg-stone-900">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            
+            </div>
+    </section>
+                 <!-- Testimonial script section data for beauty salon -->
+    <script>
         
         const testimonialData = [
             { 
@@ -946,9 +1151,9 @@
             }
         `;
         document.head.appendChild(style);
-    </script>  
-    
-    <!-- Gallery Scripts -->
+    </script> 
+                        
+                    <!-- Gallery Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
     
@@ -1072,6 +1277,170 @@
                 this.style.transform = 'translateY(0)';
             });
         });
+    </script>
+
+                    <!-- Forms Scripts -->
+    <script>
+        // WhatsApp Configuration
+        const whatsappNumber = "9063123479"; // Replace with salon's WhatsApp number
+        
+        // Track selected services
+        let selectedServices = [];
+        
+        // Initialize service selection
+        document.addEventListener('DOMContentLoaded', function() {
+            // Service selection handling
+            const serviceOptions = document.querySelectorAll('.service-option');
+            
+            serviceOptions.forEach(option => {
+                const checkbox = option.querySelector('input[type="checkbox"]');
+                const checkboxPlaceholder = option.querySelector('.checkbox-placeholder');
+                
+                option.addEventListener('click', function() {
+                    checkbox.checked = !checkbox.checked;
+                    
+                    if (checkbox.checked) {
+                        option.classList.add('selected');
+                        checkboxPlaceholder.innerHTML = '✓';
+                        checkboxPlaceholder.classList.add('bg-orange-500', 'text-white', 'border-orange-500');
+                        selectedServices.push(checkbox.value);
+                    } else {
+                        option.classList.remove('selected');
+                        checkboxPlaceholder.innerHTML = '';
+                        checkboxPlaceholder.classList.remove('bg-orange-500', 'text-white', 'border-orange-500');
+                        const index = selectedServices.indexOf(checkbox.value);
+                        if (index > -1) selectedServices.splice(index, 1);
+                    }
+                    
+                    updateSelectedCount();
+                });
+            });
+            
+            // Character counter for message
+            const messageTextarea = document.getElementById('message');
+            const charCount = document.getElementById('charCount');
+            
+            messageTextarea.addEventListener('input', function() {
+                const count = this.value.length;
+                charCount.textContent = `${count}/200`;
+                
+                if (count > 200) {
+                    this.value = this.value.substring(0, 200);
+                    charCount.textContent = '200/200';
+                }
+            });
+            
+            // Form submission
+            const bookingForm = document.getElementById('bookingForm');
+            
+            bookingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const message = document.getElementById('message').value.trim() || 'No special requests';
+                
+                // Validation
+                if (!name || !email) {
+                    showError('Please fill in all required fields');
+                    return;
+                }
+                
+                if (selectedServices.length === 0) {
+                    showError('Please select at least one service');
+                    return;
+                }
+                
+                // Create WhatsApp message
+                const whatsappMessage = createWhatsAppMessage(name, email, selectedServices, message);
+                const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+                
+                // Update modal with booking details
+                document.getElementById('summaryName').textContent = name;
+                document.getElementById('summaryEmail').textContent = email;
+                document.getElementById('summaryServices').textContent = selectedServices.join(', ');
+                document.getElementById('summaryMessage').textContent = message;
+                
+                // Set WhatsApp link
+                document.getElementById('whatsappLink').href = whatsappURL;
+                
+                // Show modal
+                document.getElementById('successModal').classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            // Modal buttons
+            document.getElementById('editBooking').addEventListener('click', function() {
+                document.getElementById('successModal').classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Close modal when clicking outside
+            document.getElementById('successModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+        
+        // Update selected services count
+        function updateSelectedCount() {
+            const countElement = document.getElementById('selectedCount');
+            const count = selectedServices.length;
+            
+            if (count === 0) {
+                countElement.textContent = '0 services selected';
+                countElement.className = 'text-sm text-slate-500 mt-3';
+            } else {
+                countElement.textContent = `${count/2} service${count > 1 ? 's' : ''} selected`;
+                countElement.className = 'text-sm text-amber-700 font-medium mt-3';
+            }
+        }
+        
+        // Create WhatsApp message
+        function createWhatsAppMessage(name, email, services, message) {
+            return `New Beauty Salon Booking Request
+
+            👤 Customer Details:
+            • Name: ${name}
+            • Email: ${email}
+
+            💅 Requested Services:
+            ${services.map(service => `• ${service}`).join('\n')}
+
+            📝 Special Requests:
+            ${message}
+
+            Please confirm availability and send pricing details.`;
+                    }
+                    
+        // Show error message
+        function showError(message) {
+            // Remove any existing error
+            const existingError = document.querySelector('.error-message');
+            if (existingError) existingError.remove();
+            
+            // Create error element
+            const error = document.createElement('div');
+            error.className = 'error-message bg-red-50 text-red-600 p-3 rounded-lg mb-4 text-sm';
+            error.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas fa-exclamation-circle mr-2"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            // Insert before form
+            const form = document.getElementById('bookingForm');
+            form.parentNode.insertBefore(error, form);
+            
+            // Auto-remove after 5 seconds
+            setTimeout(() => {
+                error.remove();
+            }, 5000);
+        }
     </script>
 </body>
 </html>
