@@ -3,860 +3,711 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link href="./output.css" rel="stylesheet">  
-    <title>AY's Site</title>  
+    <title>Beauty Salon Designs Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
     <style>
-    
-    </style> 
-    <style>
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { scrollbar-width: none; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        .font-poppins { font-family: 'Poppins', sans-serif; }
+        .font-dancing { font-family: 'Dancing Script', cursive; }
+        .transition-all-500 { transition: all 0.5s ease; }
+        
+        /* Custom animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background-size: 1000px 100%;
+            animation: shimmer 3s infinite;
+        }
+        
+        /* Hide all designs initially */
+        .design-section { display: none; }
+        .active-design { display: block; }
+        
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ec4899;
+            border-radius: 4px;
+        }
     </style>
-
 </head>
-<body>
-      <section class="py-16 bg-pink-50">
-        <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Style Showcase</h2>
-        <div class="flex overflow-x-auto space-x-4 px-6 no-scrollbar">
-        <img src="./image/beauty.png" class="w-64 h-40 object-cover rounded-xl transform hover:scale-110 transition duration-75">
-        <img src="./image/beauty1.png" class="w-64 h-40 object-cover rounded-xl transform hover:scale-110 transition duration-75">
-        <img src="./image/beauty10.png" class="w-64 h-40 object-cover rounded-xl transform hover:scale-110 transition duration-75">
-            <img src="./image/beauty11.png" class="w-64 h-40 object-cover rounded-xl transform hover:scale-110 transition duration-75">
-        </div>
-        <style>
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        </style>
-      </section>
-
-    <section class="py-16 bg-white">
-    <h2 class="text-3xl font-bold text-center mb-6 text-pink-600">Our Beauty Highlights</h2>
-    <div class="overflow-hidden relative">
-    <div id="marquee" class="flex space-x-6">
-    <img src="./image/beauty.png" class="w-72 h-48 object-cover rounded-xl shadow">
-    <img src="./image/beauty15.png" class="w-72 h-48 object-cover rounded-xl shadow">
-    <img src="./image/beauty16.png" class="w-72 h-48 object-cover rounded-xl shadow">
-    <img src="./image/beauty17.png" class="w-72 h-48 object-cover rounded-xl shadow">
-    </div>
-    </div>
-    <script>
-    const marquee = document.getElementById("marquee");
-    let offset = 0;
-    setInterval(() => {
-    offset -= 1;
-    marquee.style.transform = `translateX(${offset}px)`;
-    if (Math.abs(offset) > marquee.scrollWidth / 2) offset = 0;
-    }, 20);
-    </script>
-    </section>
-
-    <section class="py-16 bg-pink-100">
-        <h2 class="text-3xl font-bold text-center mb-8 text-gray-900">Soft Fade Gallery</h2>
-        <div class="relative w-full max-w-3xl mx-auto h-80 rounded-3xl overflow-hidden shadow-xl">
-        <img id="fadeImg" src="./image/beauty2.png" class="absolute w-full h-full object-cover transition-opacity duration-75" </div>
-        <script>
-        const images = ["./image/beauty3.png", "./image/beauty4.png", "./image/beauty5.png"];
-        let fadeIndex = 0;
-        const fadeImg = document.getElementById("fadeImg");
-        setInterval(() => {
-        fadeIndex = (fadeIndex + 1) % images.length;
-        fadeImg.style.opacity = 0;
-        setTimeout(() => {
-        fadeImg.src = images[fadeIndex];
-        fadeImg.style.opacity = 1;
-        }, 500);
-        }, 3000);
-        </script>
-    </section>
-
-    <section class="py-16 bg-white">
-        <h2 class="text-3xl font-bold text-center mb-8 text-pink-600">Our Styles</h2>
-        <div class="relative max-w-3xl mx-auto overflow-hidden rounded-3xl shadow-xl">
-        <div id="carousel1" class="flex transition-all duration-700">
-        <img src="./image/beauty6.png" class="w-full object-cover">
-        <img src="./image/beauty7.png" class="w-full object-cover">
-        <img src="./image/beauty8.png" class="w-full object-cover">
-        </div>
-        </div>
-        <script>
-        let currentIndex1 = 0;
-        const carousel1 = document.getElementById("carousel1");
-        setInterval(() => {
-        currentIndex1 = (currentIndex1 + 1) % 3;
-        carousel1.style.transform = `translateX(-${currentIndex1 * 100}%)`;
-        }, 3000);
-        </script>
-    </section>
-    
-    <section class="py-16 bg-pink-50">
-        <h2 class="text-3xl font-bold text-center mb-8">Salon Gallery</h2>
-        <div class="overflow-x-auto whitespace-nowrap scroll-smooth no-scrollbar px-4">
-        <img src="./image/beauty20.jpeg" class="inline-block w-72 h-48 rounded-2xl mx-2 shadow-md" />
-        <img src="./image/beauty21.jpeg" class="inline-block w-72 h-48 rounded-2xl mx-2 shadow-md" />
-        <img src="./image/beauty22.jpeg" class="inline-block w-72 h-48 rounded-2xl mx-2 shadow-md" />
-        </div>
-    </section>
-
-    <section class="py-16 bg-white">
-        <h2 class="text-3xl font-bold text-center mb-8">Our Works</h2>
-        <div class="max-w-4xl mx-auto relative">
-        <button id="prevBtn">‹</button>
-        <button id="nextBtn">›</button>
-        <div class="overflow-hidden rounded-2xl shadow-xl">
-        <div id="carousel3" class="flex transition-all duration-700">
-        <div class="w-full"><img src="./image/beauty17.png" class="w-full h-80"></div>
-        <div class="w-full"><img src="./image/beauty18.png" class="w-full h-80"></div>
-        <div class="w-full"><img src="./image/beauty19.jpeg" class="w-full h-80"></div>
-        </div>
-        </div>
-        </div>
-        <script>
-        let currentIndex3 = 0;
-        const carousel3 = document.getElementById("carousel3");
-        document.getElementById("nextBtn").onclick = () => {
-        currentIndex3 = (currentIndex3 + 1) % 3;
-        carousel3.style.transform = `translateX(-${currentIndex3 * 100}%)`;
-        };
-        document.getElementById("prevBtn").onclick = () => {
-        currentIndex3 = (currentIndex3 - 1 + 3) % 3;
-        carousel3.style.transform = `translateX(-${currentIndex3 * 100}%)`;
-        };
-        </script>
-    </section>
-
-    <section class="py-16 bg-pink-50">
-        <h2 class="text-3xl font-bold text-center mb-8">Style Showcase</h2>
-        <div class="flex overflow-x-auto space-x-4 px-6 no-scrollbar">
-        <img src="./image/beauty.png" class="w-64 h-40 rounded-xl hover:scale-110 transition">
-        <img src="./image/beauty1.png" class="w-64 h-40 rounded-xl hover:scale-110 transition">
-        <img src="./image/beauty2.png" class="w-64 h-40 rounded-xl hover:scale-110 transition">
-        </div>
-        <style>
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        </style>
-    </section>
-
-    <section class="py-16 bg-white">
-        <h2 class="text-3xl font-bold text-center mb-6">Our Beauty Highlights</h2>
-        <div class="overflow-hidden relative">
-        <div id="marquee" class="flex space-x-6">
-        <img src="./image/beauty11.png" class="w-72 h-48 rounded-xl shadow">
-        <img src="./image/beauty12.png" class="w-72 h-48 rounded-xl shadow">
-        <img src="./image/beauty13.png" class="w-72 h-48 rounded-xl shadow">
-        </div>
-        </div>
-        <script>
-        const marquee = document.getElementById("marquee");
-        let offset = 0;
-        setInterval(() => {
-        offset -= 1;
-        marquee.style.transform = `translateX(${offset}px)`;
-        if (Math.abs(offset) > marquee.scrollWidth / 2) offset = 0;
-        }, 20);
-        </script>
-    </section>
-
-<section class="py-16 bg-pink-100">
-    <h2 class="text-3xl font-bold text-center mb-8">Soft Fade Gallery</h2>
-    <div class="relative w-full max-w-3xl mx-auto h-80 rounded-3xl overflow-hidden shadow-xl">
-    <img id="fadeImg" src="./image/beauty15.png" class="absolute w-full h-full object-cover transition-opacity duration-75" </div>
-    <script>
-    const images = ["./image/beauty16.png","./image/beauty17.png","./image/beauty18.png"];
-    let fadeIndex = 0;
-    const fadeImg = document.getElementById("fadeImg");
-    setInterval(() => {
-    fadeIndex = (fadeIndex + 1) % images.length;
-    fadeImg.style.opacity = 0;
-    setTimeout(() => {
-    fadeImg.src = images[fadeIndex];
-    fadeImg.style.opacity = 1;
-    }, 500);
-    }, 3000);
-    </script>
-</section>
-
-<section class="py-16 bg-pink-50">
-  <div class="max-w-6xl mx-auto px-4">
-    <h2 class="text-4xl font-bold text-center text-pink-800 mb-12">What Our Clients Say</h2>
-    
-    <div class="relative overflow-hidden">
-      <div id="carousel1" class="flex transition-transform duration-500 ease-in-out" style="width: 500%;">
-        <div class="w-full flex-shrink-0 px-4">
-          <div class="max-w-2xl mx-auto text-center">
-            <p class="text-lg italic text-gray-700 mb-6">"Best salon experience ever! My hair has never looked this good. The staff is so friendly and professional."</p>
-            <div class="flex justify-center mb-4">
-              <img src="./image/beauty13.png" alt="Sarah" class="w-16 h-16 rounded-full">
-            </div>
-            <h4 class="font-semibold text-pink-700">Sarah M.</h4>
-            <p class="text-sm text-gray-600">Regular Client</p>
-          </div>
-        </div>
-        <!-- Repeat similar blocks for more testimonials -->
-        <div class="w-full flex-shrink-0 px-4">
-          <div class="max-w-2xl mx-auto text-center">
-            <p class="text-lg italic text-gray-700 mb-6">"I love coming here for my manicures. The attention to detail is amazing and the atmosphere is so relaxing."</p>
-            <div class="flex justify-center mb-4">
-              <img src="./image/86.png" alt="Emma" class="w-16 h-16 rounded-full">
-            </div>
-            <h4 class="font-semibold text-pink-700">Emma L.</h4>
-            <p class="text-sm text-gray-600">Nail Client</p>
-          </div>
-        </div>
-        <!-- Add 3 more similar slides -->
-      </div>
-      
-      <button onclick="prevSlide(1)" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 shadow-lg hover:bg-pink-100">
-        ❮
-      </button>
-      <button onclick="nextSlide(1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 shadow-lg hover:bg-pink-100">
-        ❯
-      </button>
-      
-      <div class="flex justify-center mt-8 space-x-2">
-        <button onclick="goToSlide(1, 0)" class="w-3 h-3 rounded-full bg-pink-300 hover:bg-pink-600"></button>
-        <button onclick="goToSlide(1, 1)" class="w-3 h-3 rounded-full bg-pink-300 hover:bg-pink-600"></button>
-        <!-- Add more dots -->
-      </div>
-    </div>
-  </div>
-</section>
-
-<script>
-let currentSlide1 = 0;
-const totalSlides1 = 5; // Update this if you add more slides
-
-function nextSlide(id) {
-  currentSlide1 = (currentSlide1 + 1) % totalSlides1;
-  document.getElementById('carousel1').style.transform = `translateX(-${currentSlide1 * 20}%)`;
-}
-
-function prevSlide(id) {
-  currentSlide1 = (currentSlide1 - 1 + totalSlides1) % totalSlides1;
-  document.getElementById('carousel1').style.transform = `translateX(-${currentSlide1 * 20}%)`;
-}
-
-function goToSlide(id, index) {
-  currentSlide1 = index;
-  document.getElementById('carousel1').style.transform = `translateX(-${index * 20}%)`;
-}
-
-// Auto-play
-setInterval(() => nextSlide(1), 5000);
-</script>
-
-<section class="py-16 bg-gradient-to-b from-white to-pink-50">
-  <div class="max-w-5xl mx-auto px-4">
-    <h2 class="text-4xl font-bold text-center text-pink-800 mb-12">Client Love</h2>
-    
-    <div class="relative h-96">
-      <div id="fadeCarousel" class="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-1000">
-        <!-- Each testimonial is a full-width absolute child -->
-        <div class="bg-white rounded-2xl shadow-2xl p-10 max-w-3xl text-center">
-          <p class="text-xl italic text-gray-700 mb-8">"Absolutely transformed my look! The color is perfect and the cut is exactly what I wanted."</p>
-          <img src="./image/beauty18.png" alt="Jessica" class="w-20 h-20 rounded-full mx-auto mb-4">
-          <h4 class="font-bold text-pink-700">Jessica R.</h4>
-          <p class="text-gray-600">Hair Color Client</p>
-        </div>
-      </div>
-      <!-- Add 4 more similar absolute divs with different content -->
-    </div>
-    
-    <div class="flex justify-center mt-8 space-x-3">
-      <!-- Dots will be added via JS -->
-    </div>
-  </div>
-</section>
-
-<script>
-const testimonials = [
-  { name: "Jessica R.", role: "Hair Color Client", text: "Absolutely transformed my look! The color is perfect and the cut is exactly what I wanted.", img:"./image/beauty18.png" },
-  { name: "Maria K.", role: "Bridal Client", text: "They made me feel like a princess on my wedding day. Makeup and hair were flawless!", img:"./image/beauty19.png" },
-  // Add 3 more
-];
-
-let currentFade = 0;
-const container = document.getElementById('fadeCarousel');
-
-testimonials.forEach((t, i) => {
-  const div = document.createElement('div');
-  div.className = 'absolute inset-0 flex items-center justify-center transition-opacity duration-1000';
-  div.innerHTML = `
-    <div class="bg-white rounded-2xl shadow-2xl p-10 max-w-3xl text-center">
-      <p class="text-xl italic text-gray-700 mb-8">"${t.text}"</p>
-      <img src="${t.img}" class="w-20 h-20 rounded-full mx-auto mb-4">
-      <h4 class="font-bold text-pink-700">${t.name}</h4>
-      <p class="text-gray-600">${t.role}</p>
-    </div>
-  `;
-  if (i === 0) div.classList.add('opacity-100');
-  container.appendChild(div);
-  
-  // Add dot
-  const dot = document.createElement('button');
-  dot.className = 'w-3 h-3 rounded-full bg-pink-300 hover:bg-pink-600';
-  if (i === 0) dot.classList.add('bg-pink-600');
-  dot.onclick = () => goToFade(i);
-  document.querySelector('#fadeCarousel ~ div').appendChild(dot);
-});
-
-function goToFade(index) {
-  container.children[currentFade].classList.remove('opacity-100');
-  container.children[index].classList.add('opacity-100');
-  currentFade = index;
-  // Update dots
-  document.querySelectorAll('#fadeCarousel ~ div button').forEach((d, i) => {
-    d.classList.toggle('bg-pink-600', i === index);
-  });
-}
-
-setInterval(() => goToFade((currentFade + 1) % testimonials.length), 6000);
-</script>
-
-<section class="py-16 bg-pink-100">
-  <div class="max-w-4xl mx-auto px-4">
-    <h2 class="text-4xl font-bold text-center text-pink-800 mb-12">Happy Clients</h2>
-    
-    <div class="overflow-hidden h-96 relative">
-      <div id="verticalCarousel" class="transition-transform duration-500 ease-in-out">
-        <!-- Each testimonial card -->
+<body class="bg-gray-50 font-poppins">
+    <!-- Design Navigation Sidebar -->
+    <div class="fixed left-0 top-0 h-full w-64 bg-white shadow-2xl z-50 transform -translate-x-64 transition-transform duration-300" id="design-sidebar">
         <div class="p-6">
-          <div class="bg-white rounded-xl shadow-lg p-8 text-center">
-            <p class="italic text-gray-700 mb-6">"The facial here is life-changing. My skin has never been smoother!"</p>
-            <img src="./image/beauty17.png" class="w-16 h-16 rounded-full mx-auto mb-3">
-            <h4 class="font-semibold text-pink-700">Olivia T.</h4>
-          </div>
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold text-pink-600">Design Gallery</h2>
+                <button onclick="toggleSidebar()" class="text-gray-500 hover:text-pink-600">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="space-y-2" id="design-list"></div>
         </div>
-        <!-- Add more -->
-      </div>
-      
-      <button onclick="scrollUp()" class="absolute top-4 left-1/2 -translate-x-1/2 bg-white rounded-full p-2 shadow">↑</button>
-      <button onclick="scrollDown()" class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white rounded-full p-2 shadow">↓</button>
     </div>
-  </div>
-</section>
-
-<script>
-let verticalIndex = 0;
-const verticalTotal = 5;
-
-function scrollDown() {
-  verticalIndex = (verticalIndex + 1) % verticalTotal;
-  document.getElementById('verticalCarousel').style.transform = `translateY(-${verticalIndex * 100}%)`;
-}
-
-function scrollUp() {
-  verticalIndex = (verticalIndex - 1 + verticalTotal) % verticalTotal;
-  document.getElementById('verticalCarousel').style.transform = `translateY(-${verticalIndex * 100}%)`;
-}
-
-setInterval(scrollDown, 5500);
-</script>
-
-
-<section class="py-16 bg-white">
-  <div class="max-w-7xl mx-auto px-4">
-    <h2 class="text-4xl font-bold text-center text-pink-800 mb-12">Testimonials</h2>
-    
-    <!-- Desktop: Grid, Mobile: Carousel -->
-    <div class="hidden md:grid md:grid-cols-3 gap-8" id="gridView">
-      <!-- 5 testimonial cards here -->
-    </div>
-    
-    <div class="md:hidden relative" id="mobileCarousel">
-      <!-- Same cards inside a sliding container -->
-    </div>
-  </div>
-</section>
-
-<section class="py-12 bg-pink-50 overflow-hidden">
-  <div class="max-w-7xl mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center text-pink-800 mb-8">Loved by Our Clients</h2>
-    
-    <div class="relative">
-      <div class="flex animate-marquee hover:pause-marquee">
-        <!-- Duplicate content for seamless loop -->
-        <div class="flex-shrink-0 mx-8">
-          <div class="bg-white rounded-lg shadow p-6 w-80 text-center">
-            <p class="italic text-sm mb-4">"Amazing service and talented stylists!"</p>
-            <p class="font-semibold text-pink-700">- Chloe W.</p>
-          </div>
-        </div>
-        <!-- Add more cards, then duplicate them -->
-      </div>
-    </div>
-  </div>
-</section>
-
-<style>
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-.animate-marquee { animation: marquee 30s linear infinite; }
-.pause-marquee { animation-play-state: paused; }
-</style>
-
-<section class="min-h-screen flex items-center justify-center bg-[#f7f3ec]">
-
-  <section class="w-full max-w-5xl mx-auto px-4">
-    <h2 class="text-center text-3xl md:text-4xl font-serif mb-10">
-      What Clients Say!
-    </h2>
-
-    <!-- WRAPPER (pause on hover) -->
-    <div id="testimonialWrapper"
-         class="relative overflow-hidden"
-         onmouseenter="pauseAutoPlay()"
-         onmouseleave="startAutoPlay()">
-
-      <!-- TRACK -->
-      <div id="testimonialTrack"
-           class="flex transition-transform duration-500 ease-in-out">
-
-        <!-- CARD 1 -->
-        <article class="shrink-0 w-[80%] md:w-[60%] mx-4 bg-[#f5eee6] rounded-lg px-10 py-10 text-center shadow">
-          <div class="text-4xl mb-4">“</div>
-          <p class="text-sm md:text-base mb-8">
-            Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam
-            amet diam et eos. Clita erat ipsum et lorem et sit.
-          </p>
-          <div class="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden border-4 border-white">
-            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=160&h=160&fit=crop"
-                 class="w-full h-full object-cover" />
-          </div>
-          <h3 class="font-semibold text-lg">Client Name</h3>
-          <p class="text-xs tracking-[0.25em] uppercase">Profession</p>
-        </article>
-
-        <!-- CARD 2 -->
-        <article class="shrink-0 w-[80%] md:w-[60%] mx-4 bg-[#c3924a] rounded-lg px-10 py-10 text-center text-white shadow-lg">
-          <div class="text-4xl mb-4">“</div>
-          <p class="text-sm md:text-base mb-8">
-            Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam
-            amet diam et eos. Clita erat ipsum et lorem et sit.
-          </p>
-          <div class="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden border-4 border-white/70">
-            <img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=160&h=160&fit=crop"
-                 class="w-full h-full object-cover" />
-          </div>
-          <h3 class="font-semibold text-lg">Client Name</h3>
-          <p class="text-xs tracking-[0.25em] uppercase">Profession</p>
-        </article>
-
-        <!-- CARD 3 -->
-        <article class="shrink-0 w-[80%] md:w-[60%] mx-4 bg-[#f5eee6] rounded-lg px-10 py-10 text-center shadow">
-          <div class="text-4xl mb-4">“</div>
-          <p class="text-sm md:text-base mb-8">
-            Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam
-            amet diam et eos. Clita erat ipsum et lorem et sit.
-          </p>
-          <div class="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden border-4 border-white">
-            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=160&h=160&fit=crop"
-                 class="w-full h-full object-cover" />
-          </div>
-          <h3 class="font-semibold text-lg">Client Name</h3>
-          <p class="text-xs tracking-[0.25em] uppercase">Profession</p>
-        </article>
-
-      </div>
-
-      <!-- NAV BUTTONS -->
-      <div class="flex justify-center gap-3 mt-8">
-        <button onclick="prevSlide()"
-                class="w-10 h-10 border border-[#c3924a] text-[#c3924a] hover:bg-[#c3924a] hover:text-white transition">
-          ‹
+    <div class="fixed left-0 top-1/2 transform -translate-y-1/2 z-40">
+        <button onclick="toggleSidebar()" class="bg-pink-600 text-white p-3 rounded-r-lg shadow-lg hover:bg-pink-700">
+            <i class="fas fa-palette"></i>
         </button>
-        <button onclick="nextSlide()"
-                class="w-10 h-10 border border-[#c3924a] text-[#c3924a] hover:bg-[#c3924a] hover:text-white transition">
-          ›
+    </div>
+
+    <!-- Design Navigation -->
+    <div class="fixed right-4 top-1/2 transform -translate-y-1/2 z-30 space-y-2">
+        <button onclick="prevDesign()" class="bg-white/80 backdrop-blur-sm text-pink-600 w-12 h-12 rounded-full shadow-lg flex items-center justify-center hover:bg-pink-600 hover:text-white transition">
+            <i class="fas fa-chevron-up"></i>
         </button>
-      </div>
-    </div>
-  </section>
-
-  <script>
-    // CONFIG
-    const autoplayDelay = 4000; // ms
-
-    const track = document.getElementById('testimonialTrack');
-    const cards = track.children;
-    let index = 1; // center card
-    let autoTimer;
-
-    function updatePosition() {
-      // Each card width ≈ 100% of wrapper, but we used 80% + margin.
-      // Simple approach: use clientWidth of wrapper.
-      const wrapperWidth = document.getElementById('testimonialWrapper').clientWidth;
-      track.style.transform = `translateX(${-(index - 1) * wrapperWidth}px)`;
-    }
-
-    function nextSlide() {
-      index = (index + 1 > cards.length) ? 1 : index + 1;
-      updatePosition();
-    }
-
-    function prevSlide() {
-      index = (index - 1 < 1) ? cards.length : index - 1;
-      updatePosition();
-    }
-
-    function startAutoPlay() {
-      clearInterval(autoTimer);
-      autoTimer = setInterval(nextSlide, autoplayDelay);
-    }
-
-    function pauseAutoPlay() {
-      clearInterval(autoTimer);
-    }
-
-    window.addEventListener('resize', updatePosition);
-    // init
-    updatePosition();
-    startAutoPlay();
-  </script>
-
-</section>
-
-Use a centered “one-at-a-time” slider, but make the movement an infinite loop by shifting the first card to the end after each step. This keeps the scroll continuous while always focusing on one testimonial.
-​
-
-Here is a complete, edited version you can replace your current code with:
-
-xml
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Infinite Testimonial Carousel</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<section class="min-h-screen flex items-center justify-center bg-[#f7f3ec]">
-
-<section class="w-full max-w-5xl mx-auto px-4">
-  <h2 class="text-center text-3xl md:text-4xl font-serif mb-10">
-    What Clients Say!
-  </h2>
-
-  <!-- WRAPPER (pause on hover) -->
-  <div id="testimonialWrapper"
-       class="relative overflow-hidden"
-       onmouseenter="pauseAutoPlay()"
-       onmouseleave="startAutoPlay()">
-
-    <!-- TRACK -->
-    <div id="testimonialTrack"
-         class="flex transition-transform duration-700 ease-in-out">
-
-      <!-- Slide 1 -->
-      <article
-        class="slide shrink-0 w-[90%] sm:w-[70%] md:w-[55%] lg:w-[40%] mx-4
-               bg-[#f5eee6] rounded-lg px-6 md:px-10 py-8 md:py-10 text-center shadow">
-        <div class="text-4xl mb-4">“</div>
-        <p class="text-sm md:text-base mb-8">
-          Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet
-          diam et eos. Clita erat ipsum et lorem et sit.
-        </p>
-        <div class="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden border-4 border-white">
-          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=160&h=160&fit=crop"
-               class="w-full h-full object-cover" />
+        <div class="text-center text-sm text-gray-600 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full shadow">
+            <span id="current-design">1</span>/15
         </div>
-        <h3 class="font-semibold text-lg">Client One</h3>
-        <p class="text-xs tracking-[0.25em] uppercase">Profession</p>
-      </article>
-
-      <!-- Slide 2 (highlight) -->
-      <article
-        class="slide shrink-0 w-[90%] sm:w-[70%] md:w-[55%] lg:w-[40%] mx-4
-               bg-[#c3924a] rounded-lg px-6 md:px-10 py-8 md:py-10 text-center text-white shadow-lg">
-        <div class="text-4xl mb-4">“</div>
-        <p class="text-sm md:text-base mb-8">
-          Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet
-          diam et eos. Clita erat ipsum et lorem et sit.
-        </p>
-        <div class="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden border-4 border-white/70">
-          <img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=160&h=160&fit=crop"
-               class="w-full h-full object-cover" />
-        </div>
-        <h3 class="font-semibold text-lg">Client Two</h3>
-        <p class="text-xs tracking-[0.25em] uppercase">Profession</p>
-      </article>
-
-      <!-- Slide 3 -->
-      <article
-        class="slide shrink-0 w-[90%] sm:w-[70%] md:w-[55%] lg:w-[40%] mx-4
-               bg-[#f5eee6] rounded-lg px-6 md:px-10 py-8 md:py-10 text-center shadow">
-        <div class="text-4xl mb-4">“</div>
-        <p class="text-sm md:text-base mb-8">
-          Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet
-          diam et eos. Clita erat ipsum et lorem et sit.
-        </p>
-        <div class="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden border-4 border-white">
-          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=160&h=160&fit=crop"
-               class="w-full h-full object-cover" />
-        </div>
-        <h3 class="font-semibold text-lg">Client Three</h3>
-        <p class="text-xs tracking-[0.25em] uppercase">Profession</p>
-      </article>
-
+        <button onclick="nextDesign()" class="bg-white/80 backdrop-blur-sm text-pink-600 w-12 h-12 rounded-full shadow-lg flex items-center justify-center hover:bg-pink-600 hover:text-white transition">
+            <i class="fas fa-chevron-down"></i>
+        </button>
     </div>
 
-    <!-- NAV BUTTONS -->
-    <div class="flex justify-center gap-3 mt-8">
-      <button onclick="manualPrev()"
-              class="w-10 h-10 border border-[#c3924a] text-[#c3924a]
-                     hover:bg-[#c3924a] hover:text-white transition">
-        ‹
-      </button>
-      <button onclick="manualNext()"
-              class="w-10 h-10 border border-[#c3924a] text-[#c3924a]
-                     hover:bg-[#c3924a] hover:text-white transition">
-        ›
-      </button>
-    </div>
-  </div>
-</section>
+    <!-- Design 1: Elegant Minimalist -->
+    <section id="design-1" class="design-section active-design">
+        <nav class="fixed w-full z-20 bg-white/80 backdrop-blur-sm border-b border-gray-100">
+            <div class="container mx-auto px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <a href="#" class="text-2xl font-playfair text-rose-900">BelleVue</a>
+                    <div class="hidden md:flex space-x-8">
+                        <a href="#" class="text-gray-700 hover:text-rose-600 transition">Services</a>
+                        <a href="#" class="text-gray-700 hover:text-rose-600 transition">About</a>
+                        <a href="#" class="text-gray-700 hover:text-rose-600 transition">Gallery</a>
+                        <a href="#" class="bg-rose-600 text-white px-6 py-2 rounded-full hover:bg-rose-700 transition">Book Now</a>
+                    </div>
+                    <button class="md:hidden text-gray-700">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
 
-<script>
-  const wrapper = document.getElementById('testimonialWrapper');
-  const track   = document.getElementById('testimonialTrack');
-  let slides    = Array.from(track.children);
+        <section class="pt-32 pb-20 px-6 min-h-screen flex items-center bg-gradient-to-b from-rose-50 to-white">
+            <div class="container mx-auto text-center">
+                <h1 class="text-5xl md:text-7xl font-playfair text-gray-900 mb-6">Radiant Beauty, Timeless Elegance</h1>
+                <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">Where luxury meets personalized care for your most beautiful self</p>
+                <a href="#" class="inline-block bg-rose-600 text-white px-8 py-4 rounded-full text-lg hover:bg-rose-700 transition transform hover:-translate-y-1 shadow-lg">Discover Our Services</a>
+            </div>
+        </section>
+    </section>
 
-  const stepDelay = 8000; // time each testimonial stays centered (slow)
-  let isAnimating = false;
-  let timer;
+    <!-- Design 2: Vintage Glamour -->
+    <section id="design-2" class="design-section">
+        <nav class="fixed w-full z-20 bg-amber-50/90 border-b border-amber-200">
+            <div class="container mx-auto px-6 py-5">
+                <div class="flex items-center justify-between">
+                    <a href="#" class="text-3xl font-dancing text-amber-800">Château Beauté</a>
+                    <div class="hidden md:flex space-x-10">
+                        <a href="#" class="text-amber-800 hover:text-amber-600 transition font-medium">Services</a>
+                        <a href="#" class="text-amber-800 hover:text-amber-600 transition font-medium">Artists</a>
+                        <a href="#" class="border border-amber-800 text-amber-800 px-6 py-2 rounded hover:bg-amber-800 hover:text-white transition">Schedule</a>
+                    </div>
+                    <button class="md:hidden text-amber-800">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
 
-  // center current first slide
-  function centerCurrent() {
-    const current = slides[0];
-    const slideWidth  = current.clientWidth;
-    const wrapperWidth = wrapper.clientWidth;
-    const offset = (wrapperWidth - slideWidth) / 2;
-    // translate so first slide is centered
-    track.style.transform = `translateX(${offset}px)`;
-  }
+        <section class="pt-40 pb-24 px-6 min-h-screen flex items-center bg-amber-50">
+            <div class="container mx-auto text-center">
+                <p class="text-amber-600 tracking-widest mb-4">SINCE 1995</p>
+                <h1 class="text-5xl md:text-7xl font-dancing text-amber-900 mb-8">Classic Beauty, Modern Grace</h1>
+                <p class="text-lg text-amber-700 mb-12 max-w-xl mx-auto">Experience the timeless art of beauty in our vintage-inspired salon</p>
+                <a href="#" class="inline-block bg-amber-800 text-white px-8 py-3 rounded border border-amber-800 hover:bg-transparent hover:text-amber-800 transition">View Our Collection</a>
+            </div>
+        </section>
+    </section>
 
-  // shift left by exactly one slide, then move first slide to the end (infinite loop)
-  function goNext(loop = true) {
-    if (isAnimating) return;
-    isAnimating = true;
+    <!-- Design 3: Modern Luxury -->
+    <section id="design-3" class="design-section">
+        <nav class="fixed w-full z-20 bg-black/20 backdrop-blur-md">
+            <div class="container mx-auto px-6 py-5">
+                <div class="flex items-center justify-between">
+                    <a href="#" class="text-2xl font-light text-white tracking-widest">LUXE</a>
+                    <div class="hidden md:flex items-center space-x-12">
+                        <a href="#" class="text-white/80 hover:text-white transition">SERVICES</a>
+                        <a href="#" class="text-white/80 hover:text-white transition">MEMBERSHIP</a>
+                        <a href="#" class="text-white/80 hover:text-white transition">EXPERIENCE</a>
+                        <a href="#" class="text-black bg-white px-8 py-3 hover:bg-white/90 transition">RESERVE</a>
+                    </div>
+                    <button class="md:hidden text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
 
-    const current = slides[0];
-    const slideWidth = current.clientWidth + 32; // card width + mx-4*2 (approx 32px)
-    const wrapperWidth = wrapper.clientWidth;
-    const startOffset = (wrapperWidth - current.clientWidth) / 2;
+        <section class="min-h-screen flex items-center px-6 bg-gradient-to-br from-gray-900 to-black">
+            <div class="container mx-auto">
+                <div class="max-w-2xl">
+                    <h1 class="text-6xl md:text-8xl font-light text-white mb-8 leading-tight">Redefine Luxury Beauty</h1>
+                    <p class="text-xl text-gray-300 mb-12">An exclusive sanctuary where innovation meets indulgence in beauty care</p>
+                    <a href="#" class="inline-flex items-center text-white border-b border-white pb-2 text-lg hover:border-transparent transition">Begin Your Journey →</a>
+                </div>
+            </div>
+        </section>
+    </section>
 
-    // move one slide to left so next slide becomes centered
-    track.style.transition = 'transform 0.7s ease-in-out';
-    track.style.transform =
-      `translateX(${startOffset - slideWidth}px)`;
+    <!-- Design 4: Playful & Vibrant -->
+    <section id="design-4" class="design-section">
+        <nav class="fixed w-full z-20 bg-fuchsia-100/90 border-b border-fuchsia-200">
+            <div class="container mx-auto px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <a href="#" class="text-3xl font-bold text-fuchsia-600">Blush & Bloom</a>
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="#" class="text-fuchsia-700 hover:text-fuchsia-500 transition font-medium">Services</a>
+                        <a href="#" class="text-fuchsia-700 hover:text-fuchsia-500 transition font-medium">Promotions</a>
+                        <a href="#" class="text-fuchsia-700 hover:text-fuchsia-500 transition font-medium">Gallery</a>
+                        <a href="#" class="bg-fuchsia-500 text-white px-6 py-2 rounded-full hover:bg-fuchsia-600 transition shadow-lg">Book Fun!</a>
+                    </div>
+                    <button class="md:hidden text-fuchsia-600">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
 
-    track.addEventListener('transitionend', function handler() {
-      track.removeEventListener('transitionend', handler);
-      // move first slide to the end (loop)
-      track.appendChild(slides[0]);
-      slides = Array.from(track.children);
-      // reset transform so new first slide is exactly centered again
-      track.style.transition = 'none';
-      centerCurrent();
-      // force reflow so next transition works
-      void track.offsetWidth;
-      isAnimating = false;
-    });
-  }
+        <section class="pt-32 pb-20 px-6 min-h-screen flex items-center bg-gradient-to-b from-fuchsia-50 to-pink-50">
+            <div class="container mx-auto text-center">
+                <h1 class="text-5xl md:text-7xl font-bold text-fuchsia-700 mb-6">Where Beauty Meets Joy</h1>
+                <p class="text-xl text-pink-600 mb-10 max-w-2xl mx-auto">Transform your look while having the time of your life in our vibrant salon</p>
+                <div class="flex justify-center space-x-4">
+                    <a href="#" class="inline-block bg-fuchsia-500 text-white px-8 py-4 rounded-full text-lg hover:bg-fuchsia-600 transition transform hover:scale-105">Book Now</a>
+                    <a href="#" class="inline-block border-2 border-fuchsia-500 text-fuchsia-600 px-8 py-4 rounded-full text-lg hover:bg-fuchsia-50 transition">Watch Tour</a>
+                </div>
+            </div>
+        </section>
+    </section>
 
-  // move last slide to front, then animate to center it
-  function goPrev(loop = true) {
-    if (isAnimating) return;
-    isAnimating = true;
+    <!-- Design 5: Organic & Natural -->
+    <section id="design-5" class="design-section">
+        <nav class="fixed w-full z-20 bg-emerald-50/90 backdrop-blur-sm border-b border-emerald-200">
+            <div class="container mx-auto px-6 py-5">
+                <div class="flex items-center justify-between">
+                    <a href="#" class="text-2xl font-semibold text-emerald-800">EcoGlam</a>
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="#" class="text-emerald-700 hover:text-emerald-500 transition">Treatments</a>
+                        <a href="#" class="text-emerald-700 hover:text-emerald-500 transition">Products</a>
+                        <a href="#" class="text-emerald-700 hover:text-emerald-500 transition">Wellness</a>
+                        <a href="#" class="bg-emerald-600 text-white px-6 py-2 rounded-full hover:bg-emerald-700 transition">Book Session</a>
+                    </div>
+                    <button class="md:hidden text-emerald-700">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
 
-    const last = slides[slides.length - 1];
-    track.insertBefore(last, slides[0]);
-    slides = Array.from(track.children);
+        <section class="min-h-screen flex items-center px-6 bg-gradient-to-br from-emerald-50 to-teal-50">
+            <div class="container mx-auto max-w-4xl">
+                <div class="text-center">
+                    <div class="inline-block bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full mb-6">100% Natural • Cruelty Free</div>
+                    <h1 class="text-5xl md:text-7xl font-bold text-emerald-900 mb-8">Nature's Beauty, Enhanced</h1>
+                    <p class="text-xl text-emerald-700 mb-12 max-w-2xl mx-auto">Organic treatments using nature's finest ingredients for radiant, healthy beauty</p>
+                    <a href="#" class="inline-block bg-emerald-600 text-white px-8 py-4 rounded-full text-lg hover:bg-emerald-700 transition shadow-lg">Explore Natural Treatments</a>
+                </div>
+            </div>
+        </section>
+    </section>
 
-    const current = slides[0];
-    const slideWidth  = current.clientWidth + 32;
-    const wrapperWidth = wrapper.clientWidth;
-    const startOffset = (wrapperWidth - current.clientWidth) / 2;
+    <!-- Design 6: Art Deco Glamour -->
+    <section id="design-6" class="design-section">
+        <nav class="fixed w-full z-20 bg-gradient-to-r from-purple-900 via-violet-800 to-purple-900 border-b border-purple-700">
+            <div class="container mx-auto px-6 py-5">
+                <div class="flex items-center justify-between">
+                    <a href="#" class="text-3xl font-bold text-gold-400 tracking-widest">ARTÉ BEAUTÉ</a>
+                    <div class="hidden md:flex items-center space-x-10">
+                        <a href="#" class="text-gold-200 hover:text-white transition">GALLERIE</a>
+                        <a href="#" class="text-gold-200 hover:text-white transition">SERVICES</a>
+                        <a href="#" class="text-gold-200 hover:text-white transition">ARTISTS</a>
+                        <a href="#" class="bg-gold-500 text-purple-900 px-8 py-3 font-bold hover:bg-gold-400 transition">RESERVE</a>
+                    </div>
+                    <button class="md:hidden text-gold-300">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
 
-    // position track so that it looks like we are one slide to the left
-    track.style.transition = 'none';
-    track.style.transform =
-      `translateX(${startOffset - slideWidth}px)`;
-    void track.offsetWidth;
+        <section class="min-h-screen flex items-center px-6 bg-gradient-to-br from-purple-900 to-violet-800 relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute top-20 left-20 w-64 h-64 border-2 border-gold-300 rotate-45"></div>
+                <div class="absolute bottom-20 right-20 w-48 h-48 border-2 border-gold-300 rotate-45"></div>
+            </div>
+            <div class="container mx-auto text-center relative z-10">
+                <h1 class="text-5xl md:text-8xl font-bold text-gold-400 mb-8 tracking-tight">WHERE ART MEETS BEAUTY</h1>
+                <p class="text-xl text-purple-200 mb-12 max-w-2xl mx-auto">Step into the roaring elegance of our Art Deco inspired sanctuary</p>
+                <a href="#" class="inline-block bg-gold-500 text-purple-900 px-10 py-4 text-xl font-bold hover:bg-gold-400 transition shadow-2xl">Experience The Art</a>
+            </div>
+        </section>
+    </section>
 
-    // animate back to center
-    track.style.transition = 'transform 0.7s ease-in-out';
-    track.style.transform = `translateX(${startOffset}px)`;
+    <!-- Design 7: Scandinavian Minimal -->
+    <section id="design-7" class="design-section">
+        <nav class="fixed w-full z-20 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+            <div class="container mx-auto px-6 py-5">
+                <div class="flex items-center justify-between">
+                    <a href="#" class="text-2xl font-light text-gray-800 tracking-wide">NOIR</a>
+                    <div class="hidden md:flex items-center space-x-10">
+                        <a href="#" class="text-gray-600 hover:text-gray-900 transition">SALON</a>
+                        <a href="#" class="text-gray-600 hover:text-gray-900 transition">TREATMENTS</a>
+                        <a href="#" class="text-gray-600 hover:text-gray-900 transition">CONTACT</a>
+                        <a href="#" class="border-2 border-gray-800 text-gray-800 px-6 py-2 hover:bg-gray-800 hover:text-white transition">BOOKING</a>
+                    </div>
+                    <button class="md:hidden text-gray-800">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
 
-    track.addEventListener('transitionend', function handler() {
-      track.removeEventListener('transitionend', handler);
-      isAnimating = false;
-    });
-  }
+        <section class="min-h-screen flex items-center px-6 bg-white">
+            <div class="container mx-auto">
+                <div class="max-w-2xl">
+                    <h1 class="text-6xl md:text-7xl font-light text-gray-900 mb-8 leading-none">Minimal Beauty, Maximum Impact</h1>
+                    <p class="text-lg text-gray-600 mb-12 border-l-4 border-gray-300 pl-6">Clean lines, pure ingredients, and focused expertise for your essential beauty needs</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="inline-block bg-gray-900 text-white px-8 py-4 text-lg hover:bg-gray-800 transition">View Services</a>
+                        <a href="#" class="inline-block border-2 border-gray-900 text-gray-900 px-8 py-4 text-lg hover:bg-gray-50 transition">Our Philosophy</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
 
-  function startAutoPlay() {
-    clearInterval(timer);
-    timer = setInterval(() => goNext(), stepDelay);
-  }
+    <!-- Design 8: Tropical Paradise -->
+    <section id="design-8" class="design-section">
+        <nav class="fixed w-full z-20 bg-green-50/90 border-b border-green-200">
+            <div class="container mx-auto px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <a href="#" class="text-3xl font-bold text-green-700">TropicGlow</a>
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="#" class="text-green-700 hover:text-green-500 transition">Retreats</a>
+                        <a href="#" class="text-green-700 hover:text-green-500 transition">Spa</a>
+                        <a href="#" class="text-green-700 hover:text-green-500 transition">Gallery</a>
+                        <a href="#" class="bg-green-600 text-white px-6 py-2 rounded-full hover:bg-green-700 transition">Escape Now</a>
+                    </div>
+                    <button class="md:hidden text-green-700">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
 
-  function pauseAutoPlay() {
-    clearInterval(timer);
-  }
+        <section class="min-h-screen flex items-center px-6 bg-gradient-to-br from-green-100 to-teal-100 relative overflow-hidden">
+            <div class="absolute top-10 right-10 animate-float">
+                <i class="fas fa-spa text-6xl text-green-300/50"></i>
+            </div>
+            <div class="absolute bottom-20 left-10 animate-float" style="animation-delay: 2s;">
+                <i class="fas fa-leaf text-8xl text-green-200/40"></i>
+            </div>
+            <div class="container mx-auto text-center">
+                <h1 class="text-5xl md:text-7xl font-bold text-green-800 mb-8">Island Glow Awaits</h1>
+                <p class="text-xl text-green-700 mb-12 max-w-2xl mx-auto">Tropical-inspired treatments that transport you to paradise while enhancing your natural beauty</p>
+                <a href="#" class="inline-block bg-green-600 text-white px-10 py-4 rounded-full text-lg hover:bg-green-700 transition transform hover:scale-105 shadow-xl">Begin Your Retreat</a>
+            </div>
+        </section>
+    </section>
 
-  function manualNext() {
-    pauseAutoPlay();
-    goNext();
-    startAutoPlay();
-  }
+    <!-- Design 9: Boho Chic -->
+    <section id="design-9" class="design-section">
+        <nav class="fixed w-full z-20 bg-rose-50/90 border-b border-rose-200">
+            <div class="container mx-auto px-6 py-5">
+                <div class="flex items-center justify-between">
+                    <a href="#" class="text-3xl font-dancing text-rose-700">Wildflower Beauty</a>
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="#" class="text-rose-700 hover:text-rose-500 transition">Workshops</a>
+                        <a href="#" class="text-rose-700 hover:text-rose-500 transition">Studio</a>
+                        <a href="#" class="text-rose-700 hover:text-rose-500 transition">Community</a>
+                        <a href="#" class="bg-rose-600 text-white px-6 py-2 rounded-full hover:bg-rose-700 transition">Join Circle</a>
+                    </div>
+                    <button class="md:hidden text-rose-700">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
 
-  function manualPrev() {
-    pauseAutoPlay();
-    goPrev();
-    startAutoPlay();
-  }
+        <section class="min-h-screen flex items-center px-6 bg-gradient-to-br from-rose-50 to-orange-50">
+            <div class="container mx-auto text-center">
+                <div class="inline-flex items-center space-x-2 mb-6">
+                    <i class="fas fa-feather-alt text-rose-500"></i>
+                    <span class="text-rose-600 font-medium">Free Spirit Beauty</span>
+                    <i class="fas fa-feather-alt text-rose-500"></i>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-dancing text-rose-800 mb-8">Embrace Your Natural Glow</h1>
+                <p class="text-lg text-rose-700 mb-12 max-w-xl mx-auto">A bohemian-inspired space celebrating individuality, creativity, and natural beauty</p>
+                <div class="flex justify-center space-x-4">
+                    <a href="#" class="inline-block bg-rose-600 text-white px-8 py-4 rounded-full hover:bg-rose-700 transition">Book Session</a>
+                    <a href="#" class="inline-block border-2 border-rose-600 text-rose-600 px-8 py-4 rounded-full hover:bg-rose-50 transition">View Workshops</a>
+                </div>
+            </div>
+        </section>
+    </section>
 
-  window.addEventListener('resize', centerCurrent);
+    <!-- Design 10: Futuristic Tech -->
+    <section id="design-10" class="design-section">
+        <nav class="fixed w-full z-20 bg-gradient-to-r from-blue-900 to-indigo-900 border-b border-blue-700">
+            <div class="container mx-auto px-6 py-5">
+                <div class="flex items-center justify-between">
+                    <a href="#" class="text-2xl font-bold text-cyan-400 tracking-widest">NEXUS BEAUTY</a>
+                    <div class="hidden md:flex items-center space-x-10">
+                        <a href="#" class="text-blue-200 hover:text-cyan-300 transition">TECHNOLOGY</a>
+                        <a href="#" class="text-blue-200 hover:text-cyan-300 transition">ANALYSIS</a>
+                        <a href="#" class="text-blue-200 hover:text-cyan-300 transition">RESULTS</a>
+                        <a href="#" class="bg-cyan-500 text-blue-900 px-8 py-3 font-bold hover:bg-cyan-400 transition">SCAN NOW</a>
+                    </div>
+                    <button class="md:hidden text-cyan-300">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
 
-  // init position then autoplay
-  window.addEventListener('load', () => {
-    centerCurrent();
-    startAutoPlay();
-  });
-</script>
+        <section class="min-h-screen flex items-center px-6 bg-gradient-to-br from-gray-900 to-blue-900 relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
+            </div>
+            <div class="container mx-auto text-center relative z-10">
+                <div class="inline-block mb-6">
+                    <i class="fas fa-atom text-cyan-400 text-4xl"></i>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-bold text-white mb-8">Beauty Powered by Science</h1>
+                <p class="text-xl text-blue-200 mb-12 max-w-2xl mx-auto">Cutting-edge technology meets personalized beauty solutions for tomorrow's standards</p>
+                <a href="#" class="inline-block bg-cyan-500 text-blue-900 px-10 py-4 text-xl font-bold hover:bg-cyan-400 transition animate-shimmer">Experience AI Analysis</a>
+            </div>
+        </section>
+    </section>
 
-</section>
+    <!-- Design 11: French Riviera -->
+    <section id="design-11" class="design-section">
+        <nav class="fixed w-full z-20 bg-gradient-to-r from-sky-100 to-cyan-100 border-b border-sky-200">
+            <div class="container mx-auto px-6 py-5">
+                <div class="flex items-center justify-between">
+                    <a href="#" class="text-3xl font-playfair text-sky-800">Côte d'Azur</a>
+                    <div class="hidden md:flex items-center space-x-10">
+                        <a href="#" class="text-sky-700 hover:text-sky-500 transition">Prestige</a>
+                        <a href="#" class="text-sky-700 hover:text-sky-500 transition">Yachting</a>
+                        <a href="#" class="text-sky-700 hover:text-sky-500 transition">Élégance</a>
+                        <a href="#" class="bg-sky-600 text-white px-8 py-3 rounded hover:bg-sky-700 transition">Reserve</a>
+                    </div>
+                    <button class="md:hidden text-sky-700">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
 
+        <section class="min-h-screen flex items-center px-6 bg-gradient-to-br from-sky-50 to-white">
+            <div class="container mx-auto max-w-4xl">
+                <div class="text-center">
+                    <p class="text-sky-600 tracking-widest mb-4">THE FRENCH RIVIERA EXPERIENCE</p>
+                    <h1 class="text-5xl md:text-7xl font-playfair text-sky-900 mb-8">Mediterranean Glamour</h1>
+                    <p class="text-lg text-sky-700 mb-12 max-w-xl mx-auto">Bringing the luxury and sunshine of the French Riviera to your beauty experience</p>
+                    <a href="#" class="inline-block bg-sky-600 text-white px-10 py-4 rounded hover:bg-sky-700 transition shadow-lg">Discover Prestige Treatments</a>
+                </div>
+            </div>
+        </section>
+    </section>
 
-<section class="min-h-screen flex items-center justify-center bg-[#f7f3ec]">
+    <!-- Design 12: Japanese Zen -->
+    <section id="design-12" class="design-section">
+        <nav class="fixed w-full z-20 bg-white/95 backdrop-blur-sm">
+            <div class="container mx-auto px-6 py-5">
+                <div class="flex items-center justify-between">
+                    <a href="#" class="text-2xl font-light text-gray-800">Kirei 綺麗</a>
+                    <div class="hidden md:flex items-center space-x-10">
+                        <a href="#" class="text-gray-700 hover:text-red-500 transition">Harmony</a>
+                        <a href="#" class="text-gray-700 hover:text-red-500 transition">Rituals</a>
+                        <a href="#" class="text-gray-700 hover:text-red-500 transition">Tea House</a>
+                        <a href="#" class="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition">Book Serenity</a>
+                    </div>
+                    <button class="md:hidden text-gray-800">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
 
-<section class="w-full max-w-5xl mx-auto px-4">
-  <h2 class="text-center text-3xl md:text-4xl font-serif mb-10">
-    What Clients Say!
-  </h2>
+        <section class="min-h-screen flex items-center px-6 bg-white relative">
+            <div class="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-red-50 to-transparent"></div>
+            <div class="container mx-auto">
+                <div class="max-w-xl ml-auto">
+                    <div class="border-l-4 border-red-500 pl-6 mb-8">
+                        <h1 class="text-5xl md:text-6xl font-light text-gray-900 mb-4">Inner Peace, Outer Beauty</h1>
+                        <p class="text-gray-600">Japanese-inspired beauty rituals focusing on mindfulness, balance, and timeless elegance</p>
+                    </div>
+                    <a href="#" class="inline-block bg-red-600 text-white px-8 py-4 rounded hover:bg-red-700 transition">Begin Your Ritual</a>
+                </div>
+            </div>
+        </section>
+    </section>
 
-  <!-- WRAPPER (pause on hover) -->
-  <div id="testimonialWrapper"
-       class="relative overflow-hidden"
-       onmouseenter="pauseAutoPlay()"
-       onmouseleave="startAutoPlay()">
+    <!-- Design 13: Glam Rock -->
+    <section id="design-13" class="design-section">
+        <nav class="fixed w-full z-20 bg-gradient-to-r from-gray-900 to-black border-b border-purple-600">
+            <div class="container mx-auto px-6 py-5">
+                <div class="flex items-center justify-between">
+                    <a href="#" class="text-3xl font-bold text-purple-400 tracking-widest">ROCKSTAR GLAM</a>
+                    <div class="hidden md:flex items-center space-x-10">
+                        <a href="#" class="text-purple-300 hover:text-white transition">EDGY</a>
+                        <a href="#" class="text-purple-300 hover:text-white transition">BOLD</a>
+                        <a href="#" class="text-purple-300 hover:text-white transition">COLLECTION</a>
+                        <a href="#" class="bg-purple-600 text-white px-8 py-3 font-bold hover:bg-purple-500 transition">GET LOUD</a>
+                    </div>
+                    <button class="md:hidden text-purple-400">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
 
-    <!-- TRACK -->
-    <div id="testimonialTrack"
-         class="flex transition-transform duration-700 ease-in-out">
+        <section class="min-h-screen flex items-center px-6 bg-gradient-to-br from-gray-900 via-black to-purple-900">
+            <div class="container mx-auto text-center">
+                <h1 class="text-5xl md:text-8xl font-bold text-white mb-8">MAKE A STATEMENT</h1>
+                <p class="text-xl text-purple-300 mb-12 max-w-2xl mx-auto">Bold, edgy, and unforgettable beauty for those who dare to stand out</p>
+                <a href="#" class="inline-block bg-purple-600 text-white px-12 py-5 text-xl font-bold hover:bg-purple-500 transition transform hover:scale-105">BOOK REBELLIOUS LOOK</a>
+            </div>
+        </section>
+    </section>
 
-      <!-- CARD 1 -->
-      <article
-        class="shrink-0 w-[90%] sm:w-[70%] md:w-[55%] lg:w-[40%] mx-4 bg-[#f5eee6]
-               rounded-lg px-6 md:px-10 py-8 md:py-10 text-center shadow">
-        <div class="text-4xl mb-4">“</div>
-        <p class="text-sm md:text-base mb-8">
-          Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet
-          diam et eos. Clita erat ipsum et lorem et sit.
-        </p>
-        <div class="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden border-4 border-white">
-          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=160&h=160&fit=crop"
-               class="w-full h-full object-cover" />
+    <!-- Design 14: Floral Fantasy -->
+    <section id="design-14" class="design-section">
+        <nav class="fixed w-full z-20 bg-pink-50/90 border-b border-pink-200">
+            <div class="container mx-auto px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <a href="#" class="text-3xl font-dancing text-pink-700">Rose Petal Spa</a>
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="#" class="text-pink-700 hover:text-pink-500 transition">Blossoms</a>
+                        <a href="#" class="text-pink-700 hover:text-pink-500 transition">Gardens</a>
+                        <a href="#" class="text-pink-700 hover:text-pink-500 transition">Scents</a>
+                        <a href="#" class="bg-pink-600 text-white px-6 py-2 rounded-full hover:bg-pink-700 transition">Bloom With Us</a>
+                    </div>
+                    <button class="md:hidden text-pink-700">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <section class="min-h-screen flex items-center px-6 bg-gradient-to-br from-pink-50 to-rose-50 relative overflow-hidden">
+            <div class="absolute -top-20 -right-20 w-96 h-96 bg-pink-200 rounded-full opacity-20"></div>
+            <div class="absolute -bottom-20 -left-20 w-96 h-96 bg-rose-200 rounded-full opacity-20"></div>
+            <div class="container mx-auto text-center relative z-10">
+                <div class="inline-flex items-center space-x-2 mb-6">
+                    <i class="fas fa-heart text-pink-500"></i>
+                    <span class="text-pink-600">Flower-infused Beauty</span>
+                    <i class="fas fa-heart text-pink-500"></i>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-dancing text-pink-800 mb-8">Bloom Into Your Most Beautiful Self</h1>
+                <p class="text-lg text-rose-700 mb-12 max-w-xl mx-auto">A garden-inspired sanctuary where floral essences enhance your natural radiance</p>
+                <a href="#" class="inline-block bg-pink-600 text-white px-10 py-4 rounded-full text-lg hover:bg-pink-700 transition shadow-xl">Discover Flower Power</a>
+            </div>
+        </section>
+    </section>
+
+    <!-- Design 15: Golden Hollywood -->
+    <section id="design-15" class="design-section">
+        <nav class="fixed w-full z-20 bg-gradient-to-r from-yellow-50 to-amber-50 border-b border-amber-200">
+            <div class="container mx-auto px-6 py-5">
+                <div class="flex items-center justify-between">
+                    <a href="#" class="text-3xl font-playfair text-amber-800">Golden Era</a>
+                    <div class="hidden md:flex items-center space-x-10">
+                        <a href="#" class="text-amber-700 hover:text-amber-500 transition">Starlets</a>
+                        <a href="#" class="text-amber-700 hover:text-amber-500 transition">Archive</a>
+                        <a href="#" class="text-amber-700 hover:text-amber-500 transition">Studio</a>
+                        <a href="#" class="bg-amber-600 text-white px-8 py-3 rounded hover:bg-amber-700 transition">Star Treatment</a>
+                    </div>
+                    <button class="md:hidden text-amber-700">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <section class="min-h-screen flex items-center px-6 bg-gradient-to-br from-amber-50 to-yellow-50">
+            <div class="container mx-auto text-center">
+                <p class="text-amber-600 tracking-widest mb-4">HOLLYWOOD GLAMOUR REDEFINED</p>
+                <h1 class="text-5xl md:text-8xl font-playfair text-amber-900 mb-8">Screen Siren Beauty</h1>
+                <p class="text-xl text-amber-800 mb-12 max-w-2xl mx-auto">Step into the golden age of Hollywood with timeless glamour and star-worthy treatments</p>
+                <div class="flex justify-center space-x-6">
+                    <a href="#" class="inline-block bg-amber-600 text-white px-10 py-4 rounded text-lg hover:bg-amber-700 transition">Book Vintage Glam</a>
+                    <a href="#" class="inline-block border-2 border-amber-600 text-amber-700 px-10 py-4 rounded text-lg hover:bg-amber-50 transition">View Iconic Looks</a>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Info Panel -->
+    <div class="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg z-30">
+        <div class="flex items-center space-x-4">
+            <div class="text-sm text-gray-600">
+                <span class="font-semibold text-pink-600">Design <span id="design-number">1</span>:</span>
+                <span id="design-name">Elegant Minimalist</span>
+            </div>
+            <div class="flex space-x-2">
+                <button onclick="prevDesign()" class="bg-pink-100 text-pink-600 w-8 h-8 rounded-full flex items-center justify-center hover:bg-pink-200">
+                    <i class="fas fa-chevron-left text-sm"></i>
+                </button>
+                <button onclick="nextDesign()" class="bg-pink-100 text-pink-600 w-8 h-8 rounded-full flex items-center justify-center hover:bg-pink-200">
+                    <i class="fas fa-chevron-right text-sm"></i>
+                </button>
+            </div>
         </div>
-        <h3 class="font-semibold text-lg">Client Name</h3>
-        <p class="text-xs tracking-[0.25em] uppercase">Profession</p>
-      </article>
-
-      <!-- CARD 2 (center colored) -->
-      <article
-        class="shrink-0 w-[90%] sm:w-[70%] md:w-[55%] lg:w-[40%] mx-4 bg-[#c3924a]
-               rounded-lg px-6 md:px-10 py-8 md:py-10 text-center text-white shadow-lg">
-        <div class="text-4xl mb-4">“</div>
-        <p class="text-sm md:text-base mb-8">
-          Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet
-          diam et eos. Clita erat ipsum et lorem et sit.
-        </p>
-        <div class="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden border-4 border-white/70">
-          <img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=160&h=160&fit=crop"
-               class="w-full h-full object-cover" />
-        </div>
-        <h3 class="font-semibold text-lg">Client Name</h3>
-        <p class="text-xs tracking-[0.25em] uppercase">Profession</p>
-      </article>
-
-      <!-- CARD 3 -->
-      <article
-        class="shrink-0 w-[90%] sm:w-[70%] md:w-[55%] lg:w-[40%] mx-4 bg-[#f5eee6]
-               rounded-lg px-6 md:px-10 py-8 md:py-10 text-center shadow">
-        <div class="text-4xl mb-4">“</div>
-        <p class="text-sm md:text-base mb-8">
-          Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet
-          diam et eos. Clita erat ipsum et lorem et sit.
-        </p>
-        <div class="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden border-4 border-white">
-          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=160&h=160&fit=crop"
-               class="w-full h-full object-cover" />
-        </div>
-        <h3 class="font-semibold text-lg">Client Name</h3>
-        <p class="text-xs tracking-[0.25em] uppercase">Profession</p>
-      </article>
-
     </div>
 
-    <!-- NAV BUTTONS -->
-    <div class="flex justify-center gap-3 mt-8">
-      <button onclick="prevSlide()"
-              class="w-10 h-10 border border-[#c3924a] text-[#c3924a]
-                     hover:bg-[#c3924a] hover:text-white transition">
-        ‹
-      </button>
-      <button onclick="nextSlide()"
-              class="w-10 h-10 border border-[#c3924a] text-[#c3924a]
-                     hover:bg-[#c3924a] hover:text-white transition">
-        ›
-      </button>
-    </div>
-  </div>
-</section>
+    <script>
+        // Design data
+        const designs = [
+            { id: 1, name: "Elegant Minimalist", elementId: "design-1" },
+            { id: 2, name: "Vintage Glamour", elementId: "design-2" },
+            { id: 3, name: "Modern Luxury", elementId: "design-3" },
+            { id: 4, name: "Playful & Vibrant", elementId: "design-4" },
+            { id: 5, name: "Organic & Natural", elementId: "design-5" },
+            { id: 6, name: "Art Deco Glamour", elementId: "design-6" },
+            { id: 7, name: "Scandinavian Minimal", elementId: "design-7" },
+            { id: 8, name: "Tropical Paradise", elementId: "design-8" },
+            { id: 9, name: "Boho Chic", elementId: "design-9" },
+            { id: 10, name: "Futuristic Tech", elementId: "design-10" },
+            { id: 11, name: "French Riviera", elementId: "design-11" },
+            { id: 12, name: "Japanese Zen", elementId: "design-12" },
+            { id: 13, name: "Glam Rock", elementId: "design-13" },
+            { id: 14, name: "Floral Fantasy", elementId: "design-14" },
+            { id: 15, name: "Golden Hollywood", elementId: "design-15" }
+        ];
 
-<script>
-  // Slow autoplay (increase for slower)
-  const autoplayDelay = 9000; // 9 seconds
+        let currentDesignIndex = 0;
 
-  const track = document.getElementById('testimonialTrack');
-  const slides = track.children;
-  const wrapper = document.getElementById('testimonialWrapper');
-  let index = 0;
-  let timer = null;
+        // Initialize design list in sidebar
+        function initializeDesignList() {
+            const designList = document.getElementById('design-list');
+            designs.forEach((design, index) => {
+                const item = document.createElement('div');
+                item.className = `p-3 rounded-lg cursor-pointer transition-all-500 ${index === currentDesignIndex ? 'bg-pink-100 text-pink-600 font-semibold' : 'hover:bg-gray-100 text-gray-600'}`;
+                item.innerHTML = `
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 rounded-full flex items-center justify-center ${index === currentDesignIndex ? 'bg-pink-500 text-white' : 'bg-gray-200 text-gray-500'} mr-3">
+                            ${design.id}
+                        </div>
+                        <span>${design.name}</span>
+                    </div>
+                `;
+                item.onclick = () => switchDesign(index);
+                designList.appendChild(item);
+            });
+        }
 
-  function updatePosition() {
-    const slideWidth = slides[0].clientWidth + 32; // card width + mx-4 (16px each side)
-    // center current slide, so show small parts of prev/next
-    const offset = (wrapper.clientWidth - slideWidth) / 2;
-    track.style.transform =
-      `translateX(${offset - index * slideWidth}px)`;
-  }
+        // Switch to specific design
+        function switchDesign(index) {
+            // Hide current design
+            document.querySelectorAll('.design-section').forEach(section => {
+                section.classList.remove('active-design');
+            });
+            
+            // Update current index
+            currentDesignIndex = index;
+            
+            // Show new design
+            document.getElementById(designs[index].elementId).classList.add('active-design');
+            
+            // Update UI
+            document.getElementById('current-design').textContent = designs[index].id;
+            document.getElementById('design-number').textContent = designs[index].id;
+            document.getElementById('design-name').textContent = designs[index].name;
+            
+            // Update sidebar selection
+            document.querySelectorAll('#design-list > div').forEach((item, i) => {
+                if (i === index) {
+                    item.className = 'p-3 rounded-lg cursor-pointer transition-all-500 bg-pink-100 text-pink-600 font-semibold';
+                    item.querySelector('div > div').className = 'w-8 h-8 rounded-full flex items-center justify-center bg-pink-500 text-white mr-3';
+                } else {
+                    item.className = 'p-3 rounded-lg cursor-pointer transition-all-500 hover:bg-gray-100 text-gray-600';
+                    item.querySelector('div > div').className = 'w-8 h-8 rounded-full flex items-center justify-center bg-gray-200 text-gray-500 mr-3';
+                }
+            });
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
-  function nextSlide() {
-    index = (index + 1) % slides.length;
-    updatePosition();
-  }
+        // Next design
+        function nextDesign() {
+            let nextIndex = currentDesignIndex + 1;
+            if (nextIndex >= designs.length) nextIndex = 0;
+            switchDesign(nextIndex);
+        }
 
-  function prevSlide() {
-    index = (index - 1 + slides.length) % slides.length;
-    updatePosition();
-  }
+        // Previous design
+        function prevDesign() {
+            let prevIndex = currentDesignIndex - 1;
+            if (prevIndex < 0) prevIndex = designs.length - 1;
+            switchDesign(prevIndex);
+        }
 
-  function startAutoPlay() {
-    clearInterval(timer);
-    timer = setInterval(nextSlide, autoplayDelay);
-  }
+        // Toggle sidebar
+        function toggleSidebar() {
+            const sidebar = document.getElementById('design-sidebar');
+            sidebar.classList.toggle('-translate-x-64');
+        }
 
-  function pauseAutoPlay() {
-    clearInterval(timer);
-  }
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            switch(e.key) {
+                case 'ArrowRight':
+                case 'ArrowDown':
+                    nextDesign();
+                    break;
+                case 'ArrowLeft':
+                case 'ArrowUp':
+                    prevDesign();
+                    break;
+                case ' ':
+                    e.preventDefault();
+                    nextDesign();
+                    break;
+                case 'Escape':
+                    const sidebar = document.getElementById('design-sidebar');
+                    sidebar.classList.add('-translate-x-64');
+                    break;
+            }
+        });
 
-  window.addEventListener('resize', updatePosition);
-  // init
-  updatePosition();
-  startAutoPlay();
-</script>
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeDesignList();
+            // Add gold color if not in Tailwind
+            const style = document.createElement('style');
+            style.textContent = `
+                .text-gold-200 { color: #fde68a; }
+                .text-gold-300 { color: #fcd34d; }
+                .text-gold-400 { color: #fbbf24; }
+                .text-gold-500 { color: #f59e0b; }
+                .bg-gold-400 { background-color: #fbbf24; }
+                .bg-gold-500 { background-color: #f59e0b; }
+                .border-gold-300 { border-color: #fcd34d; }
+            `;
+            document.head.appendChild(style);
+        });
 
-</section>
-
+        // Auto-rotate designs every 20 seconds (optional)
+        // setInterval(nextDesign, 20000);
+    </script>
 </body>
 </html>
