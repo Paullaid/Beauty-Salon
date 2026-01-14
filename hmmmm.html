@@ -3,98 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobile Navbar with Tailwind</title>
+    <title>Complete Responsive Navbar</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-    /* Only 3 lines of custom CSS for the animation */
-    .menu-toggle.active .hamburger-top {
-        transform: rotate(45deg) translate(5px, 5px);
-    }
-    
-    .menu-toggle.active .hamburger-middle {
-        opacity: 0;
-    }
-    
-    .menu-toggle.active .hamburger-bottom {
-        transform: rotate(-45deg) translate(7px, -6px);
-    }
-</style>
 </head>
-<body class="bg-gray-100 min-h-screen">
-    <nav class="bg-gray-900 text-white p-4 shadow-lg">
-        <div class="container mx-auto flex justify-between items-center">
-            <!-- Logo -->
-            <a href="#" class="text-2xl font-bold text-green-400">Brand<span class="text-white">Logo</span></a>
-            
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex space-x-6">
-                <a href="#" class="hover:text-green-400 transition-colors duration-300">Home</a>
-                <a href="#" class="hover:text-green-400 transition-colors duration-300">About</a>
-                <a href="#" class="hover:text-green-400 transition-colors duration-300">Services</a>
-                <a href="#" class="hover:text-green-400 transition-colors duration-300">Portfolio</a>
-                <a href="#" class="hover:text-green-400 transition-colors duration-300">Contact</a>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Complete Responsive Navbar -->
+    <nav class="bg-white shadow-md">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="text-xl font-bold text-blue-600">SimpleNav</div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#" class="text-gray-700 hover:text-blue-600">Home</a>
+                    
+                    <!-- Dropdown 1 -->
+                    <div class="relative group">
+                        <button class="text-gray-700 hover:text-blue-600 flex items-center">
+                            Products
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md py-2 border hidden group-hover:block z-10">
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Web Apps</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Mobile Apps</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Desktop Apps</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Dropdown 2 -->
+                    <div class="relative group">
+                        <button class="text-gray-700 hover:text-blue-600 flex items-center">
+                            Services
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md py-2 border hidden group-hover:block z-10">
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Consulting</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Development</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Support</a>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="text-gray-700 hover:text-blue-600">Contact</a>
+                    <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+                        Get Started
+                    </button>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-gray-700">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
             </div>
             
-            <!-- Mobile Menu Button -->
-            <button id="menuToggle" class="menu-toggle md:hidden focus:outline-none focus:ring-2 focus:ring-green-400 rounded p-1">
-                <span class="block w-6 h-0.5 bg-white mb-1.5 transition-all duration-300 hamburger-top"></span>
-                <span class="block w-6 h-0.5 bg-white mb-1.5 transition-all duration-300 hamburger-middle"></span>
-                <span class="block w-6 h-0.5 bg-white transition-all duration-300 hamburger-bottom"></span>
-            </button>
-        </div>
-        
-        <!-- Mobile Menu Items -->
-        <div id="mobileMenu" class="md:hidden overflow-hidden transition-all duration-300 ease-in-out max-h-0">
-            <div class="px-4 py-3 space-y-3 bg-gray-800 rounded-b-lg mt-2">
-                <a href="#" class="block py-2 hover:text-green-400 hover:bg-gray-700 px-3 rounded transition-colors duration-300">Home</a>
-                <a href="#" class="block py-2 hover:text-green-400 hover:bg-gray-700 px-3 rounded transition-colors duration-300">About</a>
-                <a href="#" class="block py-2 hover:text-green-400 hover:bg-gray-700 px-3 rounded transition-colors duration-300">Services</a>
-                <a href="#" class="block py-2 hover:text-green-400 hover:bg-gray-700 px-3 rounded transition-colors duration-300">Portfolio</a>
-                <a href="#" class="block py-2 hover:text-green-400 hover:bg-gray-700 px-3 rounded transition-colors duration-300">Contact</a>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden py-4 border-t">
+                <div class="space-y-2">
+                    <a href="#" class="block py-2 px-4 hover:bg-gray-100 rounded">Home</a>
+                    
+                    <!-- Mobile Dropdown 1 -->
+                    <div>
+                        <button class="mobile-dropdown-btn flex items-center justify-between w-full py-2 px-4 hover:bg-gray-100 rounded">
+                            <span>Products</span>
+                            <svg class="w-4 h-4 dropdown-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="mobile-dropdown-content pl-6 hidden">
+                            <a href="#" class="block py-2 hover:bg-gray-100 rounded">Web Apps</a>
+                            <a href="#" class="block py-2 hover:bg-gray-100 rounded">Mobile Apps</a>
+                            <a href="#" class="block py-2 hover:bg-gray-100 rounded">Desktop Apps</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile Dropdown 2 -->
+                    <div>
+                        <button class="mobile-dropdown-btn flex items-center justify-between w-full py-2 px-4 hover:bg-gray-100 rounded">
+                            <span>Services</span>
+                            <svg class="w-4 h-4 dropdown-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="mobile-dropdown-content pl-6 hidden">
+                            <a href="#" class="block py-2 hover:bg-gray-100 rounded">Consulting</a>
+                            <a href="#" class="block py-2 hover:bg-gray-100 rounded">Development</a>
+                            <a href="#" class="block py-2 hover:bg-gray-100 rounded">Support</a>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="block py-2 px-4 hover:bg-gray-100 rounded">Contact</a>
+                    <button class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 mt-2">
+                        Get Started
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
-
     
-
+    <!-- Content -->
+    <main class="container mx-auto px-4 py-12">
+        <h1 class="text-3xl font-bold mb-4">Simple Navigation Bars</h1>
+        <p class="text-gray-600 mb-8">This navbar has dropdown menus that work on both desktop (hover) and mobile (click).</p>
+        
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h3 class="font-bold mb-2">Desktop</h3>
+                <p class="text-sm text-gray-600">Hover over "Products" or "Services" to see dropdown</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h3 class="font-bold mb-2">Mobile</h3>
+                <p class="text-sm text-gray-600">Tap menu button, then tap dropdowns to expand</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h3 class="font-bold mb-2">Features</h3>
+                <p class="text-sm text-gray-600">Clean, simple design with Tailwind CSS only</p>
+            </div>
+        </div>
+    </main>
+    
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.getElementById('menuToggle');
-            const mobileMenu = document.getElementById('mobileMenu');
-            
-            menuToggle.addEventListener('click', function() {
-                // Toggle active class for hamburger animation
-                this.classList.toggle('active');
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Mobile dropdown toggle
+        document.querySelectorAll('.mobile-dropdown-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const arrow = button.querySelector('.dropdown-arrow');
                 
-                // Toggle mobile menu visibility with smooth animation
-                if (mobileMenu.classList.contains('max-h-0')) {
-                    mobileMenu.classList.remove('max-h-0');
-                    mobileMenu.classList.add('max-h-64'); // Adjust this value based on your menu height
-                } else {
-                    mobileMenu.classList.remove('max-h-64');
-                    mobileMenu.classList.add('max-h-0');
-                }
+                content.classList.toggle('hidden');
+                arrow.classList.toggle('rotate-180');
             });
-            
-            // Close menu when clicking on a link
-            document.querySelectorAll('#mobileMenu a').forEach(link => {
-                link.addEventListener('click', () => {
-                    menuToggle.classList.remove('active');
-                    mobileMenu.classList.remove('max-h-64');
-                    mobileMenu.classList.add('max-h-0');
+        });
+        
+        // Close dropdowns when clicking outside (desktop)
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.group') && window.innerWidth >= 768) {
+                document.querySelectorAll('.group .absolute').forEach(dropdown => {
+                    dropdown.classList.add('hidden');
                 });
-            });
-            
-            // Optional: Close menu when clicking outside
-            document.addEventListener('click', function(event) {
-                if (!menuToggle.contains(event.target) && !mobileMenu.contains(event.target)) {
-                    if (menuToggle.classList.contains('active')) {
-                        menuToggle.classList.remove('active');
-                        mobileMenu.classList.remove('max-h-64');
-                        mobileMenu.classList.add('max-h-0');
-                    }
-                }
-            });
+            }
         });
     </script>
 </body>

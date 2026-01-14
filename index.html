@@ -20,7 +20,163 @@
         Beauty Salon
     </title>  
 
-     <style>       <!-- My styles -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .marquee-inner {
+            animation: marqueeScroll 35s linear infinite;
+        }
+
+        @keyframes marqueeScroll {
+            0% {
+                transform: translateX(0%);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        @keyframes marqueeScroll {
+        0% {
+            transform: translateX(0%);
+        }
+
+        100% {
+            transform: translateX(-50%);
+        }
+        }
+
+        .marquee-inner {
+            animation: marqueeScroll 25s linear infinite;
+        }
+
+        .marquee-reverse {
+            animation-direction: reverse;
+        }
+        @keyframes fade-out{
+           to { opacity: 0;}
+        }
+        .header-text-animation, #follow-animation,header-image-animation{
+            animation: fade-out linear;
+            animation-timeline: view();
+            animation-range: exit -200px;
+        }   
+        
+        .header-image-animation, #booking-animation {
+            animation: header-image-animation linear;
+            animation-timeline: view();
+            animation-range: exit;
+        }
+
+        @keyframes header-image-animation {
+            25% { opacity: 1;}
+            75%, 100% { opacity: 0; scale: 1.2;}
+        }
+        @keyframes appear{   
+            to {
+                opacity: 1;
+                scale: 1; 
+            }
+        }
+
+        @keyframes exit{   
+            to {
+                opacity: 0.4;
+                scale: 0.4; 
+            }
+        }
+
+        #booking-animation, header-image-animation {
+            animation: exit linear;
+            animation-timeline: view();
+            animation-range: exit -50px;
+        }
+
+        #booking-animation, #follow-animation, header-image-animation {
+            opacity: 0; scale: 0.5; 
+            animation: appear linear forwards;
+            animation-timeline: view();
+            animation-range: entry 4px;
+        }
+        
+        /* Navbar Animation */
+        .navbar-normal {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: transparent;
+            box-shadow: none;
+        }
+        
+        .navbar-sticky {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            animation: slideDown 0.3s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        /* Smooth transition for navbar */
+        #main-navbar {
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+        }
+        
+        .beauty-pink {
+            background-color: rgba(251, 207, 232, 0.2);
+        }
+        
+        .beauty-gold {
+            background-color: rgba(253, 230, 138, 0.2);
+        }
+        
+        .beauty-lavender {
+            background-color: rgba(221, 214, 254, 0.2);
+        }
+        
+        .animate-fadeIn {
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Add spacing for content when navbar becomes sticky */
+        body.sticky-nav-active {
+            padding-top: 80px;
+        }
+        
+        /* Ensure smooth transition */
+        .content-wrapper {
+            transition: margin-top 0.3s ease;
+        }
+    </style>  
+
+    <style>       <!-- My styles -->
         .satisfy-regular {
             font-family: "Satisfy", cursive;
             font-weight: 400;
@@ -62,6 +218,23 @@
         
         .menu-toggle.active .hamburger-bottom {
             transform: rotate(-45deg) translate(7px, -6px);
+        }
+         /* Add this to your existing style section - pulse animation for back to top button */
+        @keyframes pulse-amber {
+            0% {
+                box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(245, 158, 11, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
+            }
+        }
+        
+        .animate-pulse-amber {
+            animation: pulse-amber 2s infinite;
+        }
     </style> 
   
     <style>        <!-- Testimonial styles -->
@@ -203,149 +376,148 @@
                         <!-- ========== Start Section ========== -->
                                         <!-- Nar Bar -->
                         <!-- ========== End Section ========== -->          
-<section class="absolute z-10 w-full">
-    
-    <nav class="relative backdrop-blur-xl  pt-5 pb-3">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16  font2">
-                <!-- Logo / Brand -->
-                <div class="flex items-center">
-                    <a href="#" class="text-2xl font-bold text-indigo-600"><img class="h-30 w-30 rounded-l-lg hover:scale-110 transition duration-500" src="./image/mylogo.png" alt=""></a>
-                </div>
+    <section id="main-navbar"  class="navbar-normal absolute z-10 w-full">    
+        <nav class="relative backdrop-blur-xl  pt-8 pb-3">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16  font2">
+                    <!-- Logo / Brand -->
+                    <div class="flex items-center">
+                        <a href="#" class="text-2xl font-bold text-indigo-600"><img class="h-32 w-32 rounded-l-lg hover:scale-110 transition duration-500" src="./image/mylogo.png" alt=""></a>
+                    </div>
 
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-4">
-                    <a href="#" class="group flex flex-col items-center text-gray-700 px-3 py-2 text-lg tracking-wide font-medium">
-                        <div class="w-3 h-3 bg-gradient-to-t from-violet-200 to-orange-500 rounded-full animate-bounce"></div>
-                        <div class="lg:text-2xl text-slate-200 group-hover:text-amber-500 group-hover:animate-pulse transition duration-500">Home</div>
-                    </a>
-                    <a href="#" class="group flex flex-col items-center text-gray-700 px-3 py-2 text-lg tracking-wide font-medium">
-                        <div class="hidden group-hover:block w-3 h-3 bg-gradient-to-t from-violet-200 to-orange-500 rounded-full animate-bounce"></div>
-                        <div class="lg:text-2xl text-slate-200 group-hover:text-amber-500 group-hover:animate-pulse transition duration-500">About</div>
-                    </a>
-                    <div class="group relative">
-                        <button class="flex flex-col items-center text-gray-700 px-3 py-2 text-lg tracking-wide font-medium">
+                    <!-- Desktop Navigation -->
+                    <div class="hidden md:flex items-center space-x-4">
+                        <a href="#" class="group flex flex-col items-center text-gray-700 px-3 py-2 text-lg tracking-wide font-medium">
+                            <div class="w-3 h-3 bg-gradient-to-t from-violet-200 to-orange-500 rounded-full animate-bounce"></div>
+                            <div class="lg:text-2xl text-slate-200 group-hover:text-amber-500 group-hover:animate-pulse transition duration-500">Home</div>
+                        </a>
+                        <a href="#" class="group flex flex-col items-center text-gray-700 px-3 py-2 text-lg tracking-wide font-medium">
                             <div class="hidden group-hover:block w-3 h-3 bg-gradient-to-t from-violet-200 to-orange-500 rounded-full animate-bounce"></div>
-                            <div class="lg:text-2xl text-slate-200 group-hover:text-amber-500 group-hover:animate-pulse transition duration-500">Services</div>
+                            <div class="lg:text-2xl text-slate-200 group-hover:text-amber-500 group-hover:animate-pulse transition duration-500">About</div>
+                        </a>
+                        <div class="group relative">
+                            <button class="flex flex-col items-center text-gray-700 px-3 py-2 text-lg tracking-wide font-medium">
+                                <div class="hidden group-hover:block w-3 h-3 bg-gradient-to-t from-violet-200 to-orange-500 rounded-full animate-bounce"></div>
+                                <div class="lg:text-2xl text-slate-200 group-hover:text-amber-500 group-hover:animate-pulse transition duration-500">Services</div>
+                            </button>
+                            <div class="hidden group-hover:flex absolute top-full left-0 -mt-2 w-56 flex-col space-y-4 bg-gradient-to-br from-purple-200 to-violet-50 py-4 px-7 rounded-sm transition duration-500 z-20">
+                                <a href="#" class="text-md font-medium text-slate-700 tracking-wide hover:text-violet-400 hover:animate-pulse transition duration-600">Hair Styling</a>
+                                <a href="#" class="text-md font-medium text-slate-700 tracking-wide hover:text-violet-400 hover:animate-pulse transition duration-600">Makeup & Beauty</a>
+                                <a href="#" class="text-md font-medium text-slate-700 tracking-wide hover:text-violet-400 hover:animate-pulse transition duration-600">Nail Art</a>
+                                <a href="#" class="text-md font-medium text-slate-700 tracking-wide hover:text-violet-400 hover:animate-pulse transition duration-600">Skin Care</a>
+                                <a href="#" class="text-md font-medium text-slate-700 tracking-wide hover:text-violet-400 hover:animate-pulse transition duration-600">Spa & Massage</a>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="group flex flex-col items-center text-gray-700 px-3 py-2 text-lg tracking-wide font-medium">
+                            <div class="hidden group-hover:block w-3 h-3 bg-gradient-to-t from-violet-200 to-orange-500 rounded-full animate-bounce"></div>
+                            <div class="lg:text-2xl text-slate-200 group-hover:text-amber-500 group-hover:animate-pulse transition duration-500">Prices</div>
+                        </a>
+                        
+                        <a href="#" class="group flex flex-col items-center text-gray-700 px-3 py-2 text-lg tracking-wide font-medium">
+                            <div class="hidden group-hover:block w-3 h-3 bg-gradient-to-t from-violet-300 to-orange-500 rounded-full animate-bounce"></div>
+                            <div class="lg:text-2xl text-slate-200 group-hover:text-amber-500 group-hover:animate-pulse transition duration-500">Gallery</div>
+                        </a>
+                                        
+                        
+                        <!-- Appointment Button -->
+                        <a href="#" class="lg:text-2xl ml-4 px-4 py-2 bg-gradient-to-b from-amber-600  to-amber-800/60 text-white font-medium tracking-wide rounded-full hover:bg-linear-to-t hover:from-amber-800/60 hover:to-amber-600 transition duration-500 transform hover:-translate-y-0.5 hover:shadow-lg">
+                            Reservations
+                        </a>
+                    </div>
+
+                    <!-- Mobile menu button -->
+                    <div class="md:hidden flex items-center">
+                        <!-- Mobile Menu Button -->
+                        <button id="menuToggle" class="menu-toggle md:hidden focus:outline-none focus:ring-2 ring-amber-100 rounded p-2 cursor-pointer">
+                            <span class="block w-7 h-0.5 bg-amber-300 mb-1.5 transition-all duration-300 hamburger-top"></span>
+                            <span class="block w-7 h-0.5 bg-amber-300 mb-1.5 transition-all duration-300 hamburger-middle"></span>
+                            <span class="block w-7 h-0.5 bg-amber-300 transition-all duration-300 hamburger-bottom"></span>
                         </button>
-                        <div class="hidden group-hover:flex absolute top-full left-0 -mt-2 w-56 flex-col space-y-4 bg-gradient-to-br from-purple-200 to-violet-50 py-4 px-7 rounded-sm transition duration-500 z-20">
-                            <a href="#" class="text-md font-medium text-slate-700 tracking-wide hover:text-violet-400 hover:animate-pulse transition duration-600">Hair Styling</a>
-                            <a href="#" class="text-md font-medium text-slate-700 tracking-wide hover:text-violet-400 hover:animate-pulse transition duration-600">Makeup & Beauty</a>
-                            <a href="#" class="text-md font-medium text-slate-700 tracking-wide hover:text-violet-400 hover:animate-pulse transition duration-600">Nail Art</a>
-                            <a href="#" class="text-md font-medium text-slate-700 tracking-wide hover:text-violet-400 hover:animate-pulse transition duration-600">Skin Care</a>
-                            <a href="#" class="text-md font-medium text-slate-700 tracking-wide hover:text-violet-400 hover:animate-pulse transition duration-600">Spa & Massage</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu (hidden by default) -->
+            <!-- <div id="mobile-menu" class="absolute top-0 md:hidden hidden bg-linear-to-l from-stone-400/92 via-zinc-400/98 to-slate-400 rounded-md min-h-130 min-w-4/8 sm:min-w-3/8 "> -->
+            <div id="mobileMenu" class="pt-5 px-5 max-h-0 md:hidden overflow-hidden transition-all duration-300 ease-in-out ">
+                <div class="px-4 pt-4 pb-3 space-y-1 sm:px-3 text-xl font2">                
+                    <a href="#" class="block group space-x-3 text-2xl text-yellow-300 hover:text-amber-400 active:text-amber-500 px-3 py-3 rounded-md font-medium hover:bg-purple-50/10 tracking-wider animate-pulse">
+                        <span class="flex items-center space-x-5">
+                            <div class="text-slate-100 group-hover:text-amber-400 active:text-amber-500 group-hover:animate-pulse transition duration-500">Home</div>
+                            <div class=" w-3 h-3 bg-gradient-to-t from-violet-400 to-orange-400 rounded-full animate-bounce"></div>
+                        </span>                    
+                    </a>
+                    <a href="#" class="block group space-x-3 text-2xl text-yellow-300 hover:text-amber-400 active:text-amber-500 px-3 py-3 rounded-md font-medium hover:bg-purple-50/10 tracking-wider animate-pulse">
+                        <span class="flex items-center space-x-5">
+                            <div class="text-slate-100 group-hover:text-amber-400 active:text-amber-500 group-hover:animate-pulse transition duration-500">About</div>
+                            <div class="hidden group-hover:block w-3 h-3 bg-gradient-to-t from-violet-400 to-orange-400 rounded-full animate-bounce"></div>
+                        </span>
+                    
+                    <!-- Mobile Services Dropdown -->
+                    <div x-data="{ open: false }" class="border-t border-purple-100">
+                        <button @click="open = !open" class="w-full text-left flex justify-between items-center text-2xl text-slate-50 hover:text-amber-400 active:text-amber-500 px-3 py-3 rounded-md font-medium hover:bg-purple-50/10">
+                            Services
+                            <svg class="h-5 w-5 transition-transform duration-200" :class="{ 'rotate-180': open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div x-show="open" x-transition class="pl-8 space-y-1 border-l-2 border-violet-200 ml-3">
+                            <a href="#" class="group flex items-center space-x-5 text-gray-700 py-2 tracking-wide">                            
+                                <div class="text-slate-100 group-hover:text-amber-500 active:text-amber-500 group-hover:animate-pulse transition duration-500">Hair Styling</div>
+                                <div class="hidden group-hover:inline-block w-3 h-3 bg-gradient-to-t from-violet-400 to-orange-400 rounded-full animate-bounce"></div>
+                            </a>
+                            <a href="#" class="group flex items-center space-x-5 text-gray-700 py-2 tracking-wide">                            
+                                <div class="text-slate-100 group-hover:text-amber-500 active:text-amber-500 group-hover:animate-pulse transition duration-500">Makeup & Beauty</div>
+                                <div class="hidden group-hover:inline-block w-3 h-3 bg-gradient-to-t from-violet-400 to-orange-400 rounded-full animate-bounce"></div>
+                            </a>
+                            <a href="#" class="group flex items-center space-x-5 text-gray-700 py-2 tracking-wide">                            
+                                <div class="text-slate-100 group-hover:text-amber-500 active:text-amber-500 group-hover:animate-pulse transition duration-500">Nail Art</div>
+                                <div class="hidden group-hover:inline-block w-3 h-3 bg-gradient-to-t from-violet-400 to-orange-400 rounded-full animate-bounce"></div>
+                            </a>
+                            <a href="#" class="group flex items-center space-x-5 text-gray-700 py-2 tracking-wide">                            
+                                <div class="text-slate-100 group-hover:text-amber-500 active:text-amber-500 group-hover:animate-pulse transition duration-500">Skin Care</div>
+                                <div class="hidden group-hover:inline-block w-3 h-3 bg-gradient-to-t from-violet-400 to-orange-400 rounded-full animate-bounce"></div>
+                            </a>
+                            <a href="#" class="group flex items-center space-x-5 text-gray-700 py-2 tracking-wide">                            
+                                <div class="text-slate-100 group-hover:text-amber-500 active:text-amber-500 group-hover:animate-pulse transition duration-500">Spa & Massage</div>
+                                <div class="hidden group-hover:inline-block w-3 h-3 bg-gradient-to-t from-violet-400 to-orange-400 rounded-full animate-bounce"></div>
+                            </a>                    
                         </div>
                     </div>
-                    
-                    <a href="#" class="group flex flex-col items-center text-gray-700 px-3 py-2 text-lg tracking-wide font-medium">
-                        <div class="hidden group-hover:block w-3 h-3 bg-gradient-to-t from-violet-200 to-orange-500 rounded-full animate-bounce"></div>
-                        <div class="lg:text-2xl text-slate-200 group-hover:text-amber-500 group-hover:animate-pulse transition duration-500">Prices</div>
-                    </a>
-                    
-                    <a href="#" class="group flex flex-col items-center text-gray-700 px-3 py-2 text-lg tracking-wide font-medium">
-                        <div class="hidden group-hover:block w-3 h-3 bg-gradient-to-t from-violet-300 to-orange-500 rounded-full animate-bounce"></div>
-                        <div class="lg:text-2xl text-slate-200 group-hover:text-amber-500 group-hover:animate-pulse transition duration-500">Gallery</div>
-                    </a>
-                                       
-                    
-                    <!-- Appointment Button -->
-                    <a href="#" class="lg:text-2xl ml-4 px-4 py-2 bg-gradient-to-b from-amber-600  to-amber-800/60 text-white font-medium tracking-wide rounded-full hover:bg-linear-to-t hover:from-amber-800/60 hover:to-amber-600 transition duration-500 transform hover:-translate-y-0.5 hover:shadow-lg">
+
+                    <a href="#" class="block group space-x-3 text-2xl text-yellow-300 hover:text-amber-400 active:text-amber-500 px-3 py-3 rounded-md font-medium hover:bg-purple-50/10 tracking-wider animate-pulse">
+                        <span class="flex items-center space-x-5">
+                            <div class="text-slate-100 group-hover:text-amber-400 active:text-amber-500 group-hover:animate-pulse transition duration-500">Prices</div>
+                            <div class="hidden group-hover:block w-3 h-3 bg-gradient-to-t from-violet-400 to-orange-400 rounded-full animate-bounce"></div>
+                        </span>
+                    <a href="#" class="block group space-x-3 text-2xl text-yellow-300 hover:text-amber-400 active:text-amber-500 px-3 py-3 rounded-md font-medium hover:bg-purple-50/10 tracking-wider animate-pulse">
+                        <span class="flex items-center space-x-5">
+                            <div class="text-slate-100 group-hover:text-amber-400 active:text-amber-500 group-hover:animate-pulse transition duration-500">Gallery</div>
+                            <div class="hidden group-hover:block w-3 h-3 bg-gradient-to-t from-violet-400 to-orange-400 rounded-full animate-bounce"></div>
+                        </span>
+
+                    <!-- Mobile Appointment Button -->
+                    <a href="#" class="block min-w-1/2 mx-3 mt-4 px-8 py-3 bg-gradient-to-r from-amber-500 to-amber-700 text-white tracking-wider rounded-lg text-2xl text-center hover:bg-gradient-to-br hover:from-amber-500 hover:to-amber-700 transition duration-600">
                         Reservations
                     </a>
                 </div>
-
-                <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
-                    <!-- Mobile Menu Button -->
-                    <button id="menuToggle" class="menu-toggle md:hidden focus:outline-none rounded p-1 cursor-pointer">
-                        <span class="block w-6 h-0.5 bg-white mb-1.5 transition-all duration-300 hamburger-top"></span>
-                        <span class="block w-6 h-0.5 bg-white mb-1.5 transition-all duration-300 hamburger-middle"></span>
-                        <span class="block w-6 h-0.5 bg-white transition-all duration-300 hamburger-bottom"></span>
-                    </button>
-                </div>
             </div>
-        </div>
-
-        <!-- Mobile Menu (hidden by default) -->
-        <!-- <div id="mobile-menu" class="absolute top-0 md:hidden hidden bg-linear-to-l from-stone-400/92 via-zinc-400/98 to-slate-400 rounded-md min-h-130 min-w-4/8 sm:min-w-3/8 "> -->
-        <div id="mobileMenu" class="pt-5 px-5 max-h-0 md:hidden overflow-hidden transition-all duration-300 ease-in-out ">
-            <div class="px-4 pt-4 pb-3 space-y-1 sm:px-3 text-xl font2">                
-                <a href="#" class="block group space-x-3 text-2xl text-yellow-300 hover:text-amber-400 active:text-amber-500 px-3 py-3 rounded-md font-medium hover:bg-purple-50/10 tracking-wider animate-pulse">
-                    <span class="flex items-center space-x-5">
-                        <div class="text-slate-100 group-hover:text-amber-400 active:text-amber-500 group-hover:animate-pulse transition duration-500">Home</div>
-                        <div class=" w-3 h-3 bg-gradient-to-t from-violet-400 to-orange-400 rounded-full animate-bounce"></div>
-                    </span>                    
-                </a>
-                <a href="#" class="block group space-x-3 text-2xl text-yellow-300 hover:text-amber-400 active:text-amber-500 px-3 py-3 rounded-md font-medium hover:bg-purple-50/10 tracking-wider animate-pulse">
-                    <span class="flex items-center space-x-5">
-                        <div class="text-slate-100 group-hover:text-amber-400 active:text-amber-500 group-hover:animate-pulse transition duration-500">About</div>
-                        <div class="hidden group-hover:block w-3 h-3 bg-gradient-to-t from-violet-400 to-orange-400 rounded-full animate-bounce"></div>
-                    </span>
-                
-                <!-- Mobile Services Dropdown -->
-                <div x-data="{ open: false }" class="border-t border-purple-100">
-                    <button @click="open = !open" class="w-full text-left flex justify-between items-center text-2xl text-slate-50 hover:text-amber-400 active:text-amber-500 px-3 py-3 rounded-md font-medium hover:bg-purple-50/10">
-                        Services
-                        <svg class="h-5 w-5 transition-transform duration-200" :class="{ 'rotate-180': open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </button>
-                    <div x-show="open" x-transition class="pl-8 space-y-1 border-l-2 border-violet-200 ml-3">
-                        <a href="#" class="group flex items-center space-x-5 text-gray-700 py-2 tracking-wide">                            
-                            <div class="text-slate-100 group-hover:text-amber-500 active:text-amber-500 group-hover:animate-pulse transition duration-500">Hair Styling</div>
-                            <div class="hidden group-hover:inline-block w-3 h-3 bg-gradient-to-t from-violet-400 to-orange-400 rounded-full animate-bounce"></div>
-                        </a>
-                        <a href="#" class="group flex items-center space-x-5 text-gray-700 py-2 tracking-wide">                            
-                            <div class="text-slate-100 group-hover:text-amber-500 active:text-amber-500 group-hover:animate-pulse transition duration-500">Makeup & Beauty</div>
-                            <div class="hidden group-hover:inline-block w-3 h-3 bg-gradient-to-t from-violet-400 to-orange-400 rounded-full animate-bounce"></div>
-                        </a>
-                        <a href="#" class="group flex items-center space-x-5 text-gray-700 py-2 tracking-wide">                            
-                            <div class="text-slate-100 group-hover:text-amber-500 active:text-amber-500 group-hover:animate-pulse transition duration-500">Nail Art</div>
-                            <div class="hidden group-hover:inline-block w-3 h-3 bg-gradient-to-t from-violet-400 to-orange-400 rounded-full animate-bounce"></div>
-                        </a>
-                        <a href="#" class="group flex items-center space-x-5 text-gray-700 py-2 tracking-wide">                            
-                            <div class="text-slate-100 group-hover:text-amber-500 active:text-amber-500 group-hover:animate-pulse transition duration-500">Skin Care</div>
-                            <div class="hidden group-hover:inline-block w-3 h-3 bg-gradient-to-t from-violet-400 to-orange-400 rounded-full animate-bounce"></div>
-                        </a>
-                        <a href="#" class="group flex items-center space-x-5 text-gray-700 py-2 tracking-wide">                            
-                            <div class="text-slate-100 group-hover:text-amber-500 active:text-amber-500 group-hover:animate-pulse transition duration-500">Spa & Massage</div>
-                            <div class="hidden group-hover:inline-block w-3 h-3 bg-gradient-to-t from-violet-400 to-orange-400 rounded-full animate-bounce"></div>
-                        </a>                    
-                    </div>
-                </div>
-
-                <a href="#" class="block group space-x-3 text-2xl text-yellow-300 hover:text-amber-400 active:text-amber-500 px-3 py-3 rounded-md font-medium hover:bg-purple-50/10 tracking-wider animate-pulse">
-                    <span class="flex items-center space-x-5">
-                        <div class="text-slate-100 group-hover:text-amber-400 active:text-amber-500 group-hover:animate-pulse transition duration-500">Prices</div>
-                        <div class="hidden group-hover:block w-3 h-3 bg-gradient-to-t from-violet-400 to-orange-400 rounded-full animate-bounce"></div>
-                    </span>
-                <a href="#" class="block group space-x-3 text-2xl text-yellow-300 hover:text-amber-400 active:text-amber-500 px-3 py-3 rounded-md font-medium hover:bg-purple-50/10 tracking-wider animate-pulse">
-                    <span class="flex items-center space-x-5">
-                        <div class="text-slate-100 group-hover:text-amber-400 active:text-amber-500 group-hover:animate-pulse transition duration-500">Gallery</div>
-                        <div class="hidden group-hover:block w-3 h-3 bg-gradient-to-t from-violet-400 to-orange-400 rounded-full animate-bounce"></div>
-                    </span>
-
-                <!-- Mobile Appointment Button -->
-                <a href="#" class="block max-w-1/2 mx-3 mt-4 px-6 py-3 bg-gradient-to-r from-amber-500 to-amber-700 text-white tracking-wider rounded-lg text-2xl text-center hover:bg-gradient-to-br hover:from-amber-500 hover:to-amber-700 transition duration-600">
-                    Reservations
-                </a>
-            </div>
-        </div>
-    </nav>
-</section>
+        </nav>
+    </section>
  
                         <!-- ========== Start Section ========== -->
                                             <!-- Hero Section  -->
                         <!-- ========== End Section ========== -->
     <section class="bg-cover bg-center bg-fixed lg:h-screen h-full" style="background-image: url(./image/braids1.4.jpg);" >
         <div class="md:pt-73 pt-53 pb-12 pl-4 bg-black/60 lg:h-screen h-full">
-            <h1 class="font bg-gradient-to-b from-amber-500  to-rose-700/50 text-transparent bg-clip-text md:w-3/4 text-8xl text-pretty">
+            <h1 class="font bg-gradient-to-b from-amber-500 to-rose-500/60 md:to-rose-700/50 text-transparent bg-clip-text md:w-3/4 text-7xl md:text-8xl text-pretty max-md:leading-23">
               Welcome to Hair Glow  
             </h1>
-            <p class="font2 bg-gradient-to-r from-slate-300 to-rose-500/60  text-transparent bg-clip-text text-4xl pt-8 lg:pt-4 ">
+            <p class="font2 bg-gradient-to-r from-slate-300 to-rose-500/60  text-transparent bg-clip-text text-4xl pt-25 md:pt-4 lg:pt-18">
                 Were Luxury gets comfort
             </p>
-            <div class="pt-4 flex flex-col lg:flex-row items-start space-y-5 lg:space-x-12 lg:pt-7">
+            <div class="pt-6 md:pt-4 flex flex-col lg:flex-row items-start space-y-5 lg:space-x-12 lg:pt-7">
                 <button class=" font2 tracking-wider flex space-x-4 bg-linear-to-r from-amber-700/80  to-rose-500/30 py-1 px-2 rounded-md text-2xl text-white"><i class="fa-solid fa-phone px-2 py-1"></i> <span>07058748480</span> </button>
                 <button class="font2 tracking-wider flex space-x-4 bg-linear-to-r from-amber-700/80  to-rose-500/30 py-1 px-2 rounded-md text-2xl text-white"><i class="fa-solid fa-location-dot px-2 py-1"></i>  <span>Estate Gate</span> </button>
             </div>
@@ -369,8 +541,8 @@
                 <aside class="w-fit lg:w-full max-lg:pr-8 mt-4 flex items-end bg-linear-to-br from-zinc-50/60 to-pink-100/40 rounded-sm">
                     <img src="./image/hair-care.png" alt="" class="w-28 h-32 p-3">
                     <div class="flex flex-col pl-5 text-slate-800">
-                        <span class="text-2xl md:text-3xl font2 mb-3">+2349063123479</span>
-                        <span class="text-lg font2 mb-3 tracking-wide">Call us direct 24/7 for get a free consultation</span>
+                        <span class="text-xl md:text-3xl font2 mb-3">+2349063123479</span>
+                        <span class="text-lg font2 mb-3 tracking-wide text-pretty">Call us direct 24/7 for get a free consultation</span>
                     </div>
                 </aside>
             </div> 
@@ -390,9 +562,9 @@
                 <div>
                     <h2 class="pb-5 text-4xl font2 text-slate-800 tracking-wide">Working Hours</h2>
                     <div class="space-y-4">
-                        <div class="text-2xl font2 text-slate-800 flex items-center space-x-3"> <span>Working days: 9:00 AM</span> <div class="w-25 md:w-40 lg:w-25 xl:w-50 h-0.5 bg-slate-600"></div> <span>9:00 PM</span></div>
-                        <div class="text-2xl font2 text-slate-800 flex items-center space-x-3"> <span>Saturday: 10:00</span> <div class="w-25 md:w-40 lg:w-25 xl:w-50 h-0.5 bg-slate-600"></div> <span>8:00 PM</span></div>
-                        <div class="text-2xl font2 text-slate-800"> Sunday: Closed</div>
+                        <div class="text-2xl font2 text-slate-800 space-y-2"> <div class="text-3xl">Monday - Friday:</div> <div class="flex items-center space-x-3"> <span>9:00 AM</span> <div class="w-25 md:w-40 lg:w-25 xl:w-50 h-0.5 bg-slate-600"></div> <span>8:00 PM</span> </div></div>
+                        <div class="text-2xl font2 text-slate-800 space-y-2"> <div class="text-3xl">Saturday:</div> <div class="flex items-center space-x-3"> <span>10:00 AM</span> <div class="w-25 md:w-40 lg:w-25 xl:w-50 h-0.5 bg-slate-600"></div> <span>8:00 PM</span> </div></div>
+                        <div class="text-2xl font2 text-slate-800 space-y-2"> <div class="text-3xl">Sunday:</div> <div class="flex items-center space-x-3"> Closed </div></div>
                     </div>
                 </div>
 
@@ -435,53 +607,53 @@
             </header>
 
             <div class="grid grid-cols-2  lg:grid-cols-3">
-                <div class="flex flex-col justify-between items-center space-y-4 p-6 m-4 max-h-100 bg-white rounded-lg shadow-2xl shadow-amber-900/70 hover:scale-105 transition duration-500">
+                <div class="flex flex-col justify-between items-center space-y-4 px-3 md:px-6 py-6 m-4 min-h-100 bg-white rounded-lg shadow-2xl shadow-amber-900/70 hover:scale-105 transition duration-500">
                     <img class="w-25" src="./image/hair-care.png" alt="Hair Braiding"></img>
-                    <h2 class="text-xl md:text-2xl font3 font-bold tracking-wide text-slate-800">Hair Braiding</h2>
+                    <h2 class="text-xl md:text-2xl font3 font-bold tracking-wide text-slate-800">Braiding</h2>
                     <p class="text-slate-800 text-center font3 leading-relaxed text-lg md:text-xl">
-                        Experience the artistry of hair braiding with our expert stylists. 
+                        Experience the artistry of stylish hair braiding. 
                     </p>
-                    <a href="#" class="px-4 py-2 bg-linear-to-b from-yellow-700 to-amber-700 hover:bg-linear-to-t hover:from-amber-600 hover:to-yellow-800 text-stone-100 hover:text-white font-medium hover:font-bold tracking-wide rounded-sm  shadow-2xl hover:shadow-stone-600 transition duration-500">Book Now</a>
+                    <a href="#" class="text-pretty text-center px-4 py-2 bg-linear-to-b from-yellow-700 to-amber-700 hover:bg-linear-to-t hover:from-amber-600 hover:to-yellow-800 text-stone-100 hover:text-white font-medium hover:font-bold tracking-wide rounded-sm  shadow-2xl hover:shadow-stone-600 transition duration-500">Book Now</a>
                 </div>
-                <div class="flex flex-col justify-between items-center space-y-4 p-6 m-4 max-h-100 bg-white rounded-lg shadow-2xl shadow-amber-900/70 hover:scale-105 transition duration-500">
+                <div class="flex flex-col justify-between items-center space-y-4 px-3 md:px-6 py-6 m-4 min-h-100 bg-white rounded-lg shadow-2xl shadow-amber-900/70 hover:scale-105 transition duration-500">
                     <img class="w-25" src="./image/makeup.png" alt="Makeup img"></img>
                     <h2 class="text-xl md:text-2xl font3 font-bold tracking-wide text-slate-800">Makeup</h2>
                     <p class="text-slate-800 text-center font3 leading-relaxed text-lg md:text-xl">
                         We bring out the beauty hidden deep within you.
                     </p>
-                    <a href="#" class="px-4 py-2 bg-linear-to-b from-yellow-700 to-amber-700 hover:bg-linear-to-t hover:from-amber-600 hover:to-yellow-800 text-stone-100 hover:text-white font-medium hover:font-bold tracking-wide rounded-sm  shadow-2xl hover:shadow-stone-600 transition duration-500">Book Now</a>
+                    <a href="#" class="text-pretty text-center px-4 py-2 bg-linear-to-b from-yellow-700 to-amber-700 hover:bg-linear-to-t hover:from-amber-600 hover:to-yellow-800 text-stone-100 hover:text-white font-medium hover:font-bold tracking-wide rounded-sm  shadow-2xl hover:shadow-stone-600 transition duration-500">Book Now</a>
                 </div>   
-                <div class="flex flex-col justify-between items-center space-y-4 p-6 m-4 max-h-100 bg-white rounded-lg shadow-2xl shadow-amber-900/70 hover:scale-105 transition duration-500">
+                <div class="flex flex-col justify-between items-center space-y-4 px-3 md:px-6 py-6 m-4 min-h-100 bg-white rounded-lg shadow-2xl shadow-amber-900/70 hover:scale-105 transition duration-500">
                     <img class="w-25" src="./image/manicure.png" alt="Manicure Image"></img>
                     <h2 class="text-xl md:text-2xl font3 font-bold tracking-wide text-slate-800">Manicure</h2>
                     <p class="text-slate-800 text-center font3 leading-relaxed text-lg md:text-xl">
                         We bring out the beauty hidden deep within your hands.
                     </p>
-                    <a href="#" class="px-4 py-2 bg-linear-to-b from-yellow-700 to-amber-700 hover:bg-linear-to-t hover:from-amber-600 hover:to-yellow-800 text-stone-100 hover:text-white font-medium hover:font-bold tracking-wide rounded-sm  shadow-2xl hover:shadow-stone-600 transition duration-500">Book Now</a>
+                    <a href="#" class="text-pretty text-center px-4 py-2 bg-linear-to-b from-yellow-700 to-amber-700 hover:bg-linear-to-t hover:from-amber-600 hover:to-yellow-800 text-stone-100 hover:text-white font-medium hover:font-bold tracking-wide rounded-sm  shadow-2xl hover:shadow-stone-600 transition duration-500">Book Now</a>
                 </div>
-                <div class="flex flex-col justify-between items-center space-y-4 p-6 m-4 max-h-100 bg-white rounded-lg shadow-2xl shadow-amber-900/70 hover:scale-105 transition duration-500">
+                <div class="flex flex-col justify-between items-center space-y-4 px-3 md:px-6 py-6 m-4 min-h-100 bg-white rounded-lg shadow-2xl shadow-amber-900/70 hover:scale-105 transition duration-500">
                     <img class="w-25" src="./image/pedicure.png" alt="Pedicure Image"></img>
                     <h2 class="text-xl md:text-2xl font3 font-bold tracking-wide text-slate-800">Pedicure</h2>
                     <p class="text-slate-800 text-center font3 leading-relaxed text-lg md:text-xl">
                         We bring out the beauty hidden deep within your feets.
                     </p>
-                    <a href="#" class="px-4 py-2 bg-linear-to-b from-yellow-700 to-amber-700 hover:bg-linear-to-t hover:from-amber-600 hover:to-yellow-800 text-stone-100 hover:text-white font-medium hover:font-bold tracking-wide rounded-sm  shadow-2xl hover:shadow-stone-600 transition duration-500">Book Now</a>
+                    <a href="#" class="text-pretty text-center px-4 py-2 bg-linear-to-b from-yellow-700 to-amber-700 hover:bg-linear-to-t hover:from-amber-600 hover:to-yellow-800 text-stone-100 hover:text-white font-medium hover:font-bold tracking-wide rounded-sm  shadow-2xl hover:shadow-stone-600 transition duration-500">Book Now</a>
                 </div>
-                <div class="flex flex-col justify-between items-center space-y-4 p-6 m-4 max-h-100 bg-white rounded-lg shadow-2xl shadow-amber-900/70 hover:scale-105 transition duration-500">
+                <div class="flex flex-col justify-between items-center space-y-4 px-3 md:px-6 py-6 m-4 min-h-100 bg-white rounded-lg shadow-2xl shadow-amber-900/70 hover:scale-105 transition duration-500">
                     <img class="w-25" src="./image/skin-care.png" alt="Skin care Image"></img>
                     <h2 class="text-xl md:text-2xl font3 font-bold tracking-wide text-slate-800">skin-Care</h2>
                     <p class="text-slate-800 text-center font3 leading-relaxed text-lg md:text-xl">
                         We bring out the beauty hidden deep within your Skin.
                     </p>
-                    <a href="#" class="px-4 py-2 bg-linear-to-b from-yellow-700 to-amber-700 hover:bg-linear-to-t hover:from-amber-600 hover:to-yellow-800 text-stone-100 hover:text-white font-medium hover:font-bold tracking-wide rounded-sm  shadow-2xl hover:shadow-stone-600 transition duration-500">Book Now</a>
+                    <a href="#" class="text-pretty text-center px-4 py-2 bg-linear-to-b from-yellow-700 to-amber-700 hover:bg-linear-to-t hover:from-amber-600 hover:to-yellow-800 text-stone-100 hover:text-white font-medium hover:font-bold tracking-wide rounded-sm  shadow-2xl hover:shadow-stone-600 transition duration-500">Book Now</a>
                 </div>
-                <div class="flex flex-col justify-between items-center space-y-4 p-6 m-4 max-h-100 bg-white rounded-lg shadow-2xl shadow-amber-900/70 hover:scale-105 transition duration-500">
+                <div class="flex flex-col justify-between items-center space-y-4 px-3 md:px-6 py-6 m-4 min-h-100 bg-white rounded-lg shadow-2xl shadow-amber-900/70 hover:scale-105 transition duration-500">
                     <img class="w-25" src="./image/blow-dry.png" alt="Hair Dryer Image"></img>
                     <h2 class="text-xl md:text-2xl font3 font-bold tracking-wide text-slate-800">Blow-Dry</h2>
                     <p class="text-slate-800 text-center font3 leading-relaxed text-lg md:text-xl">
                         We bring out the beauty hidden deep within your Hair.
                     </p>
-                    <a href="#" class="px-4 py-2 bg-linear-to-b from-yellow-700 to-amber-700 hover:bg-linear-to-t hover:from-amber-600 hover:to-yellow-800 text-stone-100 hover:text-white font-medium hover:font-bold tracking-wide rounded-sm  shadow-2xl hover:shadow-stone-600 transition duration-500">Book Now</a>
+                    <a href="#" class="text-pretty text-center px-4 py-2 bg-linear-to-b from-yellow-700 to-amber-700 hover:bg-linear-to-t hover:from-amber-600 hover:to-yellow-800 text-stone-100 hover:text-white font-medium hover:font-bold tracking-wide rounded-sm  shadow-2xl hover:shadow-stone-600 transition duration-500">Book Now</a>
                 </div>
             </div>
             
@@ -510,7 +682,7 @@
                     <img class="w-20" src="./image/beauty21.jpeg" alt="braids"></img>
                     <div class="mr-6 flex flex-col justify-start items-end">
                         <h2 class="font2 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Corn Row</h2>
-                        <p class="font2 text-xl text-white tracking-wide">₦2,500-₦12,000</p>
+                        <p class="font2 text-xl text-white tracking-wide">₦2,500 - ₦12,000</p>
                     </div>
                 </li>
                 <li class="max-lg:w-3/4 bg-gradient-to-br from-orange-700/70 to-amber-800/70 flex justify-between transform lg:-translate-x-9">
@@ -524,28 +696,28 @@
                     <img class="w-20" src="./image/makeup2.png" alt="braids"></img>
                     <div class="mr-6 flex flex-col justify-start items-end">
                         <h2 class="font2 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Makeup</h2>
-                        <p class="font2 text-xl text-white tracking-wide">₦5,000-₦25,000 </p>
+                        <p class="font2 text-xl text-white tracking-wide">₦5,000 - ₦25,000 </p>
                     </div>
                 </li>
                 <li class=" max-lg:w-3/4 bg-gradient-to-br from-orange-700/70 to-amber-800/70 flex justify-between transform lg:-translate-x-3">
                     <img class="w-20" src="./image/man3.jpeg" alt="braids"></img>
                     <div class="mr-6 flex flex-col justify-start items-end">
                         <h2 class="font2 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Manicure</h2>
-                        <p class="font2 text-xl text-white tracking-wide">₦3,500-₦20,000</p>
+                        <p class="font2 text-xl text-white tracking-wide">₦3,500 - ₦20,000</p>
                     </div>
                 </li>
                 <li class="max-lg:w-3/4 bg-gradient-to-br from-orange-700/70 to-amber-800/70 flex justify-between transform lg:-translate-x-0">                    
                     <img class="w-20" src="./image/ped2.jpeg" alt="braids"></img>
                     <div class="mr-6 flex flex-col justify-start items-end">
                         <h2 class="font2 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Pedicure</h2>
-                        <p class="font2 text-xl text-white tracking-wide">₦2,500-₦15,000</p>
+                        <p class="font2 text-xl text-white tracking-wide">₦2,500 - ₦15,000</p>
                     </div>
                 </li>
                 <li class="max-lg:w-3/4 bg-gradient-to-br from-orange-700/70 to-amber-800/70 flex justify-between transform lg:translate-x-3">
                     <img class="w-20" src="./image/skincare3.jpeg" alt="braids"></img>
                     <div class="mr-6 flex flex-col justify-start items-end">
                         <h2 class="font2 text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Skincare</h2>
-                        <p class="font2 text-xl text-white tracking-wide">₦15,000-₦30,000</p>
+                        <p class="font2 text-xl text-white tracking-wide">₦15,000 - ₦30,000</p>
                     </div>
                 </li>
             </ul>
@@ -1019,12 +1191,12 @@
                         <!-- ========== End Section ========== -->
     <section class="bg-stone-800 text-stone-400 text-lg font2">
         <div class=" pb-8 flex flex-col">
-            <div class="grid grid-cols-1 lg:grid-cols-2"> <!-- Top Footer -->
-                <div class="py-10 px-16 grid grid-cols-1 justify-center items-center gap-y-5 min-lg:border-r-1 border-stone-500 ">             <!-- Top Left Footer -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 items-center"> <!-- Top Footer -->
+                <div class="py-10 px-8 md:px-16 grid grid-cols-1 justify-center items-center gap-y-5 min-lg:border-r-1 border-stone-500 ">             <!-- Top Left Footer -->
                     <span class="flex w-full justify-center ">
                         <img src="./image/mylogo.png" alt="Company logo" class="w-35 h-35 hover:scale-110 transition duration-500"></img>
                     </span>
-                    <p class="text-pretty tracking-wide text-start"><span class="text-amber-500 scale-120 font">At Hair Glow Salon</span>, beauty is more than a service—it's an experience. 
+                    <p class="text-pretty tracking-wide leading-loose text-start"><span class="text-amber-500 scale-120 font">At Hair Glow Salon</span>, beauty is more than a service—it's an experience. 
                         Founded with passion and elegance, we provide premium hairstyling, makeup artistry, 
                         spa treatments, and personalized beauty care that bring out your confidence and natural glow.
                     </p>
@@ -1098,6 +1270,106 @@
         </div>
     </section>
 
+    <!-- ========== Start Back to Top Button ========== -->
+    <button id="backToTop" 
+            aria-label="Back to top" 
+            title="Back to top"
+            class="fixed bottom-8 right-8 w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-amber-500 to-amber-700 text-white rounded-full flex items-center justify-center text-xl md:text-2xl cursor-pointer shadow-lg shadow-amber-900/50 border-2 border-white/30 opacity-0 invisible transition-all duration-300 transform translate-y-5 hover:scale-110 hover:shadow-xl hover:shadow-amber-900/70 active:scale-95 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 z-50">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+    <!-- ========== End Back to Top Button ========== -->
+
+    <!-- Back to Top Script (Tailwind Version) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTopButton = document.getElementById('backToTop');
+            const scrollThreshold = 300; // Show button after scrolling 300px
+            
+            // Show/hide button based on scroll position
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > scrollThreshold) {
+                    // Show button with Tailwind classes
+                    backToTopButton.classList.remove('opacity-0', 'invisible', 'translate-y-5');
+                    backToTopButton.classList.add('opacity-100', 'visible', 'translate-y-0');
+                    
+                    // Add pulse animation when first shown
+                    if (!backToTopButton.classList.contains('animate-pulse-amber')) {
+                        backToTopButton.classList.add('animate-pulse-amber');
+                        setTimeout(() => {
+                            backToTopButton.classList.remove('animate-pulse-amber');
+                        }, 4000); // Remove pulse after 4 seconds
+                    }
+                } else {
+                    // Hide button with Tailwind classes
+                    backToTopButton.classList.remove('opacity-100', 'visible', 'translate-y-0', 'animate-pulse-amber');
+                    backToTopButton.classList.add('opacity-0', 'invisible', 'translate-y-5');
+                }
+            });
+            
+            // Smooth scroll to top when button is clicked
+            backToTopButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // For browsers that support smooth scrolling
+                if ('scrollBehavior' in document.documentElement.style) {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    // Fallback for older browsers
+                    const scrollToTop = () => {
+                        const currentPosition = window.pageYOffset;
+                        if (currentPosition > 0) {
+                            window.scrollTo(0, currentPosition - currentPosition / 8);
+                            requestAnimationFrame(scrollToTop);
+                        }
+                    };
+                    scrollToTop();
+                }
+                
+                // Remove focus after click for better UX
+                this.blur();
+            });
+            
+            // Optional: Add keyboard support
+            document.addEventListener('keydown', function(e) {
+                // Home key scrolls to top
+                if (e.key === 'Home') {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                }
+                
+                // Spacebar or Enter when back to top button is focused
+                if ((e.key === ' ' || e.key === 'Enter') && document.activeElement === backToTopButton) {
+                    e.preventDefault();
+                    backToTopButton.click();
+                }
+            });
+            
+            // Optional: Touch support for mobile - swipe up from bottom
+            let touchStartY = 0;
+            
+            document.addEventListener('touchstart', function(e) {
+                touchStartY = e.changedTouches[0].screenY;
+            }, false);
+            
+            document.addEventListener('touchend', function(e) {
+                const touchEndY = e.changedTouches[0].screenY;
+                
+                // Quick swipe up from bottom triggers back to top
+                if (touchStartY - touchEndY > 100 && window.scrollY > 500) {
+                    // Check if touch started near bottom of screen (last 20%)
+                    if (touchStartY > window.innerHeight * 0.8) {
+                        backToTopButton.click();
+                    }
+                }
+            }, false);
+        });
+    </script>    
                      <!-- Nav Bar script section data for beauty salon -->
     <!-- Add Alpine.js for mobile dropdown -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
@@ -1141,6 +1413,78 @@
                     }
                 }
             });
+        });
+    </script>
+
+    <script>
+        // Navbar sticky after 500px functionality
+        const navbar = document.getElementById('main-navbar');
+        const STICKY_THRESHOLD = 500; // Become sticky after 500px
+        
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > STICKY_THRESHOLD) {
+                // Add sticky class
+                navbar.classList.remove('navbar-normal');
+                navbar.classList.add('navbar-sticky', 'pb-3', 'bg-orange-950/95');
+                // Add body class for padding adjustment
+                document.body.classList.add('sticky-nav-active');
+            } else {
+                // Remove sticky class
+                navbar.classList.remove('navbar-sticky', 'pb-3', 'bg-orange-950/95');
+                navbar.classList.add('navbar-normal');
+                // Remove body class
+                document.body.classList.remove('sticky-nav-active');
+            }
+        });
+        
+               
+        // Close mobile menu when clicking on a link
+        const mobileLinks = document.querySelectorAll('#mobile-menu a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.add('hidden');
+                // Reset icon to bars
+                const icon = mobileMenuButton.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+       
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Calculate offset based on navbar state
+                    const navbarHeight = navbar.classList.contains('navbar-sticky') ? 80 : 0;
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - navbarHeight - 20,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Initialize navbar state on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > STICKY_THRESHOLD) {
+                navbar.classList.remove('navbar-normal');
+                navbar.classList.add('navbar-sticky');
+                document.body.classList.add('sticky-nav-active');
+            } else {
+                navbar.classList.remove('navbar-sticky');
+                navbar.classList.add('navbar-normal');
+                document.body.classList.remove('sticky-nav-active');
+            }
         });
     </script>
                  <!-- Testimonial script section data for beauty salon -->
@@ -1197,9 +1541,9 @@
             
             items.forEach((testimonial, i) => {
                 const item = document.createElement('div');
-                item.className = 'absolute md:w-[320px] w-[230px] rounded-xl shadow-lg transition-all duration-500 cursor-pointer transform hover:scale-102';
+                item.className = 'absolute md:w-[320px] w-[210px] rounded-xl shadow-lg transition-all duration-500 cursor-pointer transform hover:scale-102';
                 item.innerHTML = `
-                    <div class="bg-linear-to-b from-orange-500 to-orange-700 text-white flex flex-col items-center shadow-lg p-6 rounded-lg">
+                    <div class="bg-linear-to-b from-orange-500 to-orange-700 text-white flex flex-col items-center shadow-lg p-3 md:p-6 rounded-lg">
                         <img src="${testimonial.image}" alt="${testimonial.name}" class=" w-18 h-18 rounded-full transform md:-translate-y-12 border-4 border-white shadow-lg">
                         <div class="text-center mt-1">
                             <h1 class="text-xl font3 font-bold pb-1 tracking-wide">${testimonial.name}</h1>
