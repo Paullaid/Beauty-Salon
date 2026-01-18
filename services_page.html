@@ -237,22 +237,81 @@
         }
     </style> 
   
-    <style>        <!-- Testimonial styles -->
-        .perspective-1000 {
-            perspective: 1000px;
+    <style>       <!-- My Testimonial Styles -->
+        /* Performance optimizations */
+        .testimonial-card {
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            transform: translate3d(0,0,0);
+            -webkit-transform: translate3d(0,0,0);
         }
         
+        /* Salon tool styling for random positioning */
         .salon-tool {
             position: absolute;
-            z-index: 0;
-            opacity: 0.3;
-            transition: all 0.3s ease;
-        }
-        .salon-tool:hover {
-            opacity: 0.5;
-            transform: scale(1.05);
+            z-index: 1;
+            opacity: 0.4;
+            pointer-events: none;
+            transition: transform 2s ease, opacity 2s ease;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
         }
         
+        .salon-tool:hover {
+            opacity: 0.7;
+            transform: scale(1.1);
+        }
+        
+        /* Wider layout for all screens */
+        #testimonial-3d {
+            width: 100%;
+            max-width: 1200px;
+        }
+        
+        /* Mobile-specific adjustments */
+        @media (max-width: 768px) {
+            #testimonial-3d > div {
+                transition-duration: 800ms !important;
+                transform-origin: center center;
+            }
+            
+            /* Reduced transparency for mobile */
+            #testimonial-3d > div:not(.front-card) {
+                opacity: 0.8 !important;
+            }
+            
+            /* Fewer icons on mobile */
+            .salon-tool:nth-child(n+11) {
+                display: none;
+            }
+            
+            .salon-tool {
+                opacity: 0.3;
+            }
+        }
+        
+        /* Extra small screens (320px) optimizations */
+        @media (max-width: 375px) {
+            #testimonial-section {
+                padding: 0 5px;
+            }
+            
+            #testimonial-3d > div {
+                transition-duration: 1000ms !important;
+            }
+            
+            /* Even fewer icons on very small screens */
+            .salon-tool:nth-child(n+8) {
+                display: none;
+            }
+            
+            .salon-tool {
+                opacity: 0.25;
+                font-size: 1.5rem !important;
+            }
+        }
     </style>
 
     <style>        <!-- Gallery styles -->
@@ -494,8 +553,8 @@
                         <!-- ========== Start Section ========== -->
                                             <!-- Hero Section  -->
                         <!-- ========== End Section ========== -->
-    <section class="bg-cover bg-center bg-fixed lg:h-3/4 h-3/4" style="background-image: url(./image/tools1.2.jpg);" >
-        <div class="flex flex-col justify-center items-center pb-30 pt-60 bg-slate-950/60 lg:h-3/4 h-3/4">            
+    <section class="bg-cover bg-center bg-fixed h-130 md:h-150" style="background-image: url(./image/tools1.2.jpg);" >
+        <div class="flex flex-col justify-center items-center pb-30 pt-60 bg-slate-950/60 h-130 md:h-150">            
             <div class="flex space-x-3 ">
                 <span class="uppercase font2 bg-amber-300 text-transparent bg-clip-text text-2xl cursor-pointer"> home </span>
                 <span class="uppercase font2 font-bold bg-amber-50 text-transparent bg-clip-text text-2xl">/</span>
@@ -649,58 +708,75 @@
                         <!-- ========== Start Section ========== -->
                                     <!-- Testimonial Section -->
                         <!-- ========== End Section ========== -->
-    <section id="testimonial"  class="p-6 pt-18 relative bg-linear-to-br from-white via-pink-50/70 to-rose-100/70">
-        <!-- Salon Tool Decorations -->
-        <div class="salon-tool top-10 left-10 text-4xl text-pink-400">
+    <section id="testimonial" class="p-4 md:p-6 pt-18 relative bg-linear-to-br from-white via-pink-50/70 to-rose-100/70 overflow-hidden">
+        <!-- Salon Tool Decorations - Will be positioned randomly via JS -->
+        <div class="salon-tool text-4xl text-pink-400">
             <i class="fas fa-spa"></i>
         </div>
-        <div class="salon-tool top-20 right-16 text-3xl text-rose-300">
+        <div class="salon-tool text-3xl text-rose-300">
             <i class="fas fa-hand-sparkles"></i>
         </div>
-        <div class="salon-tool bottom-20 left-20 text-5xl text-pink-300">
+        <div class="salon-tool text-5xl text-pink-300">
             <i class="fas fa-crown"></i>
         </div>
-        <div class="salon-tool bottom-32 right-10 text-2xl text-rose-400">
+        <div class="salon-tool text-2xl text-rose-400">
             <i class="fas fa-cut"></i>
         </div>
-        <div class="salon-tool top-1/3 left-1/4 text-3xl text-pink-200">
+        <div class="salon-tool text-3xl text-pink-200">
             <i class="fas fa-feather-alt"></i>
         </div>
-        <div class="salon-tool top-40 right-1/3 text-4xl text-rose-200">
+        <div class="salon-tool text-4xl text-rose-200">
             <i class="fas fa-magic"></i>
         </div>
-        <div class="salon-tool bottom-40 left-1/3 text-2xl text-pink-300">
+        <div class="salon-tool text-2xl text-pink-300">
             <i class="fas fa-paint-brush"></i>
         </div>
-        <div class="salon-tool top-1/4 right-1/4 text-3xl text-rose-300">
+        <div class="salon-tool text-3xl text-rose-300">
             <i class="fas fa-heart"></i>
         </div>
-        <div class="salon-tool top-3/4 left-16 text-4xl text-pink-200">
+        <div class="salon-tool text-4xl text-pink-200">
             <i class="fas fa-star"></i>
         </div>
-        <div class="salon-tool bottom-16 right-1/4 text-3xl text-rose-400">
+        <div class="salon-tool text-3xl text-rose-400">
             <i class="fas fa-gem"></i>
         </div>
-                <!-- Main section -->
-        <div class="max-w-5xl mx-auto relative z-10">
+        <!-- Add more icons for richer background -->
+        <div class="salon-tool text-3xl text-pink-300">
+            <i class="fas fa-spray-can"></i>
+        </div>
+        <div class="salon-tool text-2xl text-rose-300">
+            <i class="fas fa-brush"></i>
+        </div>
+        <div class="salon-tool text-4xl text-pink-200">
+            <i class="fas fa-glasses"></i>
+        </div>
+        <div class="salon-tool text-3xl text-rose-200">
+            <i class="fas fa-scissors"></i>
+        </div>
+        <div class="salon-tool text-2xl text-pink-400">
+            <i class="fas fa-palette"></i>
+        </div>
+        
+        <!-- Main section -->
+        <div class="max-w-6xl mx-auto relative z-10 px-2">
             <!-- Testimonial Section -->
-            <div class="text-center ">    <!-- heading -->
-                <h1 class="text-4xl font font-bold text-amber-600/80 mb-3 tracking-wider">              
+            <div class="text-center">
+                <h1 class="text-3xl md:text-4xl font-bold text-amber-600/80 mb-3 tracking-wider">              
                     Testimonials
                 </h1>
-                <p class="font2 text-pretty text-slate-900/80 text-2xl max-w-2xl mx-auto tracking-wider pb-7">
+                <p class="font2 text-pretty text-slate-900/80 text-lg md:text-2xl max-w-2xl mx-auto tracking-wider pb-7 px-4">
                     Discover what our beautiful clients say about their transformation
                 </p>
             </div>
 
-            <div id="testimonial-section" class="relative">  <!-- Body -->
-                <div class="h-[500px] relative perspective-1000 overflow-hidden flex items-center justify-center">
+            <div id="testimonial-section" class="relative">
+                <div class="h-[550px] md:h-[600px] min-h-[520px] relative perspective-1000 overflow-visible flex items-center justify-center touch-none">
                     <div id="testimonial-3d" class="relative w-full h-full flex items-center justify-center">
                         <!-- Testimonial cards will be added via JS -->
                     </div>
                 </div>
                 
-                <!-- Indicator dots styled like makeup brushes -->
+                <!-- Indicator dots -->
                 <div class="flex justify-center space-x-3 mt-6">
                     <div id="indicator-0" class="w-8 h-1 bg-pink-500 rounded-full cursor-pointer transition-all duration-300"></div>
                     <div id="indicator-1" class="w-3 h-1 bg-pink-300 rounded-full cursor-pointer transition-all duration-300"></div>
@@ -709,7 +785,7 @@
                     <div id="indicator-4" class="w-3 h-1 bg-pink-300 rounded-full cursor-pointer transition-all duration-300"></div>
                 </div>
                 
-                <!-- Testimonial title display with salon theme -->
+                <!-- Testimonial title -->
                 <div id="testimonial-title" class="text-center mt-8">
                     <h3 class="text-xl font3 font-bold text-pink-800">Ebose Foody</h3>
                     <p class="text-pink-600 mt-2">
@@ -1140,7 +1216,6 @@
     </script>
                  <!-- Testimonial script section data for beauty salon -->
     <script>
-        
         const testimonialData = [
             { 
                 id: 1, 
@@ -1179,6 +1254,92 @@
             }
         ];
 
+        // Function to randomly position salon tools
+        function positionSalonToolsRandomly() {
+            const tools = document.querySelectorAll('.salon-tool');
+            const section = document.getElementById('testimonial');
+            const sectionRect = section.getBoundingClientRect();
+            
+            // Get viewport dimensions
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+            
+            // Safe margins to keep icons within view
+            const margin = 50;
+            const availableWidth = viewportWidth - (margin * 2);
+            const availableHeight = viewportHeight - (margin * 2);
+            
+            tools.forEach((tool, index) => {
+                // Generate random positions within safe area
+                const randomLeft = margin + Math.random() * availableWidth;
+                const randomTop = margin + Math.random() * availableHeight;
+                
+                // Random rotation for more natural look
+                const randomRotation = Math.random() * 360;
+                
+                // Random size variation (some icons larger/smaller)
+                const sizeVariation = 0.7 + Math.random() * 0.6;
+                
+                // Random opacity for depth effect
+                const opacity = 0.2 + Math.random() * 0.3;
+                
+                // Random animation delay and duration
+                const animationDelay = Math.random() * 5;
+                const animationDuration = 4 + Math.random() * 4;
+                
+                // Apply random positioning
+                tool.style.left = `${randomLeft}px`;
+                tool.style.top = `${randomTop}px`;
+                tool.style.transform = `rotate(${randomRotation}deg) scale(${sizeVariation})`;
+                tool.style.opacity = opacity;
+                tool.style.animationDelay = `${animationDelay}s`;
+                tool.style.animationDuration = `${animationDuration}s`;
+                
+                // Add subtle movement over time
+                setInterval(() => {
+                    const newX = Math.random() * 20 - 10;
+                    const newY = Math.random() * 20 - 10;
+                    const newRot = Math.random() * 10 - 5;
+                    
+                    tool.style.transform = `translate(${newX}px, ${newY}px) rotate(${randomRotation + newRot}deg) scale(${sizeVariation})`;
+                }, 5000 + Math.random() * 5000);
+            });
+        }
+        
+        // Function to make icons drift slowly
+        function startDriftingAnimation() {
+            const tools = document.querySelectorAll('.salon-tool');
+            
+            tools.forEach((tool) => {
+                // Create a unique drifting animation for each tool
+                const driftX = (Math.random() - 0.5) * 40; // -20px to +20px
+                const driftY = (Math.random() - 0.5) * 40;
+                const driftDuration = 15 + Math.random() * 15;
+                
+                const keyframes = `
+                    @keyframes drift-${tool.dataset.id} {
+                        0%, 100% { transform: translate(0, 0) rotate(0deg); }
+                        25% { transform: translate(${driftX}px, ${driftY}px) rotate(5deg); }
+                        50% { transform: translate(${driftX * 0.5}px, ${driftY * 0.5}px) rotate(0deg); }
+                        75% { transform: translate(${-driftX}px, ${-driftY}px) rotate(-5deg); }
+                    }
+                `;
+                
+                // Add unique ID to tool if not present
+                if (!tool.dataset.id) {
+                    tool.dataset.id = 'tool-' + Math.random().toString(36).substr(2, 9);
+                }
+                
+                // Add the keyframes to document
+                const style = document.createElement('style');
+                style.textContent = keyframes;
+                document.head.appendChild(style);
+                
+                // Apply the animation
+                tool.style.animation = `drift-${tool.dataset.id} ${driftDuration}s ease-in-out infinite alternate, float 3s ease-in-out infinite alternate`;
+            });
+        }
+
         // Initialize Testimonial 3D Carousel
         function initTestimonialCarousel() {
             const container = document.getElementById('testimonial-3d');
@@ -1186,22 +1347,64 @@
             
             const items = testimonialData;
             const total = items.length;
-            const radius = 220;
+            
+            // Responsive settings based on screen size
+            const isMobile = window.innerWidth < 768;
+            const isVerySmall = window.innerWidth < 375;
+            
+            // Wider layout with responsive adjustments
+            let radius;
+            if (isVerySmall) {
+                radius = 130;
+            } else if (isMobile) {
+                radius = 170;
+            } else {
+                radius = 280;
+            }
+            
             let angle = 0;
             let currentFrontIndex = 0;
+            let isRotating = true;
+            
+            // Much slower rotation for all screens
+            let rotationSpeed;
+            if (isVerySmall) {
+                rotationSpeed = 150;
+            } else if (isMobile) {
+                rotationSpeed = 120;
+            } else {
+                rotationSpeed = 100;
+            }
+            
+            let lastTimestamp = 0;
+            let rafId = null;
+            let isDragging = false;
+            let dragStartAngle = 0;
+            let dragStartX = 0;
             
             items.forEach((testimonial, i) => {
                 const item = document.createElement('div');
-                item.className = 'absolute md:w-[320px] w-[210px] rounded-xl shadow-lg transition-all duration-500 cursor-pointer transform hover:scale-102';
+                
+                // Responsive card width
+                let cardWidth;
+                if (isVerySmall) {
+                    cardWidth = 'w-[190px]';
+                } else if (isMobile) {
+                    cardWidth = 'w-[230px]';
+                } else {
+                    cardWidth = 'md:w-[340px]';
+                }
+                
+                item.className = `testimonial-card absolute ${cardWidth} rounded-xl shadow-lg transition-all duration-700 cursor-pointer transform hover:scale-102`;
                 item.innerHTML = `
-                    <div class="bg-linear-to-b from-orange-500 to-orange-700 text-white flex flex-col items-center shadow-lg p-3 md:p-6 rounded-lg">
-                        <img src="${testimonial.image}" alt="${testimonial.name}" class=" w-18 h-18 rounded-full transform md:-translate-y-12 border-4 border-white shadow-lg">
-                        <div class="text-center mt-1">
-                            <h1 class="text-xl font3 font-bold pb-1 tracking-wide">${testimonial.name}</h1>
-                            <h2 class="text-md pb-4 text-pink-100 font3 tracking-wide">
-                                <i class="fas fa-user-tag mr-2 "></i>${testimonial.role}
+                    <div class="bg-linear-to-b from-orange-500 to-orange-700 text-white flex flex-col items-center shadow-lg p-4 md:p-6 rounded-lg h-full">
+                        <img src="${testimonial.image}" alt="${testimonial.name}" class="w-16 h-16 md:w-20 md:h-20 rounded-full transform -translate-y-8 md:-translate-y-12 border-4 border-white shadow-lg">
+                        <div class="text-center mt-1 flex-grow">
+                            <h1 class="text-lg md:text-xl font3 font-bold pb-1 tracking-wide">${testimonial.name}</h1>
+                            <h2 class="text-sm md:text-md pb-3 md:pb-4 text-pink-100 font3 tracking-wide">
+                                <i class="fas fa-user-tag mr-2"></i>${testimonial.role}
                             </h2>
-                            <p class="text-center text-md font2 mb-4 text-pink-50 leading-relaxed tracking-wide">
+                            <p class="text-center text-sm md:text-md font2 mb-3 md:mb-4 text-pink-50 leading-relaxed tracking-wide px-2">
                                 <i class="fas fa-quote-left text-pink-200 mr-2"></i>
                                 ${testimonial.quote}
                                 <i class="fas fa-quote-right text-pink-200 ml-2"></i>
@@ -1218,18 +1421,28 @@
                 `;
                 container.appendChild(item);
                 
-                // Add click event to each testimonial card
-                item.addEventListener('click', () => {
+                // Click/touch event
+                const handleActivate = () => {
+                    if (isDragging) return;
+                    
                     const stepsToFront = (currentFrontIndex - i + total) % total;
                     angle += stepsToFront * (Math.PI * 2 / total);
                     currentFrontIndex = i;
-                    updateCarousel();
+                    updateCarousel(true);
                     updateIndicators();
                     updateTitle();
-                });
+                    pauseAutoRotation(4000);
+                };
+                
+                item.addEventListener('click', handleActivate);
+                item.addEventListener('touchstart', (e) => {
+                    if (e.touches.length === 1) {
+                        handleActivate();
+                    }
+                }, { passive: true });
             });
             
-            function updateCarousel() {
+            function updateCarousel(isSmoothTransition = false) {
                 const testimonialItems = container.children;
                 const angleStep = (Math.PI * 2) / total;
                 
@@ -1240,22 +1453,39 @@
                     // Calculate 3D positions
                     const x = Math.sin(itemAngle) * radius;
                     const z = Math.cos(itemAngle) * radius;
-                    const scale = 0.7 + (z + radius) / (2 * radius) * 0.6;
-                    const opacity = 0.6 + (z + radius) / (2 * radius) * 0.4;
+                    
+                    // Responsive scale and opacity
+                    let scale, opacity;
+                    if (isMobile) {
+                        scale = 0.7 + (z + radius) / (2 * radius) * 0.4;
+                        opacity = 0.7 + (z + radius) / (2 * radius) * 0.3;
+                    } else {
+                        scale = 0.6 + (z + radius) / (2 * radius) * 0.5;
+                        opacity = 0.5 + (z + radius) / (2 * radius) * 0.5;
+                    }
                     
                     // Apply 3D transformations
-                    item.style.transform = `translateX(${x}px) translateZ(${z}px) scale(${scale})`;
+                    item.style.transform = `translate3d(${x}px, 0, ${z}px) scale(${scale})`;
                     item.style.opacity = opacity;
                     item.style.zIndex = Math.round(z + radius);
                     
-                    // Find which testimonial is currently at the front
-                    if (z > radius - 30) {
+                    // Find front card
+                    if (z > radius - 15) {
                         currentFrontIndex = i;
-                        item.classList.add('ring-3', 'ring-yellow-400');
+                        item.classList.add('front-card', 'ring-2', 'ring-yellow-400');
                         item.classList.remove('opacity-70');
                     } else {
-                        item.classList.remove('ring-3', 'ring-yellow-400');
-                        item.classList.add('opacity-70');
+                        item.classList.remove('front-card', 'ring-2', 'ring-yellow-400');
+                        if (!isMobile) {
+                            item.classList.add('opacity-70');
+                        }
+                    }
+                    
+                    // Add smooth transition class for manual changes
+                    if (isSmoothTransition) {
+                        item.style.transition = 'transform 800ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 800ms ease';
+                    } else {
+                        item.style.transition = 'transform 100ms linear, opacity 100ms linear';
                     }
                 }
             }
@@ -1269,75 +1499,265 @@
                         indicator.className = 'w-3 h-1 bg-orange-300 rounded-full cursor-pointer transition-all duration-300';
                     }
                     
-                    // Add click event to indicators
                     indicator.onclick = () => {
                         const stepsToFront = (currentFrontIndex - i + total) % total;
                         angle += stepsToFront * (Math.PI * 2 / total);
                         currentFrontIndex = i;
-                        updateCarousel();
+                        updateCarousel(true);
                         updateIndicators();
                         updateTitle();
+                        pauseAutoRotation(4000);
+                    };
+                    
+                    indicator.ontouchstart = (e) => {
+                        e.preventDefault();
+                        indicator.onclick();
                     };
                 }
             }
             
             function updateTitle() {
                 document.getElementById('testimonial-title').innerHTML = `
-                    <h3 class="text-3xl font3 font-bold text-orange-600">${testimonialData[currentFrontIndex].name}</h3>
+                    <h3 class="text-xl md:text-2xl font3 font-bold text-orange-600">${testimonialData[currentFrontIndex].name}</h3>
                     <p class="text-yellow-700 font2 mt-2">                        
                         Testimonial ${currentFrontIndex + 1} of ${total}                        
                     </p>
                 `;
             }
             
-            // Auto-rotation
-            let autoRotate = setInterval(() => {
-                angle -= Math.PI / (total / 2) / 50;
-                updateCarousel();
+            function pauseAutoRotation(duration = 4000) {
+                isRotating = false;
+                if (rafId) {
+                    cancelAnimationFrame(rafId);
+                    rafId = null;
+                }
+                
+                setTimeout(() => {
+                    isRotating = true;
+                    lastTimestamp = 0;
+                    if (!isDragging) {
+                        rafId = requestAnimationFrame(animate);
+                    }
+                }, duration);
+            }
+            
+            function animate(timestamp) {
+                if (!isRotating || isDragging) return;
+                
+                if (!lastTimestamp) lastTimestamp = timestamp;
+                const deltaTime = Math.min(timestamp - lastTimestamp, 32);
+                lastTimestamp = timestamp;
+                
+                const rotationIncrement = (Math.PI * 2) / (rotationSpeed * 1000) * deltaTime;
+                angle -= rotationIncrement;
+                
+                updateCarousel(false);
                 updateIndicators();
                 updateTitle();
-            }, 100);
+                
+                rafId = requestAnimationFrame(animate);
+            }
             
-            // Pause auto-rotation on hover
-            container.addEventListener('mouseenter', () => {
-                clearInterval(autoRotate);
-            });
+            // Drag/swipe support
+            let dragStart = null;
+            let currentVelocity = 0;
+            let lastDragTime = 0;
             
-            container.addEventListener('mouseleave', () => {
-                autoRotate = setInterval(() => {
-                    angle -= Math.PI / (total / 2) / 50;
-                    updateCarousel();
+            container.addEventListener('mousedown', startDrag);
+            container.addEventListener('touchstart', startDrag, { passive: true });
+            
+            function startDrag(e) {
+                isDragging = true;
+                dragStartAngle = angle;
+                dragStartX = e.type === 'mousedown' ? e.clientX : e.touches[0].clientX;
+                lastDragTime = Date.now();
+                currentVelocity = 0;
+                
+                pauseAutoRotation(5000);
+                
+                document.addEventListener('mousemove', drag);
+                document.addEventListener('touchmove', drag, { passive: true });
+                document.addEventListener('mouseup', endDrag);
+                document.addEventListener('touchend', endDrag);
+                
+                document.body.style.userSelect = 'none';
+            }
+            
+            function drag(e) {
+                if (!isDragging) return;
+                
+                const currentX = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
+                const deltaX = currentX - dragStartX;
+                const currentTime = Date.now();
+                const deltaTime = currentTime - lastDragTime;
+                
+                if (deltaTime > 0) {
+                    currentVelocity = -deltaX / deltaTime;
+                }
+                
+                const sensitivity = isMobile ? 0.02 : 0.015;
+                angle = dragStartAngle + deltaX * sensitivity;
+                
+                updateCarousel(false);
+                updateIndicators();
+                updateTitle();
+                
+                lastDragTime = currentTime;
+            }
+            
+            function endDrag() {
+                if (!isDragging) return;
+                
+                isDragging = false;
+                
+                if (Math.abs(currentVelocity) > 0.1) {
+                    const momentumDuration = 300;
+                    const startAngle = angle;
+                    const velocity = currentVelocity * 0.5;
+                    const startTime = Date.now();
+                    
+                    function applyMomentum() {
+                        const elapsed = Date.now() - startTime;
+                        const progress = Math.min(elapsed / momentumDuration, 1);
+                        const easeOut = 1 - Math.pow(1 - progress, 3);
+                        
+                        angle = startAngle + velocity * elapsed * easeOut;
+                        
+                        updateCarousel(false);
+                        updateIndicators();
+                        updateTitle();
+                        
+                        if (progress < 1) {
+                            requestAnimationFrame(applyMomentum);
+                        } else {
+                            const angleStep = (Math.PI * 2) / total;
+                            const targetIndex = Math.round(angle / angleStep) % total;
+                            const stepsToFront = (currentFrontIndex - targetIndex + total) % total;
+                            angle += stepsToFront * angleStep;
+                            currentFrontIndex = targetIndex;
+                            updateCarousel(true);
+                            updateIndicators();
+                            updateTitle();
+                            
+                            setTimeout(() => {
+                                isRotating = true;
+                                lastTimestamp = 0;
+                                rafId = requestAnimationFrame(animate);
+                            }, 2000);
+                        }
+                    }
+                    
+                    applyMomentum();
+                } else {
+                    const angleStep = (Math.PI * 2) / total;
+                    const targetIndex = Math.round(angle / angleStep) % total;
+                    const stepsToFront = (currentFrontIndex - targetIndex + total) % total;
+                    angle += stepsToFront * angleStep;
+                    currentFrontIndex = targetIndex;
+                    updateCarousel(true);
                     updateIndicators();
                     updateTitle();
-                }, 100);
+                    
+                    setTimeout(() => {
+                        isRotating = true;
+                        lastTimestamp = 0;
+                        rafId = requestAnimationFrame(animate);
+                    }, 2000);
+                }
+                
+                document.removeEventListener('mousemove', drag);
+                document.removeEventListener('touchmove', drag);
+                document.removeEventListener('mouseup', endDrag);
+                document.removeEventListener('touchend', endDrag);
+                
+                document.body.style.userSelect = '';
+            }
+            
+            // Handle window resize
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    if (rafId) {
+                        cancelAnimationFrame(rafId);
+                    }
+                    initTestimonialCarousel();
+                    positionSalonToolsRandomly();
+                }, 250);
             });
             
             // Initial updates
             updateCarousel();
             updateIndicators();
             updateTitle();
+            
+            // Start animation
+            setTimeout(() => {
+                rafId = requestAnimationFrame(animate);
+            }, 500);
         }
         
-        // Initialize the testimonial carousel
+        // Initialize everything
         document.addEventListener('DOMContentLoaded', () => {
+            // Position icons randomly
+            positionSalonToolsRandomly();
+            
+            // Start drifting animation
+            setTimeout(startDriftingAnimation, 1000);
+            
+            // Initialize carousel
             initTestimonialCarousel();
             
-            // Add floating animation to salon tools
-            const tools = document.querySelectorAll('.salon-tool');
-            tools.forEach((tool, index) => {
-                tool.style.animation = `float ${3 + index * 0.5}s ease-in-out infinite alternate`;
+            // Add global styles for animations
+            const globalStyle = document.createElement('style');
+            globalStyle.textContent = `
+                @keyframes float {
+                    0% { transform: translateY(0px) rotate(0deg); }
+                    100% { transform: translateY(-15px) rotate(5deg); }
+                }
+                
+                /* Hardware acceleration */
+                #testimonial-3d {
+                    transform: translate3d(0,0,0);
+                    -webkit-transform: translate3d(0,0,0);
+                }
+                
+                /* Extra smooth transitions for 320px */
+                @media (max-width: 375px) {
+                    #testimonial-3d > div {
+                        transition: transform 1000ms cubic-bezier(0.16, 1, 0.3, 1) !important,
+                                opacity 1000ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+                    }
+                    
+                    #testimonial-section {
+                        overflow: hidden;
+                        margin: 0 -8px;
+                    }
+                }
+                
+                /* Performance */
+                .testimonial-card {
+                    -webkit-font-smoothing: antialiased;
+                    -moz-osx-font-smoothing: grayscale;
+                }
+            `;
+            document.head.appendChild(globalStyle);
+            
+            // Reposition icons on scroll to keep them in view
+            let lastScrollY = window.scrollY;
+            window.addEventListener('scroll', () => {
+                const currentScrollY = window.scrollY;
+                if (Math.abs(currentScrollY - lastScrollY) > 50) {
+                    positionSalonToolsRandomly();
+                    lastScrollY = currentScrollY;
+                }
             });
+            
+            // Randomly reposition icons every 30 seconds for dynamic effect
+            setInterval(() => {
+                positionSalonToolsRandomly();
+            }, 30000);
         });
-        
-        // Add floating animation keyframes
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes float {
-                0% { transform: translateY(0px) rotate(0deg); }
-                100% { transform: translateY(-15px) rotate(5deg); }
-            }
-        `;
-        document.head.appendChild(style);
     </script> 
                         
                     <!-- Gallery Scripts -->
