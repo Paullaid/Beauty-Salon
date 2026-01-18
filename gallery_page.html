@@ -317,7 +317,8 @@
         }
     </style>
 
-    <style>        <!-- Forms styles -->
+    <style>        <!-- appiontment styles -->
+        <!-- Forms styles -->
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
@@ -645,7 +646,7 @@
                         <!-- ========== Start Section ========== -->
                                 <!--Client Goggle map(location) and Form Section Section -->
                         <!-- ========== End Section ========== -->
-    <section id="reservations"  class="bg-linear-to-b from-white to-pink-50 to-slate-50">      
+    <section id='reservations'  class="bg-linear-to-b from-white to-pink-50 to-slate-50">      
         <div class="container mx-auto px-6 pt-24 pb-10 grid lg:grid-cols-2 grid-cols-1 items-start gap-y-24 md:gap-x-12">
                              <!-- Form Section -->
             <div class="form-container">
@@ -1057,207 +1058,6 @@
             }
         });
     </script>
-                 <!-- Testimonial script section data for beauty salon -->
-    <script>
-        
-        const testimonialData = [
-            { 
-                id: 1, 
-                name: "Ebose Foody",
-                role: "Medicine Student",
-                quote: "I enjoyed the pedicure and manicure service I got, I will definitely come back for more. The attention to detail was amazing!",
-                image: "./image/beauty.png"
-            },
-            { 
-                id: 2, 
-                name: "Sophia Williams",
-                role: "Fashion Designer",
-                quote: "Best salon experience ever! My hair transformation was exactly what I wanted. Professional and friendly staff.",
-                image: "./image/beauty2.png"
-            },
-            { 
-                id: 3, 
-                name: "Isabella Chen",
-                role: "Beauty Influencer",
-                quote: "The makeup artists are truly talented! I felt like a princess on my wedding day. Highly recommended!",
-                image: "./image/beauty3.png"
-            },
-            { 
-                id: 4, 
-                name: "Emma Rodriguez",
-                role: "Yoga Instructor",
-                quote: "The spa treatment was incredibly relaxing. I left feeling rejuvenated and refreshed. Pure bliss!",
-                image: "./image/beauty4.png"
-            },
-            { 
-                id: 5, 
-                name: "Olivia Parker",
-                role: "Event Planner",
-                quote: "Consistently excellent service! I've been coming here for years and they never disappoint. Perfection!",
-                image: "./image/beauty5.png"
-            }
-        ];
-
-        // Initialize Testimonial 3D Carousel
-        function initTestimonialCarousel() {
-            const container = document.getElementById('testimonial-3d');
-            container.innerHTML = '';
-            
-            const items = testimonialData;
-            const total = items.length;
-            const radius = 220;
-            let angle = 0;
-            let currentFrontIndex = 0;
-            
-            items.forEach((testimonial, i) => {
-                const item = document.createElement('div');
-                item.className = 'absolute md:w-[320px] w-[210px] rounded-xl shadow-lg transition-all duration-500 cursor-pointer transform hover:scale-102';
-                item.innerHTML = `
-                    <div class="bg-linear-to-b from-orange-500 to-orange-700 text-white flex flex-col items-center shadow-lg p-3 md:p-6 rounded-lg">
-                        <img src="${testimonial.image}" alt="${testimonial.name}" class=" w-18 h-18 rounded-full transform md:-translate-y-12 border-4 border-white shadow-lg">
-                        <div class="text-center mt-1">
-                            <h1 class="text-xl font3 font-bold pb-1 tracking-wide">${testimonial.name}</h1>
-                            <h2 class="text-md pb-4 text-pink-100 font3 tracking-wide">
-                                <i class="fas fa-user-tag mr-2 "></i>${testimonial.role}
-                            </h2>
-                            <p class="text-center text-md font2 mb-4 text-pink-50 leading-relaxed tracking-wide">
-                                <i class="fas fa-quote-left text-pink-200 mr-2"></i>
-                                ${testimonial.quote}
-                                <i class="fas fa-quote-right text-pink-200 ml-2"></i>
-                            </p>
-                        </div>
-                        <div class="flex text-yellow-300 mt-2">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                `;
-                container.appendChild(item);
-                
-                // Add click event to each testimonial card
-                item.addEventListener('click', () => {
-                    const stepsToFront = (currentFrontIndex - i + total) % total;
-                    angle += stepsToFront * (Math.PI * 2 / total);
-                    currentFrontIndex = i;
-                    updateCarousel();
-                    updateIndicators();
-                    updateTitle();
-                });
-            });
-            
-            function updateCarousel() {
-                const testimonialItems = container.children;
-                const angleStep = (Math.PI * 2) / total;
-                
-                for (let i = 0; i < testimonialItems.length; i++) {
-                    const item = testimonialItems[i];
-                    const itemAngle = angle + i * angleStep;
-                    
-                    // Calculate 3D positions
-                    const x = Math.sin(itemAngle) * radius;
-                    const z = Math.cos(itemAngle) * radius;
-                    const scale = 0.7 + (z + radius) / (2 * radius) * 0.6;
-                    const opacity = 0.6 + (z + radius) / (2 * radius) * 0.4;
-                    
-                    // Apply 3D transformations
-                    item.style.transform = `translateX(${x}px) translateZ(${z}px) scale(${scale})`;
-                    item.style.opacity = opacity;
-                    item.style.zIndex = Math.round(z + radius);
-                    
-                    // Find which testimonial is currently at the front
-                    if (z > radius - 30) {
-                        currentFrontIndex = i;
-                        item.classList.add('ring-3', 'ring-yellow-400');
-                        item.classList.remove('opacity-70');
-                    } else {
-                        item.classList.remove('ring-3', 'ring-yellow-400');
-                        item.classList.add('opacity-70');
-                    }
-                }
-            }
-            
-            function updateIndicators() {
-                for (let i = 0; i < total; i++) {
-                    const indicator = document.getElementById(`indicator-${i}`);
-                    if (i === currentFrontIndex) {
-                        indicator.className = 'w-8 h-1 bg-orange-600 rounded-full cursor-pointer transition-all duration-300';
-                    } else {
-                        indicator.className = 'w-3 h-1 bg-orange-300 rounded-full cursor-pointer transition-all duration-300';
-                    }
-                    
-                    // Add click event to indicators
-                    indicator.onclick = () => {
-                        const stepsToFront = (currentFrontIndex - i + total) % total;
-                        angle += stepsToFront * (Math.PI * 2 / total);
-                        currentFrontIndex = i;
-                        updateCarousel();
-                        updateIndicators();
-                        updateTitle();
-                    };
-                }
-            }
-            
-            function updateTitle() {
-                document.getElementById('testimonial-title').innerHTML = `
-                    <h3 class="text-3xl font3 font-bold text-orange-600">${testimonialData[currentFrontIndex].name}</h3>
-                    <p class="text-yellow-700 font2 mt-2">                        
-                        Testimonial ${currentFrontIndex + 1} of ${total}                        
-                    </p>
-                `;
-            }
-            
-            // Auto-rotation
-            let autoRotate = setInterval(() => {
-                angle -= Math.PI / (total / 2) / 50;
-                updateCarousel();
-                updateIndicators();
-                updateTitle();
-            }, 100);
-            
-            // Pause auto-rotation on hover
-            container.addEventListener('mouseenter', () => {
-                clearInterval(autoRotate);
-            });
-            
-            container.addEventListener('mouseleave', () => {
-                autoRotate = setInterval(() => {
-                    angle -= Math.PI / (total / 2) / 50;
-                    updateCarousel();
-                    updateIndicators();
-                    updateTitle();
-                }, 100);
-            });
-            
-            // Initial updates
-            updateCarousel();
-            updateIndicators();
-            updateTitle();
-        }
-        
-        // Initialize the testimonial carousel
-        document.addEventListener('DOMContentLoaded', () => {
-            initTestimonialCarousel();
-            
-            // Add floating animation to salon tools
-            const tools = document.querySelectorAll('.salon-tool');
-            tools.forEach((tool, index) => {
-                tool.style.animation = `float ${3 + index * 0.5}s ease-in-out infinite alternate`;
-            });
-        });
-        
-        // Add floating animation keyframes
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes float {
-                0% { transform: translateY(0px) rotate(0deg); }
-                100% { transform: translateY(-15px) rotate(5deg); }
-            }
-        `;
-        document.head.appendChild(style);
-    </script> 
                         
                     <!-- Gallery Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -1385,10 +1185,10 @@
         });
     </script>
 
-                    <!-- Appiontment Scripts -->
+                    <!-- Bookings Scripts -->
     <script>
-        // WhatsApp Configuration
-        const whatsappNumber = "9063123479"; // Replace with salon's WhatsApp number
+        // WhatsApp Configuration - UPDATE THIS WITH YOUR NUMBER
+        const whatsappNumber = "2349063123479"; // Add country code (234 for Nigeria)
         
         // Track selected services
         let selectedServices = [];
@@ -1443,12 +1243,13 @@
                 e.preventDefault();
                 
                 // Get form values
-                const name = document.getElementById('name').value.trim();
+                const name = document.getElementById('full_name').value.trim();
                 const message = document.getElementById('message').value.trim() || 'No special requests';
                 
                 // Validation
                 if (!name) {
-                    showError('Please fill in all required fields');
+                    showError('Please enter your full name');
+                    document.getElementById('full_name').focus();
                     return;
                 }
                 
@@ -1459,33 +1260,41 @@
                 
                 // Create WhatsApp message
                 const whatsappMessage = createWhatsAppMessage(name, selectedServices, message);
-                const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
                 
-                // Update modal with booking details
-                document.getElementById('summaryName').textContent = name;
-                document.getElementById('summaryServices').textContent = selectedServices.join(', ');
-                document.getElementById('summaryMessage').textContent = message;
+                // Format WhatsApp number (remove any non-numeric characters)
+                const cleanWhatsappNumber = whatsappNumber.replace(/\D/g, '');
+                const whatsappURL = `https://wa.me/${cleanWhatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
                 
-                // Set WhatsApp link
-                document.getElementById('whatsappLink').href = whatsappURL;
+                // Show loading state on button
+                const submitBtn = document.querySelector('.btn-submit');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Opening WhatsApp...';
+                submitBtn.disabled = true;
                 
-                // Show modal
-                document.getElementById('successModal').classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-            });
-            
-            // Modal buttons
-            document.getElementById('editBooking').addEventListener('click', function() {
-                document.getElementById('successModal').classList.add('hidden');
-                document.body.style.overflow = 'auto';
-            });
-            
-            // Close modal when clicking outside
-            document.getElementById('successModal').addEventListener('click', function(e) {
-                if (e.target === this) {
-                    this.classList.add('hidden');
-                    document.body.style.overflow = 'auto';
-                }
+                // Open WhatsApp directly in a new tab
+                window.open(whatsappURL, '_blank');
+                
+                // Reset button after a short delay
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    
+                    // Optional: Show success message
+                    showSuccess('Booking sent to WhatsApp!');
+                    
+                    // Optional: Reset form after submission
+                    // bookingForm.reset();
+                    // selectedServices = [];
+                    // updateSelectedCount();
+                    // Reset visual checkboxes
+                    // document.querySelectorAll('.service-option').forEach(option => {
+                    //     option.classList.remove('selected');
+                    //     const checkboxPlaceholder = option.querySelector('.checkbox-placeholder');
+                    //     checkboxPlaceholder.innerHTML = '';
+                    //     checkboxPlaceholder.classList.remove('bg-orange-500', 'text-white', 'border-orange-500');
+                    // });
+                    
+                }, 1500);
             });
         });
         
@@ -1498,27 +1307,38 @@
                 countElement.textContent = '0 services selected';
                 countElement.className = 'text-sm text-slate-500 mt-3';
             } else {
-                countElement.textContent = `${count/2} service${count > 1 ? 's' : ''} selected`;
+                countElement.textContent = `${count} service${count > 1 ? 's' : ''} selected`;
                 countElement.className = 'text-sm text-amber-700 font-medium mt-3';
             }
         }
         
         // Create WhatsApp message
         function createWhatsAppMessage(name, services, message) {
-            return `New Beauty Salon Booking Request
+            const serviceList = services.map(service => `• ${service}`).join('\n');
+            
+            return `🌟 *NEW BEAUTY SALON BOOKING* 🌟
 
-            👤 Customer Details:
-            • Name: ${name}
+    👤 *Customer Details:*
+    • Name: ${name}
 
-            💅 Requested Services:
-            ${services.map(service => `• ${service}`).join('\n')}
+    💅 *Requested Services:*
+    ${serviceList}
 
-            📝 Special Requests:
-            ${message}
+    📝 *Special Requests:*
+    ${message}
 
-            Please confirm availability and send pricing details.`;
-                    }
-                    
+    ⏰ *Booking Time:* ${new Date().toLocaleString('en-NG', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    })}
+
+    Please confirm availability and send pricing details. Thank you!`;
+        }
+        
         // Show error message
         function showError(message) {
             // Remove any existing error
@@ -1542,6 +1362,32 @@
             // Auto-remove after 5 seconds
             setTimeout(() => {
                 error.remove();
+            }, 5000);
+        }
+        
+        // Show success message (optional)
+        function showSuccess(message) {
+            // Remove any existing success
+            const existingSuccess = document.querySelector('.success-message');
+            if (existingSuccess) existingSuccess.remove();
+            
+            // Create success element
+            const success = document.createElement('div');
+            success.className = 'success-message bg-green-50 text-green-600 p-3 rounded-lg mb-4 text-sm';
+            success.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            // Insert before form
+            const form = document.getElementById('bookingForm');
+            form.parentNode.insertBefore(success, form);
+            
+            // Auto-remove after 5 seconds
+            setTimeout(() => {
+                success.remove();
             }, 5000);
         }
     </script>

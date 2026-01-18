@@ -314,86 +314,8 @@
         }
     </style>
 
-    <style>        <!-- Gallery styles -->
-        /* Custom animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .animate-fade-in {
-            animation: fadeIn 0.6s ease-out forwards;
-        }
-        
-        .animation-delay-200 { animation-delay: 0.2s; opacity: 0; }
-        .animation-delay-400 { animation-delay: 0.4s; opacity: 0; }
-        .animation-delay-600 { animation-delay: 0.6s; opacity: 0; }
-        
-        /* Gallery item hover effects (from Salone template) */
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
-        
-        .gallery-item img {
-            transition: transform 0.5s ease;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .gallery-item:hover img {
-            transform: scale(1.2);
-        }
-        
-        .gallery-icon {
-            position: absolute;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 0;
-            height: 0;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.7);
-            transition: all 0.5s ease;
-            z-index: 1;
-            border-radius: 1rem;
-        }
-        
-        .gallery-item:hover .gallery-icon {
-            width: 100%;
-            height: 100%;
-        }
-        
-        .gallery-icon .btn {
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        
-        .gallery-item:hover .gallery-icon .btn {
-            opacity: 1;
-            transition-delay: 0.3s;
-        }
-        
-        /* Custom fonts if needed */
-        .font2 {
-            font-family: 'Playfair Display', serif;
-        }
-        
-        .font3 {
-            font-family: 'Work Sans', sans-serif;
-        }
-        
-        /* Smooth transitions */
-        .transition-all-custom {
-            transition: all 0.3s ease;
-        }
-    </style>
-
-    <style>        <!-- Forms styles -->
+    <style>        <!-- appiontment styles -->
+        <!-- Forms styles -->
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
@@ -572,7 +494,6 @@
              <div class="absolute top-0 right-0 w-56 h-56 bg-pink-200 rounded-full opacity-40 blur-3xl"></div>
         </div>
     </section>
-
 
     
                         <!-- ========== Start Section ========== -->
@@ -801,7 +722,7 @@
                         <!-- ========== Start Section ========== -->
                                 <!--Client Goggle map(location) and Form Section Section -->
                         <!-- ========== End Section ========== -->
-    <section id="reservations"  class="bg-linear-to-b from-white to-pink-50 to-slate-50">      
+    <section id='reservations'  class="bg-linear-to-b from-white to-pink-50 to-slate-50">      
         <div class="container mx-auto px-6 pt-24 pb-10 grid lg:grid-cols-2 grid-cols-1 items-start gap-y-24 md:gap-x-12">
                              <!-- Form Section -->
             <div class="form-container">
@@ -1759,137 +1680,11 @@
             }, 30000);
         });
     </script> 
-                        
-                    <!-- Gallery Scripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
-    
-    <script>
-        // Lightbox configuration
-        lightbox.option({
-            'resizeDuration': 300,
-            'wrapAround': true,
-            'albumLabel': 'Image %1 of %2',
-            'fadeDuration': 300,
-            'imageFadeDuration': 300,
-            'showImageNumberLabel': true
-        });
-
-        // Scroll animation trigger
-        document.addEventListener('DOMContentLoaded', function() {
-            const animatedElements = document.querySelectorAll('.animate-fade-in');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const delay = entry.target.classList.contains('animation-delay-200') ? 200 :
-                                     entry.target.classList.contains('animation-delay-400') ? 400 :
-                                     entry.target.classList.contains('animation-delay-600') ? 600 : 0;
-                        
-                        setTimeout(() => {
-                            entry.target.style.opacity = '1';
-                        }, delay);
-                        
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            });
-
-            animatedElements.forEach(element => {
-                observer.observe(element);
-            });
-
-            // Make entire gallery item clickable (not just the eye icon)
-            document.querySelectorAll('.gallery-item').forEach(item => {
-                item.addEventListener('click', function(e) {
-                    // Don't trigger if clicking the button itself
-                    if (!e.target.closest('a.btn')) {
-                        const link = this.querySelector('a[data-lightbox]');
-                        if (link) {
-                            link.click();
-                        }
-                    }
-                });
-            });
-
-            // View All Products button functionality
-            document.querySelector('button.bg-orange-800').addEventListener('click', function() {
-                // Open the first image in lightbox
-                const firstImage = document.querySelector('a[data-lightbox]');
-                if (firstImage) {
-                    firstImage.click();
-                }
-                
-                // Or you could add functionality to load more images here
-                alert('View All Products feature would load more images here');
-            });
-
-            // Keyboard navigation for lightbox
-            document.addEventListener('keydown', function(e) {
-                if (document.querySelector('.lightboxOverlay')) {
-                    if (e.key === 'ArrowRight') {
-                        document.querySelector('.lb-next')?.click();
-                    } else if (e.key === 'ArrowLeft') {
-                        document.querySelector('.lb-prev')?.click();
-                    } else if (e.key === 'Escape') {
-                        document.querySelector('.lb-close')?.click();
-                    }
-                }
-            });
-
-            // Touch/swipe support for mobile lightbox
-            let touchStartX = 0;
-            let touchEndX = 0;
-
-            document.addEventListener('touchstart', e => {
-                if (document.querySelector('.lightboxOverlay')) {
-                    touchStartX = e.changedTouches[0].screenX;
-                }
-            }, false);
-
-            document.addEventListener('touchend', e => {
-                if (document.querySelector('.lightboxOverlay')) {
-                    touchEndX = e.changedTouches[0].screenX;
-                    handleSwipe();
-                }
-            }, false);
-
-            function handleSwipe() {
-                const swipeThreshold = 50;
-                const diff = touchStartX - touchEndX;
-
-                if (Math.abs(diff) > swipeThreshold) {
-                    if (diff > 0) {
-                        // Swipe left - next image
-                        document.querySelector('.lb-next')?.click();
-                    } else {
-                        // Swipe right - previous image
-                        document.querySelector('.lb-prev')?.click();
-                    }
-                }
-            }
-        });
-
-        // Add hover effect for gallery items
-        document.querySelectorAll('.gallery-item').forEach(item => {
-            item.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-4px)';
-                this.style.transition = 'transform 0.3s ease';
-            });
-            
-            item.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-            });
-        });
-    </script>
 
                     <!-- Appiontment Scripts -->
     <script>
-        // WhatsApp Configuration
-        const whatsappNumber = "9063123479"; // Replace with salon's WhatsApp number
+        // WhatsApp Configuration - UPDATE THIS WITH YOUR NUMBER
+        const whatsappNumber = "2349063123479"; // Add country code (234 for Nigeria)
         
         // Track selected services
         let selectedServices = [];
@@ -1944,12 +1739,13 @@
                 e.preventDefault();
                 
                 // Get form values
-                const name = document.getElementById('name').value.trim();
+                const name = document.getElementById('full_name').value.trim();
                 const message = document.getElementById('message').value.trim() || 'No special requests';
                 
                 // Validation
                 if (!name) {
-                    showError('Please fill in all required fields');
+                    showError('Please enter your full name');
+                    document.getElementById('full_name').focus();
                     return;
                 }
                 
@@ -1960,33 +1756,41 @@
                 
                 // Create WhatsApp message
                 const whatsappMessage = createWhatsAppMessage(name, selectedServices, message);
-                const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
                 
-                // Update modal with booking details
-                document.getElementById('summaryName').textContent = name;
-                document.getElementById('summaryServices').textContent = selectedServices.join(', ');
-                document.getElementById('summaryMessage').textContent = message;
+                // Format WhatsApp number (remove any non-numeric characters)
+                const cleanWhatsappNumber = whatsappNumber.replace(/\D/g, '');
+                const whatsappURL = `https://wa.me/${cleanWhatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
                 
-                // Set WhatsApp link
-                document.getElementById('whatsappLink').href = whatsappURL;
+                // Show loading state on button
+                const submitBtn = document.querySelector('.btn-submit');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Opening WhatsApp...';
+                submitBtn.disabled = true;
                 
-                // Show modal
-                document.getElementById('successModal').classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-            });
-            
-            // Modal buttons
-            document.getElementById('editBooking').addEventListener('click', function() {
-                document.getElementById('successModal').classList.add('hidden');
-                document.body.style.overflow = 'auto';
-            });
-            
-            // Close modal when clicking outside
-            document.getElementById('successModal').addEventListener('click', function(e) {
-                if (e.target === this) {
-                    this.classList.add('hidden');
-                    document.body.style.overflow = 'auto';
-                }
+                // Open WhatsApp directly in a new tab
+                window.open(whatsappURL, '_blank');
+                
+                // Reset button after a short delay
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    
+                    // Optional: Show success message
+                    showSuccess('Booking sent to WhatsApp!');
+                    
+                    // Optional: Reset form after submission
+                    // bookingForm.reset();
+                    // selectedServices = [];
+                    // updateSelectedCount();
+                    // Reset visual checkboxes
+                    // document.querySelectorAll('.service-option').forEach(option => {
+                    //     option.classList.remove('selected');
+                    //     const checkboxPlaceholder = option.querySelector('.checkbox-placeholder');
+                    //     checkboxPlaceholder.innerHTML = '';
+                    //     checkboxPlaceholder.classList.remove('bg-orange-500', 'text-white', 'border-orange-500');
+                    // });
+                    
+                }, 1500);
             });
         });
         
@@ -1999,27 +1803,38 @@
                 countElement.textContent = '0 services selected';
                 countElement.className = 'text-sm text-slate-500 mt-3';
             } else {
-                countElement.textContent = `${count/2} service${count > 1 ? 's' : ''} selected`;
+                countElement.textContent = `${count} service${count > 1 ? 's' : ''} selected`;
                 countElement.className = 'text-sm text-amber-700 font-medium mt-3';
             }
         }
         
         // Create WhatsApp message
         function createWhatsAppMessage(name, services, message) {
-            return `New Beauty Salon Booking Request
+            const serviceList = services.map(service => `• ${service}`).join('\n');
+            
+            return `🌟 *NEW BEAUTY SALON BOOKING* 🌟
 
-            👤 Customer Details:
-            • Name: ${name}
+    👤 *Customer Details:*
+    • Name: ${name}
 
-            💅 Requested Services:
-            ${services.map(service => `• ${service}`).join('\n')}
+    💅 *Requested Services:*
+    ${serviceList}
 
-            📝 Special Requests:
-            ${message}
+    📝 *Special Requests:*
+    ${message}
 
-            Please confirm availability and send pricing details.`;
-                    }
-                    
+    ⏰ *Booking Time:* ${new Date().toLocaleString('en-NG', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    })}
+
+    Please confirm availability and send pricing details. Thank you!`;
+        }
+        
         // Show error message
         function showError(message) {
             // Remove any existing error
@@ -2043,6 +1858,32 @@
             // Auto-remove after 5 seconds
             setTimeout(() => {
                 error.remove();
+            }, 5000);
+        }
+        
+        // Show success message (optional)
+        function showSuccess(message) {
+            // Remove any existing success
+            const existingSuccess = document.querySelector('.success-message');
+            if (existingSuccess) existingSuccess.remove();
+            
+            // Create success element
+            const success = document.createElement('div');
+            success.className = 'success-message bg-green-50 text-green-600 p-3 rounded-lg mb-4 text-sm';
+            success.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            // Insert before form
+            const form = document.getElementById('bookingForm');
+            form.parentNode.insertBefore(success, form);
+            
+            // Auto-remove after 5 seconds
+            setTimeout(() => {
+                success.remove();
             }, 5000);
         }
     </script>
