@@ -2,10 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Satisfy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Satisfy&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link href="./output.css" rel="stylesheet">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <title>AY's Site</title>  
+    <link href="./output.css" rel="stylesheet"> 
+     
+    <link rel=" icon" href="image/logo 2.jpeg" style="width: 50px;" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Lightbox CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+
+    <title>        
+        Beauty Salon
+    </title>  
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
@@ -109,8 +123,6 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             animation: slideDown 0.3s ease-out;
@@ -162,850 +174,1056 @@
         .content-wrapper {
             transition: margin-top 0.3s ease;
         }
-    </style>    
+        
+        /* ========== NEW SCROLL ANIMATIONS ========== */
+        /* Scroll Animation Base Classes */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .scroll-animate.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Different animation types */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .scale-up {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .zoom-in {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .rotate-in {
+            opacity: 0;
+            transform: rotate(-5deg) scale(0.95);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        /* Animation delays */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        .delay-400 { transition-delay: 400ms; }
+        .delay-500 { transition-delay: 500ms; }
+        .delay-600 { transition-delay: 600ms; }
+        .delay-700 { transition-delay: 700ms; }
+        .delay-800 { transition-delay: 800ms; }
+        
+        /* Stagger children animations */
+        .stagger-children > * {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .stagger-children.animated > * {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Special animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 5px rgba(245, 158, 11, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(245, 158, 11, 0.8); }
+        }
+        
+        .glow-animation {
+            animation: glow 2s ease-in-out infinite;
+        }
+        
+        /* Hero section specific animations */
+        .hero-title {
+            opacity: 0;
+            transform: translateY(-50px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hero-subtitle {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+        }
+        
+        .hero-buttons {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.6s;
+        }
+        
+        .hero-animated .hero-title,
+        .hero-animated .hero-subtitle,
+        .hero-animated .hero-buttons {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>  
+    
+    <!-- ... rest of your existing styles remain the same ... -->
 </head>
-<body>      
-    <!-- Navbar -->
-    <nav id="main-navbar" class="navbar-normal z-50">
-        <div class="container mx-auto px-4 py-4">
-            <div class="flex justify-between items-center">
-                <!-- Logo -->
-                <div class="flex items-center space-x-2">
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-r from-rose-400 to-rose-600 flex items-center justify-center">
-                        <span class="text-white font-bold text-xl">AY</span>
+<body>
+    <!-- ========== Start Section ========== -->
+    <!-- Nar Bar -->
+    <!-- ========== End Section ========== -->          
+    <section id="main-navbar" class="navbar-normal absolute z-10 w-full">    
+        <nav class="relative backdrop-blur-xl pt-4 md:pt-8 md:pb-5">
+            <div class="mx-auto px-4 sm:px-6 lg:px-6">
+                <div class="flex justify-between items-center h-16 font2">
+                    <!-- Logo / Brand -->
+                    <div class="flex items-center space-x-3">
+                        <a href="#" class="text-2xl font-bold text-indigo-600">
+                            <img class="h-25 md:h-32 w-25 md:w-32 rounded-l-lg hover:scale-110 transition duration-500" src="./image/mylogo.png" alt="My logo">
+                        </a>
+                        <p class="uppercase font2 md:hidden text-amber-200 text-2xl md:tet-4xl tracking-loose text-end">hair glow</p>
                     </div>
-                    <span class="text-2xl font-bold bg-gradient-to-r from-rose-700 to-rose-900 bg-clip-text text-transparent">Beauty Gallery</span>
+
+                    <!-- Desktop Navigation -->
+                    <div class="hidden md:flex items-center space-x-4">
+                        <a href="./index.html" class="group flex flex-col items-center text-gray-700 px-3 py-2 text-lg tracking-wide font-medium">
+                            <div class="w-3 h-3 bg-gradient-to-t from-violet-200 to-orange-500 rounded-full animate-bounce"></div>
+                            <div class="lg:text-2xl text-slate-200 group-hover:text-amber-500 group-hover:animate-pulse transition duration-500">Home</div>
+                        </a>
+                        <a href="./about_page.html" class="group flex flex-col items-center text-gray-700 px-3 py-2 text-lg tracking-wide font-medium">
+                            <div class="hidden group-hover:block w-3 h-3 bg-gradient-to-t from-violet-200 to-orange-500 rounded-full animate-bounce"></div>
+                            <div class="lg:text-2xl text-slate-200 group-hover:text-amber-500 group-hover:animate-pulse transition duration-500">About</div>
+                        </a>
+                        <div class="group relative">
+                            <button class="flex flex-col items-center text-gray-700 px-3 py-2 text-lg tracking-wide font-medium">
+                                <div class="hidden group-hover:inline-block w-3 h-3 bg-gradient-to-t from-violet-200 to-orange-500 rounded-full animate-bounce"></div>
+                                <div class="lg:text-2xl text-slate-200 group-hover:text-amber-500 group-hover:animate-pulse transition duration-500">Pages</div>
+                            </button>
+                            <div class="hidden group-hover:flex absolute left-0 w-56 flex-col bg-gradient-to-br from-white to-amber-100/98 py-4 rounded-sm transform translate-y-12 group-hover:translate-y-0 animate-fade-in transition duration-500 z-20">
+                                <a href="./services_page.html" class="py-3 px-6 text-lg font-light hover:bg-amber-800 text-slate-800 hover:text-amber-50 tracking-wide hover:animate-pulse transition duration-600">Services</a>
+                                <a href="./gallery_page.html" class="py-3 px-6 text-lg font-light hover:bg-amber-800 text-slate-800 hover:text-amber-50 tracking-wide hover:animate-pulse transition duration-600">Photo Gallery</a>
+                                <a href="#location" class="py-3 px-6 text-lg font-light hover:bg-amber-800 text-slate-800 hover:text-amber-50 tracking-wide hover:animate-pulse transition duration-600">Our Location</a>
+                                <a href="#testimonial" class="py-3 px-6 text-lg font-light hover:bg-amber-800 text-slate-800 hover:text-amber-50 tracking-wide hover:animate-pulse transition duration-600">Testimonials</a>
+                                <a href="#team" class="py-3 px-6 text-lg font-light hover:bg-amber-800 text-slate-800 hover:text-amber-50 tracking-wide hover:animate-pulse transition duration-600">Our Team</a>
+                            </div>
+                        </div>
+                        
+                        <a href="./prices_page.html" class="group flex flex-col items-center text-gray-700 px-3 py-2 text-lg tracking-wide font-medium">
+                            <div class="hidden group-hover:block w-3 h-3 bg-gradient-to-t from-violet-200 to-orange-500 rounded-full animate-bounce"></div>
+                            <div class="lg:text-2xl text-slate-200 group-hover:text-amber-500 group-hover:animate-pulse transition duration-500">Prices</div>
+                        </a>
+                        
+                        <!-- Appointment Button -->
+                        <a href="#reservations" class="lg:text-2xl ml-4 px-4 py-2 bg-gradient-to-b from-amber-600 to-amber-800/60 text-white font-medium tracking-wide rounded-full hover:bg-linear-to-t hover:from-amber-800/60 hover:to-amber-600 transition duration-500 transform hover:-translate-y-0.5 hover:shadow-lg">
+                            Reservations
+                        </a>
+                    </div>
+
+                    <!-- Mobile menu button -->
+                    <div class="md:hidden flex items-center">
+                        <!-- Mobile Menu Button -->
+                        <button id="menuToggle" class="menu-toggle md:hidden focus:outline-none focus:ring-2 ring-amber-100 rounded p-2 cursor-pointer">
+                            <span class="block w-7 h-0.5 bg-amber-300 mb-1.5 transition-all duration-300 hamburger-top"></span>
+                            <span class="block w-7 h-0.5 bg-amber-300 mb-1.5 transition-all duration-300 hamburger-middle"></span>
+                            <span class="block w-7 h-0.5 bg-amber-300 transition-all duration-300 hamburger-bottom"></span>
+                        </button>
+                    </div>
                 </div>
-                
-                <!-- Navigation Links -->
-                <div class="hidden md:flex space-x-8">
-                    <a href="#gallery1" class="text-gray-700 hover:text-rose-700 font-medium transition-colors">Mosaic Layout</a>
-                    <a href="#gallery2" class="text-gray-700 hover:text-amber-700 font-medium transition-colors">Interactive Filter</a>
-                    <a href="#gallery3" class="text-gray-700 hover:text-purple-700 font-medium transition-colors">Lookbook Style</a>
-                    <a href="#" class="text-gray-700 hover:text-rose-700 font-medium transition-colors">About</a>
-                    <a href="#" class="text-gray-700 hover:text-rose-700 font-medium transition-colors">Contact</a>
+            </div>
+
+            <!-- Mobile Menu (hidden by default) -->
+            <div id="mobileMenu" class="pt-5 px-5 max-h-0 md:hidden overflow-hidden transition-all duration-300 ease-in-out">
+                <div class="px-4 pt-4 pb-3 space-y-1 sm:px-3 text-xl font2">                
+                    <a href="./index.html" class="block group space-x-3 text-2xl text-yellow-300 hover:text-amber-400 active:text-amber-500 px-3 py-3 rounded-md font-medium hover:bg-purple-50/10 tracking-wider animate-pulse">
+                        <span class="flex items-center space-x-5">
+                            <div class="text-slate-100 group-hover:text-amber-400 active:text-amber-500 group-hover:animate-pulse transition duration-500">Home</div>
+                            <div class="w-3 h-3 bg-gradient-to-t from-violet-400 to-orange-400 rounded-full animate-bounce"></div>
+                        </span>                    
+                    </a>
+                    <a href="./about_page.html" class="block group space-x-3 text-2xl text-yellow-300 hover:text-amber-400 active:text-amber-500 px-3 py-3 rounded-md font-medium hover:bg-purple-50/10 tracking-wider animate-pulse">
+                        <span class="flex items-center space-x-5">
+                            <div class="text-slate-100 group-hover:text-amber-400 active:text-amber-500 group-hover:animate-pulse transition duration-500">About</div>
+                            <div class="hidden group-hover:block w-3 h-3 bg-gradient-to-t from-violet-400 to-orange-400 rounded-full animate-bounce"></div>
+                        </span>
+                    </a>
+                    <!-- Mobile Services Dropdown -->
+                    <div x-data="{ open: false }" class="border-t border-purple-100">
+                        <button @click="open = !open" class="w-full text-left flex justify-between items-center text-2xl text-slate-50 hover:text-amber-400 active:text-amber-500 px-3 py-3 rounded-md font-medium hover:bg-purple-50/10">
+                            Pages
+                            <svg class="h-5 w-5 transition-transform duration-200" :class="{ 'rotate-180': open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div x-show="open" x-transition class="pl-8 space-y-1 border-l-2 border-violet-200 ml-3">
+                            <a href="./services_page.html" class="group flex items-center space-x-5 text-gray-700 py-2 tracking-wide">                            
+                                <div class="text-slate-100 group-hover:text-amber-500 active:text-amber-500 group-hover:animate-pulse transition duration-500">Services</div>
+                                <div class="hidden group-hover:inline-block w-3 h-3 bg-gradient-to-t from-violet-400 to-orange-400 rounded-full animate-bounce"></div>
+                            </a>
+                            <a href="./gallery_page.html" class="group flex items-center space-x-5 text-gray-700 py-2 tracking-wide">                            
+                                <div class="text-slate-100 group-hover:text-amber-500 active:text-amber-500 group-hover:animate-pulse transition duration-500">Photo Gallery</div>
+                                <div class="hidden group-hover:inline-block w-3 h-3 bg-gradient-to-t from-violet-400 to-orange-400 rounded-full animate-bounce"></div>
+                            </a>
+                            <a href="#location" class="group flex items-center space-x-5 text-gray-700 py-2 tracking-wide">                            
+                                <div class="text-slate-100 group-hover:text-amber-500 active:text-amber-500 group-hover:animate-pulse transition duration-500">Our Location</div>
+                                <div class="hidden group-hover:inline-block w-3 h-3 bg-gradient-to-t from-violet-400 to-orange-400 rounded-full animate-bounce"></div>
+                            </a>
+                            <a href="#testimonial" class="group flex items-center space-x-5 text-gray-700 py-2 tracking-wide">                            
+                                <div class="text-slate-100 group-hover:text-amber-500 active:text-amber-500 group-hover:animate-pulse transition duration-500">Testimonial</div>
+                                <div class="hidden group-hover:inline-block w-3 h-3 bg-gradient-to-t from-violet-400 to-orange-400 rounded-full animate-bounce"></div>
+                            </a>            
+                            <a href="#team" class="group flex items-center space-x-5 text-gray-700 py-2 tracking-wide">                            
+                                <div class="text-slate-100 group-hover:text-amber-500 active:text-amber-500 group-hover:animate-pulse transition duration-500">Our Team</div>
+                                <div class="hidden group-hover:inline-block w-3 h-3 bg-gradient-to-t from-violet-400 to-orange-400 rounded-full animate-bounce"></div>
+                            </a>       
+                        </div>
+                    </div>
+
+                    <a href="./prices_page.html" class="block group space-x-3 text-2xl text-yellow-300 hover:text-amber-400 active:text-amber-500 px-3 py-3 rounded-md font-medium hover:bg-purple-50/10 tracking-wider animate-pulse">
+                        <span class="flex items-center space-x-5">
+                            <div class="text-slate-100 group-hover:text-amber-400 active:text-amber-500 group-hover:animate-pulse transition duration-500">Prices</div>
+                            <div class="hidden group-hover:block w-3 h-3 bg-gradient-to-t from-violet-400 to-orange-400 rounded-full animate-bounce"></div>
+                        </span>
+                    
+                    <!-- Mobile Appointment Button -->
+                    <a href="#reservations" class="block min-w-1/2 mx-3 mt-4 px-8 py-3 bg-gradient-to-r from-amber-500 to-amber-700 text-white tracking-wider rounded-lg text-2xl text-center hover:bg-gradient-to-br hover:from-amber-500 hover:to-amber-700 transition duration-600">
+                        Reservations
+                    </a>
                 </div>
-                
-                <!-- Mobile Menu Button -->
-                <button id="mobile-menu-button" class="md:hidden text-gray-700 hover:text-rose-700">
-                    <i class="fas fa-bars text-xl"></i>
+            </div>
+        </nav>
+    </section>
+ 
+    <!-- ========== Start Section ========== -->
+    <!-- Hero Section with Scroll Animation -->
+    <!-- ========== End Section ========== -->
+    <section class="hero-section bg-cover bg-center bg-fixed lg:h-screen h-full" style="background-image: url(./image/skincare5.jpeg);" >
+        <div class="flex flex-col justify-center items-center md:pt-73 pt-53 pb-12 pl-4 bg-black/60 lg:h-screen h-full">
+            <h1 class="hero-title text-center pr-2 font bg-gradient-to-b from-amber-500 to-rose-500/60 md:to-rose-700/50 text-transparent bg-clip-text md:w-3/4 text-7xl md:text-8xl text-pretty max-md:leading-23">
+              Welcome to Hair Glow  
+            </h1>
+            <p class="hero-subtitle text-center font2 bg-gradient-to-r from-slate-300 to-rose-500/60 text-transparent bg-clip-text text-4xl pt-25 md:pt-4 lg:pt-18">
+                Where Luxury Gets Comfort
+            </p>
+            <div class="hero-buttons pt-6 md:pt-4 flex flex-col lg:flex-row items-start space-y-5 lg:space-x-12 lg:pt-7">
+                <button class="font2 tracking-wider flex space-x-4 bg-linear-to-r from-amber-700/80 to-rose-500/30 py-1 px-2 rounded-md text-2xl text-white">
+                    <i class="fa-solid fa-phone px-2 py-1"></i> <span>07058748480</span>
                 </button>
+                <button class="font2 tracking-wider flex space-x-4 bg-linear-to-r from-amber-700/80 to-rose-500/30 py-1 px-2 rounded-md text-2xl text-white">
+                    <i class="fa-solid fa-location-dot px-2 py-1"></i> <span>Estate Gate</span>
+                </button>
+            </div>
+
+            <!-- Decorative blob -->
+            <div class="absolute top-0 right-0 w-56 h-56 bg-pink-200 rounded-full opacity-40 blur-3xl"></div>
+        </div>
+    </section>
+
+    <!-- ========== Start Section ========== -->
+    <!-- About Us with Scroll Animation -->
+    <!-- ========== End Section ========== -->
+    
+    <section style="background-image: url(./image/tools1.0.jpg);" class="about-section bg-center bg-cover bg-fixed h-full">
+        <div class="bg-slate-200/85 h-full w-full py-24 px-8 grid lg:grid-cols-2 gap-12 items-start">    
+            <!-- Image Part-->
+            <div class="w-full relative flex flex-col items-center fade-right delay-200">
+                <div class="absolute z-1 -top-6 -left-6 w-40 h-40 bg-pink-300 rounded-full opacity-70 blur-2xl"></div>
+                <img src="./image/skinclinic4.png" alt="Salon Image" class="bg-cover bg-center rounded-3xl shadow-lg md:w-130 lg:w-320 h-90 object-cover hover:scale-104 transition duration-1000">
+
+                <aside class="w-fit lg:w-full max-lg:pr-8 mt-4 flex items-end bg-linear-to-br from-zinc-50/60 to-pink-100/40 rounded-sm fade-up delay-300">
+                    <img src="./image/hair-care.png" alt="" class="w-28 h-32 p-3">
+                    <div class="flex flex-col pl-5 text-slate-800">
+                        <span class="text-xl md:text-3xl font2 mb-3">+2349063123479</span>
+                        <span class="text-lg font2 mb-3 tracking-wide text-pretty">Call us direct 24/7 for get a free consultation</span>
+                    </div>
+                </aside>
+            </div> 
+
+            <!-- Text Content -->
+            <div class="flex flex-col items-center space-y-6 fade-left delay-100">
+                <h2 class="text-5xl tracking-wide font font-extrabold leading-wide text-slate-700 scroll-animate" >
+                    About <span class="text-amber-500">Us</span>
+                </h2>
                 
-                <!-- CTA Button -->
-                <div class="hidden md:block">
-                    <button class="px-6 py-2 bg-gradient-to-r from-rose-600 to-rose-800 text-white rounded-full font-medium hover:from-rose-700 hover:to-rose-900 transition-all shadow-md hover:shadow-lg">
-                        Book Now
-                    </button>
+                <p class="text-slate-800 font3 leading-relaxed text-xl text-center scroll-animate delay-200">
+                    At <span class="font-bold font2 text-slate-800">Hair Glow Salon</span>, beauty is more than a service—it's an experience. 
+                    Founded with passion and elegance, we provide premium hairstyling, makeup artistry, 
+                    spa treatments, and personalized beauty care that bring out your confidence and natural glow.
+                </p>
+
+                <div class="scroll-animate delay-300">
+                    <h2 class="text-center pb-5 text-2xl md:text-4xl font2 text-slate-800 tracking-wide">Working Hours</h2>
+                    <div class="space-y-4">
+                        <div class="text-xl font2 text-slate-800 space-y-2 space-x-8 flex flex-col md:flex-row lg:flex-col">
+                            <div class="text-2xl md:text-3xl">Monday - Friday:</div>
+                            <div class="flex items-center space-x-3">
+                                <span>9:00 AM</span>
+                                <div class="w-25 md:w-40 lg:w-25 xl:w-50 h-0.5 bg-slate-600"></div>
+                                <span>8:00 PM</span>
+                            </div>
+                        </div>
+                        <div class="text-xl font2 text-slate-800 space-y-2 space-x-8 flex flex-col md:flex-row lg:flex-col">
+                            <div class="text-2xl md:text-3xl">Saturday:</div>
+                            <div class="flex items-center space-x-3">
+                                <span>10:00 AM</span>
+                                <div class="w-25 md:w-40 lg:w-25 xl:w-50 h-0.5 bg-slate-600"></div>
+                                <span>8:00 PM</span>
+                            </div>
+                        </div>
+                        <div class="text-xl font2 text-slate-800 space-y-2 space-x-8 flex flex-col md:flex-row lg:flex-col">
+                            <div class="text-2xl md:text-3xl">Sunday:</div>
+                            <div class="flex items-center space-x-3">Closed</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats -->
+                <div class="grid grid-cols-3 gap-x-3 md:gap-x-5 text-center stagger-children">
+                    <div class="group bg-slate-200/70 py-8 px-4 rounded-sm transition duration-500">
+                        <h3 class="text-2xl md:text-4xl font3 font-bold text-amber-500 group-hover:scale-130 transition duration-500">12+</h3>
+                        <p class="text-gray-600 text-sm group-hover:font-bold group-hover:text-md group-hover:text-slate-800 transition duration-500">Years of Experience</p>
+                    </div>
+                    <div class="group bg-slate-200/70 py-8 px-4 rounded-sm transition duration-500 delay-200">
+                        <h3 class="text-2xl md:text-4xl font3 font-bold text-amber-500 group-hover:scale-130 transition duration-500">100+</h3>
+                        <p class="text-gray-600 text-sm group-hover:font-bold group-hover:text-md group-hover:text-slate-800 transition duration-500">Happy Clients</p>
+                    </div>
+                    <div class="group bg-slate-200/70 py-8 px-4 rounded-sm transition duration-500 delay-400">
+                        <h3 class="text-2xl md:text-4xl font3 font-bold text-amber-500 group-hover:scale-130 transition duration-500">40+</h3>
+                        <p class="text-gray-600 text-sm group-hover:font-bold group-hover:text-md group-hover:text-slate-800 transition duration-500">Beauty Services</p>
+                    </div>
+                </div>
+
+                <!-- Button -->
+                <a href="./prices_page.html" 
+                    class="inline-block mt-4 text-xl text-pink-100 font2 font-medium px-8 py-4 rounded-lg shadow-lg bg-linear-to-br from-amber-500/90 to-rose-600/90 hover:bg-pink-700 transition duration-500 scroll-animate delay-500">
+                    Explore Our Services
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== Start Section ========== -->
+    <!-- Our Services Section with Scroll Animation -->
+    <!-- ========== End Section ========== -->
+
+    <section class="services-section bg-zinc-50">
+        <div class="container mx-auto px-3 md:px-6 w-full pt-24 pb-10">
+            <header class="flex flex-col justify-center items-center pb-8 fade-up">
+                <span class="text-5xl font font-bold tracking-wide text-slate-800">Our Services</span>
+                <span class="mt-4 text-2xl font2 font-medium tracking-wide text-slate-800">Explore Our Services</span>
+            </header>
+
+            <div class="grid grid-cols-2 lg:grid-cols-3 stagger-children">
+                <div class="flex flex-col justify-between items-center space-y-4 px-3 md:px-6 py-6 m-4 min-h-100 bg-white rounded-lg shadow-2xl shadow-amber-900/70 hover:scale-105 transition duration-500">
+                    <img class="w-25" src="./image/hair-care.png" alt="Hair Braiding">
+                    <h2 class="text-xl md:text-2xl font3 font-bold tracking-wide text-slate-800">Braiding</h2>
+                    <p class="text-slate-800 text-center font3 leading-relaxed text-lg md:text-xl">
+                        Experience the artistry of stylish hair braiding. 
+                    </p>
+                    <a href="#reservations" class="text-pretty text-center px-4 py-2 bg-linear-to-b from-yellow-700 to-amber-700 hover:bg-linear-to-t hover:from-amber-600 hover:to-yellow-800 text-stone-100 hover:text-white font-medium hover:font-bold tracking-wide rounded-sm shadow-2xl hover:shadow-stone-600 transition duration-500">Book Now</a>
+                </div>
+                <div class="flex flex-col justify-between items-center space-y-4 px-3 md:px-6 py-6 m-4 min-h-100 bg-white rounded-lg shadow-2xl shadow-amber-900/70 hover:scale-105 transition duration-500 delay-100">
+                    <img class="w-25" src="./image/makeup.png" alt="Makeup img">
+                    <h2 class="text-xl md:text-2xl font3 font-bold tracking-wide text-slate-800">Makeup</h2>
+                    <p class="text-slate-800 text-center font3 leading-relaxed text-lg md:text-xl">
+                        We bring out the beauty hidden deep within you.
+                    </p>
+                    <a href="#reservations" class="text-pretty text-center px-4 py-2 bg-linear-to-b from-yellow-700 to-amber-700 hover:bg-linear-to-t hover:from-amber-600 hover:to-yellow-800 text-stone-100 hover:text-white font-medium hover:font-bold tracking-wide rounded-sm shadow-2xl hover:shadow-stone-600 transition duration-500">Book Now</a>
+                </div>   
+                <div class="flex flex-col justify-between items-center space-y-4 px-3 md:px-6 py-6 m-4 min-h-100 bg-white rounded-lg shadow-2xl shadow-amber-900/70 hover:scale-105 transition duration-500 delay-200">
+                    <img class="w-25" src="./image/manicure.png" alt="Manicure Image">
+                    <h2 class="text-xl md:text-2xl font3 font-bold tracking-wide text-slate-800">Manicure</h2>
+                    <p class="text-slate-800 text-center font3 leading-relaxed text-lg md:text-xl">
+                        We bring out the beauty hidden deep within your hands.
+                    </p>
+                    <a href="#reservations" class="text-pretty text-center px-4 py-2 bg-linear-to-b from-yellow-700 to-amber-700 hover:bg-linear-to-t hover:from-amber-600 hover:to-yellow-800 text-stone-100 hover:text-white font-medium hover:font-bold tracking-wide rounded-sm shadow-2xl hover:shadow-stone-600 transition duration-500">Book Now</a>
+                </div>
+                <div class="flex flex-col justify-between items-center space-y-4 px-3 md:px-6 py-6 m-4 min-h-100 bg-white rounded-lg shadow-2xl shadow-amber-900/70 hover:scale-105 transition duration-500 delay-300">
+                    <img class="w-25" src="./image/pedicure.png" alt="Pedicure Image">
+                    <h2 class="text-xl md:text-2xl font3 font-bold tracking-wide text-slate-800">Pedicure</h2>
+                    <p class="text-slate-800 text-center font3 leading-relaxed text-lg md:text-xl">
+                        We bring out the beauty hidden deep within your feets.
+                    </p>
+                    <a href="#reservations" class="text-pretty text-center px-4 py-2 bg-linear-to-b from-yellow-700 to-amber-700 hover:bg-linear-to-t hover:from-amber-600 hover:to-yellow-800 text-stone-100 hover:text-white font-medium hover:font-bold tracking-wide rounded-sm shadow-2xl hover:shadow-stone-600 transition duration-500">Book Now</a>
+                </div>
+                <div class="flex flex-col justify-between items-center space-y-4 px-3 md:px-6 py-6 m-4 min-h-100 bg-white rounded-lg shadow-2xl shadow-amber-900/70 hover:scale-105 transition duration-500 delay-400">
+                    <img class="w-25" src="./image/skin-care.png" alt="Skin care Image">
+                    <h2 class="text-xl md:text-2xl font3 font-bold tracking-wide text-slate-800">skin-Care</h2>
+                    <p class="text-slate-800 text-center font3 leading-relaxed text-lg md:text-xl">
+                        We bring out the beauty hidden deep within your Skin.
+                    </p>
+                    <a href="#reservations" class="text-pretty text-center px-4 py-2 bg-linear-to-b from-yellow-700 to-amber-700 hover:bg-linear-to-t hover:from-amber-600 hover:to-yellow-800 text-stone-100 hover:text-white font-medium hover:font-bold tracking-wide rounded-sm shadow-2xl hover:shadow-stone-600 transition duration-500">Book Now</a>
+                </div>
+                <div class="flex flex-col justify-between items-center space-y-4 px-3 md:px-6 py-6 m-4 min-h-100 bg-white rounded-lg shadow-2xl shadow-amber-900/70 hover:scale-105 transition duration-500 delay-500">
+                    <img class="w-25" src="./image/blow-dry.png" alt="Hair Dryer Image">
+                    <h2 class="text-xl md:text-2xl font3 font-bold tracking-wide text-slate-800">Blow-Dry</h2>
+                    <p class="text-slate-800 text-center font3 leading-relaxed text-lg md:text-xl">
+                        We bring out the beauty hidden deep within your Hair.
+                    </p>
+                    <a href="#reservations" class="text-pretty text-center px-4 py-2 bg-linear-to-b from-yellow-700 to-amber-700 hover:bg-linear-to-t hover:from-amber-600 hover:to-yellow-800 text-stone-100 hover:text-white font-medium hover:font-bold tracking-wide rounded-sm shadow-2xl hover:shadow-stone-600 transition duration-500">Book Now</a>
+                </div>
+            </div>            
+        </div>
+    </section>
+
+    <!-- ========== Start Section ========== -->
+    <!-- Pricing Section with Scroll Animation -->
+    <!-- ========== End Section ========== -->
+    <section style="background-image: url(./image/beauty20.jpeg);" class="pricing-section bg-cover bg-fixed bg-center">
+        <div class="px-3 md:px-6 pt-24 pb-13 bg-orange-950/94 bg-blend-saturation flex flex-col lg:flex-row max-lg:space-y-12">
+            <!-- Discount -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 justify-center items-center">
+                <div class="max-lg:flex flex-col justify-center items-center fade-right delay-100">
+                    <h1 class="text-4xl md:text-6xl tracking-wider text-yellow-100 font2">Pricing</h1>
+                    <h2 class="pt-4 text-3xl md:text-5xl tracking-wider text-white font md:translate-x-12">Hair Glow</h2>
+                    <p class="pt-3 text-2xl md:text-3xl text-amber-200 font md:translate-x-16">Get a Discount of 12% per Booking</p>
+                    <img class="h-110 w-90 lg:w-180 mt-14 rounded-sm border-3 border-yellow-800 bg-linear-to-tl to-orange-600/40 border-dotted p-8 max-sm:transform sm:translate-x-15 md:-translate-x-10 lg:translate-x-25" src="./image/skinclinic1.jpeg" alt="Hair Treatement">
+                </div>                           
+            </div>
+            <!-- Prices -->
+            <ul class="w-full space-y-5 flex flex-col max-lg:items-center md:transform md:translate-x-7 lg:translate-0 stagger-children">
+                <li class="max-lg:w-3/4 bg-gradient-to-br from-orange-700/70 to-amber-800/70 flex justify-between transform lg:-translate-x-12 fade-left">
+                    <img class="w-20" src="./image/beauty21.jpeg" alt="braids">
+                    <div class="mr-6 flex flex-col justify-between items-end">
+                        <h2 class="font2 text-xl md:text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Corn Row</h2>
+                        <p class="font2 text-md md:text-xl text-white tracking-wide">₦2,500 - ₦12,000</p>
+                    </div>
+                </li>
+                <li class="max-lg:w-3/4 bg-gradient-to-br from-orange-700/70 to-amber-800/70 flex justify-between transform lg:-translate-x-9 fade-left delay-100">
+                    <img class="w-20" src="./image/beauty20.jpeg" alt="braids">
+                    <div class="mr-6 flex flex-col justify-between items-end">
+                        <h2 class="text-end font2 text-xl md:text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Wig Attachment</h2>
+                        <p class="font2 text-md md:text-xl text-white tracking-wide">+₦15,000</p>
+                    </div>
+                </li>
+                <li class="max-lg:w-3/4 bg-gradient-to-br from-orange-700/70 to-amber-800/70 flex justify-between transform lg:-translate-x-6 fade-left delay-200">
+                    <img class="w-20" src="./image/makeup2.png" alt="braids">
+                    <div class="mr-6 flex flex-col justify-between items-end">
+                        <h2 class="font2 text-xl md:text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Makeup</h2>
+                        <p class="font2 text-md md:text-xl text-white tracking-wide">₦5,000 - ₦25,000</p>
+                    </div>
+                </li>
+                <li class="max-lg:w-3/4 bg-gradient-to-br from-orange-700/70 to-amber-800/70 flex justify-between transform lg:-translate-x-3 fade-left delay-300">
+                    <img class="w-20" src="./image/man3.jpeg" alt="braids">
+                    <div class="mr-6 flex flex-col justify-between items-end">
+                        <h2 class="font2 text-xl md:text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Manicure</h2>
+                        <p class="font2 text-md md:text-xl text-white tracking-wide">₦3,500 - ₦20,000</p>
+                    </div>
+                </li>
+                <li class="max-lg:w-3/4 bg-gradient-to-br from-orange-700/70 to-amber-800/70 flex justify-between transform lg:-translate-x-0 fade-left delay-400">                    
+                    <img class="w-20" src="./image/ped2.jpeg" alt="braids">
+                    <div class="mr-6 flex flex-col justify-between items-end">
+                        <h2 class="font2 text-xl md:text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Pedicure</h2>
+                        <p class="font2 text-md md:text-xl text-white tracking-wide">₦2,500 - ₦15,000</p>
+                    </div>
+                </li>
+                <li class="max-lg:w-3/4 bg-gradient-to-br from-orange-700/70 to-amber-800/70 flex justify-between transform lg:translate-x-3 fade-left delay-500">
+                    <img class="w-20" src="./image/skincare3.jpeg" alt="braids">
+                    <div class="mr-6 flex flex-col justify-between items-end">
+                        <h2 class="font2 text-xl md:text-2xl text-yellow-300 font-thin tracking-wider pt-2 mb-2">Skincare</h2>
+                        <p class="font2 text-md md:text-xl text-white tracking-wide">₦15,000 - ₦30,000</p>
+                    </div>
+                </li>
+            </ul>             
+        </div>
+    </section>
+    
+    <!-- ========== Start Section ========== -->
+    <!-- Gallery section with Scroll Animation -->
+    <!-- ========== End Section ========== -->
+    <section style="background-image: url(./image/tools1.3.jpg);" class="gallery-section bg-cover bg-fixed bg-center">
+        <div class="bg-white/90 bg-blend-saturation px-6 pt-24">
+            <div class="flex flex-col items-center animate-fade-in fade-up">
+                <h1 class="text-4xl text-amber-600/80 font mb-3 tracking-wider">Gallery</h1>
+                <h2 class="text-2xl text-slate-800 tracking-wide font2">Our Latest Works</h2>
+            </div>
+
+        <section class="py-20 px-6">
+        <!-- Gallery Grid - Your original layout with Salone effects -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 stagger-children">
+            <!-- Item 1 (Large - spans 2 columns, 2 rows) -->
+            <div class="col-span-2 row-span-2 gallery-item rounded-2xl animate-fade-in animation-delay-200">
+                <img src="./image/beauty3.png" class="w-full h-full object-cover" />
+                <div class="gallery-icon">
+                    <a href="./image/beauty3.png" 
+                        class="btn bg-amber-600 hover:bg-amber-700 text-white w-16 h-16 rounded-full flex items-center justify-center transition-all-custom transform hover:scale-110"
+                        data-lightbox="gallery" 
+                        data-title="Premium Beauty Treatment">
+                        <i class="fas fa-eye text-2xl"></i>
+                    </a>
                 </div>
             </div>
             
-            <!-- Mobile Menu (Hidden by default) -->
-            <div id="mobile-menu" class="md:hidden mt-4 hidden">
-                <div class="flex flex-col space-y-4 py-4">
-                    <a href="#gallery1" class="text-gray-700 hover:text-rose-700 font-medium transition-colors py-2 border-b border-gray-100">Mosaic Layout</a>
-                    <a href="#gallery2" class="text-gray-700 hover:text-amber-700 font-medium transition-colors py-2 border-b border-gray-100">Interactive Filter</a>
-                    <a href="#gallery3" class="text-gray-700 hover:text-purple-700 font-medium transition-colors py-2 border-b border-gray-100">Lookbook Style</a>
-                    <a href="#" class="text-gray-700 hover:text-rose-700 font-medium transition-colors py-2 border-b border-gray-100">About</a>
-                    <a href="#" class="text-gray-700 hover:text-rose-700 font-medium transition-colors py-2">Contact</a>
-                    <button class="px-6 py-3 bg-gradient-to-r from-rose-600 to-rose-800 text-white rounded-full font-medium hover:from-rose-700 hover:to-rose-900 transition-all mt-4">
-                        Book Now
-                    </button>
+            <!-- Item 2 -->
+            <div class="gallery-item rounded-2xl animate-fade-in animation-delay-400 delay-100">
+                <img src="./image/beauty17.png" class="w-full h-48 md:h-64 object-cover" />
+                <div class="gallery-icon">
+                    <a href="./image/beauty17.png" 
+                        class="btn bg-amber-600 hover:bg-amber-700 text-white w-14 h-14 rounded-full flex items-center justify-center transition-all-custom transform hover:scale-110"
+                        data-lightbox="gallery" 
+                        data-title="Professional Makeup">
+                        <i class="fas fa-eye text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Item 3 -->
+            <div class="gallery-item rounded-2xl animate-fade-in animation-delay-600 delay-200">
+                <img src="./image/ped1.jpeg" class="w-full h-48 md:h-64 object-cover" />
+                <div class="gallery-icon">
+                    <a href="./image/ped1.jpeg" 
+                        class="btn bg-amber-600 hover:bg-amber-700 text-white w-14 h-14 rounded-full flex items-center justify-center transition-all-custom transform hover:scale-110"
+                        data-lightbox="gallery" 
+                        data-title="Luxury Pedicure">
+                        <i class="fas fa-eye text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Item 4 -->
+            <div class="gallery-item rounded-2xl animate-fade-in animation-delay-200 delay-300">
+                <img src="./image/skincare1.png" class="w-full h-48 md:h-64 object-cover" />
+                <div class="gallery-icon">
+                    <a href="./image/skincare1.png" 
+                        class="btn bg-amber-600 hover:bg-amber-700 text-white w-14 h-14 rounded-full flex items-center justify-center transition-all-custom transform hover:scale-110"
+                        data-lightbox="gallery" 
+                        data-title="Skincare Therapy">
+                        <i class="fas fa-eye text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Item 5 -->
+            <div class="gallery-item rounded-2xl animate-fade-in animation-delay-400 delay-400">
+                <img src="./image/makeup3.jpeg" class="w-full h-48 md:h-64 object-cover" />
+                <div class="gallery-icon">
+                    <a href="./image/makeup3.jpeg" 
+                        class="btn bg-amber-amber-600 hover:bg-amber-700 text-white w-14 h-14 rounded-full flex items-center justify-center transition-all-custom transform hover:scale-110"
+                        data-lightbox="gallery" 
+                        data-title="Glam Makeover">
+                        <i class="fas fa-eye text-xl"></i>
+                    </a>
                 </div>
             </div>
         </div>
-    </nav>
-    
-
-<header class="text-center mb-12">
-                <h1 class="text-4xl font-bold text-rose-900 mb-2">Beauty Gallery Designs</h1>
-                <p class="text-gray-600 max-w-2xl mx-auto">Explore 5 creative gallery section designs for a beauty website. Each design has unique layout and interactive features.</p>
-            </header>
-
-            <main class="max-w-7xl mx-auto">       
-
-                <!-- Gallery 2: Interactive Filter Gallery -->
-                <section id="gallery2" class="gallery-section mb-16 p-6 rounded-2xl beauty-gold">
-                    <div class="flex flex-col items-center justify-between mb-6">
-                        <div>
-                            <h2 class="text-3xl font-bold text-amber-900"> Interactive Filter Gallery</h2>
-                            <p class="text-gray-600">Filterable content with smooth category transitions</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Filter buttons -->
-                    <div class="flex flex-wrap justify-center gap-3 mb-8">
-                        <button class="filter-btn active px-4 py-2 rounded-full bg-amber-800 text-white hover:cursor-pointer transition" data-filter="all">All Products</button>
-                        <button class="filter-btn px-4 py-2 rounded-full bg-white text-amber-800 border border-amber-300 hover:cursor-pointer transition" data-filter="Braiding">Braiding</button>
-                        <button class="filter-btn px-4 py-2 rounded-full bg-white text-amber-800 border border-amber-300 hover:cursor-pointer transition" data-filter="Makeup">Makeup</button>
-                        <button class="filter-btn px-4 py-2 rounded-full bg-white text-amber-800 border border-amber-300 hover:cursor-pointer transition" data-filter="Manicure">Manicure</button>
-                        <button class="filter-btn px-4 py-2 rounded-full bg-white text-amber-800 border border-amber-300 hover:cursor-pointer transition" data-filter="Pedicure">Pedicure</button>
-                        <button class="filter-btn px-4 py-2 rounded-full bg-white text-amber-800 border border-amber-300 hover:cursor-pointer transition" data-filter="Skin-care">Skin-care</button>
-                    </div>
-                    
-                    <!-- Gallery items -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6" id="filterable-gallery">
-                        <!-- Braiding item -->
-                        <ul class=" gallery-item animate-fadeIn" data-category="Braiding">
-                            <li class="bg-white rounded-xl overflow-hidden shadow-md">
-                                <div class="h-48 overflow-hidden">
-                                    <img src="./image/beauty21.jpeg" 
-                                        alt="Braiding collection" class="w-full h-full object-cover">
-                                </div>
-                                <div class="p-4">
-                                    <div class="flex justify-between items-start">
-                                        <h3 class="font-bold text-gray-800">Stylish braids</h3>
-                                        <span class="text-xs bg-amber-100 text-amber-800 px-2 py-1 rounded-full">Braids</span>
-                                    </div>
-                                    <p class="text-gray-600 text-sm mt-5">Long-lasting matte finish in 5 trendy shades</p>
-                                    <div class="flex justify-between items-center mt-1">
-                                        <span class="font-bold text-amber-800">₦5,000</span>                                        
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="bg-white rounded-xl overflow-hidden shadow-md">
-                                <div class="h-48 overflow-hidden">
-                                    <img src="./image/beauty3.png" 
-                                        alt="Braiding collection" class="w-full h-full object-cover">
-                                </div>
-                                <div class="p-4">
-                                    <div class="flex justify-between items-start">
-                                        <h3 class="font-bold text-gray-800">Stylish braids</h3>
-                                        <span class="text-xs bg-amber-100 text-amber-800 px-2 py-1 rounded-full">Braids</span>
-                                    </div>
-                                    <p class="text-gray-600 text-sm mt-5">Long-lasting matte finish in 5 trendy shades</p>
-                                    <div class="flex justify-between items-center mt-1">
-                                        <span class="font-bold text-amber-800">₦6,000</span>                                        
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="bg-white rounded-xl overflow-hidden shadow-md">
-                                <div class="h-48 overflow-hidden">
-                                    <img src="./image/beauty9.png" 
-                                        alt="Braiding collection" class="w-full h-full object-cover">
-                                </div>
-                                <div class="p-4">
-                                    <div class="flex justify-between items-start">
-                                        <h3 class="font-bold text-gray-800">Stylish braids</h3>
-                                        <span class="text-xs bg-amber-100 text-amber-800 px-2 py-1 rounded-full">Braids</span>
-                                    </div>
-                                    <p class="text-gray-600 text-sm mt-5">Long-lasting matte finish in 5 trendy shades</p>
-                                    <div class="flex justify-between items-center mt-1">
-                                        <span class="font-bold text-amber-800">₦10,000</span>                                        
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                        
-                        <!-- Makeup item -->
-                        <ul class="gallery-item animate-fadeIn" data-category="Makeup">
-                            <li class="bg-white rounded-xl overflow-hidden shadow-md">
-                                <div class="h-48 overflow-hidden">
-                                    <img src="./image/makeup1.png" 
-                                        alt="Makeup collection" class="w-full h-full object-cover">
-                                </div>
-                                <div class="p-4">
-                                    <div class="flex justify-between items-start">
-                                        <h3 class="font-bold text-gray-800">Stylish Makeup</h3>
-                                        <span class="text-xs bg-violet-50 text-violet-800 px-2 py-1 rounded-full">Makeup</span>
-                                    </div>
-                                    <p class="text-gray-600 text-sm mt-5">Long-lasting matte finish in 5 trendy shades</p>
-                                    <div class="flex justify-between items-center mt-1">
-                                        <span class="font-bold text-amber-800">₦7,500</span>                                        
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="bg-white rounded-xl overflow-hidden shadow-md">
-                                <div class="h-48 overflow-hidden">
-                                    <img src="./image/makeup5.jpeg" 
-                                        alt="Makeup collection" class="w-full h-full object-cover">
-                                </div>
-                                <div class="p-4">
-                                    <div class="flex justify-between items-start">
-                                        <h3 class="font-bold text-gray-800">Stylish Makeup</h3>
-                                        <span class="text-xs bg-violet-50 text-violet-800 px-2 py-1 rounded-full">Makeup</span>
-                                    </div>
-                                    <p class="text-gray-600 text-sm mt-5">Long-lasting matte finish in 5 trendy shades</p>
-                                    <div class="flex justify-between items-center mt-1">
-                                        <span class="font-bold text-amber-800">₦8,500</span>                                        
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="bg-white rounded-xl overflow-hidden shadow-md">
-                                <div class="h-48 overflow-hidden">
-                                    <img src="./image/makeup3.jpeg" 
-                                        alt="Makeup collection" class="w-full h-full object-cover">
-                                </div>
-                                <div class="p-4">
-                                    <div class="flex justify-between items-start">
-                                        <h3 class="font-bold text-gray-800">Stylish Makeup</h3>
-                                        <span class="text-xs bg-violet-50 text-violet-800 px-2 py-1 rounded-full">Makeup</span>
-                                    </div>
-                                    <p class="text-gray-600 text-sm mt-5">Long-lasting matte finish in 5 trendy shades</p>
-                                    <div class="flex justify-between items-center mt-1">
-                                        <span class="font-bold text-amber-800">₦10,000</span>                                        
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                        
-                        <!-- Manicure item -->
-                        <ul class="gallery-item animate-fadeIn" data-category="Manicure">
-                            <li class="bg-white rounded-xl overflow-hidden shadow-md">
-                                <div class="h-48 overflow-hidden">
-                                    <img src="./image/man2.jpeg" 
-                                        alt="Makeup collection" class="w-full h-full object-cover">
-                                </div>
-                                <div class="p-4">
-                                    <div class="flex justify-between items-start">
-                                        <h3 class="font-bold text-gray-800">Stylish Manicure </h3>
-                                        <span class="text-xs bg-blue-50 text-blue-800 px-2 py-1 rounded-full">Manicure</span>
-                                    </div>
-                                    <p class="text-gray-600 text-sm mt-5">Long-lasting matte finish in 5 trendy shades</p>
-                                    <div class="flex justify-between items-center mt-1">
-                                        <span class="font-bold text-amber-800">₦2,500</span>                                        
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="bg-white rounded-xl overflow-hidden shadow-md">
-                                <div class="h-48 overflow-hidden">
-                                    <img src="./image/man1.png" 
-                                        alt="Makeup collection" class="w-full h-full object-cover">
-                                </div>
-                                <div class="p-4">
-                                    <div class="flex justify-between items-start">
-                                        <h3 class="font-bold text-gray-800">Stylish Manicure </h3>
-                                        <span class="text-xs bg-blue-50 text-blue-800 px-2 py-1 rounded-full">Manicure</span>
-                                    </div>
-                                    <p class="text-gray-600 text-sm mt-5">Long-lasting matte finish in 5 trendy shades</p>
-                                    <div class="flex justify-between items-center mt-1">
-                                        <span class="font-bold text-amber-800">₦5,000</span>                                        
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="bg-white rounded-xl overflow-hidden shadow-md">
-                                <div class="h-48 overflow-hidden">
-                                    <img src="./image/man.png" 
-                                        alt="Makeup collection" class="w-full h-full object-cover">
-                                </div>
-                                <div class="p-4">
-                                    <div class="flex justify-between items-start">
-                                        <h3 class="font-bold text-gray-800">Stylish Manicure </h3>
-                                        <span class="text-xs bg-blue-50 text-blue-800 px-2 py-1 rounded-full">Manicure</span>
-                                    </div>
-                                    <p class="text-gray-600 text-sm mt-5">Long-lasting matte finish in 5 trendy shades</p>
-                                    <div class="flex justify-between items-center mt-1">
-                                        <span class="font-bold text-amber-800">₦3,000</span>                                        
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                        
-                        <!-- pedicure item -->
-                        <ul class="gallery-item animate-fadeIn" data-category="Pedicure">
-                            <li class="bg-white rounded-xl overflow-hidden shadow-md">
-                                <div class="h-48 overflow-hidden">
-                                    <img src="./image/ped.jpeg" 
-                                        alt="Pedicure image" class="w-full h-full object-cover">
-                                </div>
-                                <div class="p-4">
-                                    <div class="flex justify-between items-start">
-                                        <h3 class="font-bold text-gray-800">Stylish Pedicure </h3>
-                                        <span class="text-xs bg-yellow-50 text-yellow-800 px-2 py-1 rounded-full">Pedicure</span>
-                                    </div>
-                                    <p class="text-gray-600 text-sm mt-5">Long-lasting matte finish in 5 trendy shades</p>
-                                    <div class="flex justify-between items-center mt-1">
-                                        <span class="font-bold text-amber-800">₦2,500</span>                                        
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="bg-white rounded-xl overflow-hidden shadow-md">
-                                <div class="h-48 overflow-hidden">
-                                    <img src="./image/ped1.jpeg" 
-                                        alt="Pedicure Image" class="w-full h-full object-cover">
-                                </div>
-                                <div class="p-4">
-                                    <div class="flex justify-between items-start">
-                                        <h3 class="font-bold text-gray-800">Stylish Pedicure </h3>
-                                        <span class="text-xs bg-yellow-50 text-yellow-800 px-2 py-1 rounded-full">Pedicure</span>
-                                    </div>
-                                    <p class="text-gray-600 text-sm mt-5">Long-lasting matte finish in 5 trendy shades</p>
-                                    <div class="flex justify-between items-center mt-1">
-                                        <span class="font-bold text-amber-800">₦4,000</span>                                        
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="bg-white rounded-xl overflow-hidden shadow-md">
-                                <div class="h-48 overflow-hidden">
-                                    <img src="./image/ped2.jpeg" 
-                                        alt="Pedicure image" class="w-full h-full object-cover">
-                                </div>
-                                <div class="p-4">
-                                    <div class="flex justify-between items-start">
-                                        <h3 class="font-bold text-gray-800">Stylish Pedicure </h3>
-                                        <span class="text-xs bg-yellow-50 text-yellow-800 px-2 py-1 rounded-full">Pedicure</span>
-                                    </div>
-                                    <p class="text-gray-600 text-sm mt-5">Long-lasting matte finish in 5 trendy shades</p>
-                                    <div class="flex justify-between items-center mt-1">
-                                        <span class="font-bold text-amber-800">₦6,000</span>                                        
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-
-                        <!-- Skin-care item -->
-                        <ul class="gallery-item animate-fadeIn grid" data-category="Skin-care">
-                            <li class="bg-white rounded-xl overflow-hidden shadow-md">
-                                <div class="h-48 overflow-hidden">
-                                    <img src="./image/skincare3.jpeg" 
-                                        alt="Skin-care image" class="w-full h-full object-cover">
-                                </div>
-                                <div class="p-4">
-                                    <div class="flex justify-between items-start">
-                                        <h3 class="font-bold text-gray-800">Stylish Skin-care </h3>
-                                        <span class="text-xs bg-rose-50 text-rose-800 px-2 py-1 rounded-full">Skin-care</span>
-                                    </div>
-                                    <p class="text-gray-600 text-sm mt-5">Long-lasting matte finish in 5 trendy shades</p>
-                                    <div class="flex justify-between items-center mt-1">
-                                        <span class="font-bold text-amber-800">₦12,500</span>                                        
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="bg-white rounded-xl overflow-hidden shadow-md">
-                                <div class="h-48 overflow-hidden">
-                                    <img src="./image/skincare6.jpeg" 
-                                        alt="Skin-care image" class="w-full h-full object-cover">
-                                </div>
-                                <div class="p-4">
-                                    <div class="flex justify-between items-start">
-                                        <h3 class="font-bold text-gray-800">Stylish Skin-care </h3>
-                                        <span class="text-xs bg-rose-50 text-rose-800 px-2 py-1 rounded-full">Skin-care</span>
-                                    </div>
-                                    <p class="text-gray-600 text-sm mt-5">Long-lasting matte finish in 5 trendy shades</p>
-                                    <div class="flex justify-between items-center mt-1">
-                                        <span class="font-bold text-amber-800">₦15,000</span>                                        
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="bg-white rounded-xl overflow-hidden shadow-md">
-                                <div class="h-48 overflow-hidden">
-                                    <img src="./image/skinclinic.png" 
-                                        alt="Skin-care image" class="w-full h-full object-cover">
-                                </div>
-                                <div class="p-4">
-                                    <div class="flex justify-between items-start">
-                                        <h3 class="font-bold text-gray-800">Stylish Skin-care </h3>
-                                        <span class="text-xs bg-rose-50 text-rose-800 px-2 py-1 rounded-full">Skin-care</span>
-                                    </div>
-                                    <p class="text-gray-600 text-sm mt-5">Long-lasting matte finish in 5 trendy shades</p>
-                                    <div class="flex justify-between items-center mt-1">
-                                        <span class="font-bold text-amber-800">₦15,000</span>                                        
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </section>
-            </main>
-
-
-
-
-<script>
-            // Interactive filter functionality for Gallery 2
-            document.querySelectorAll('.filter-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    // Update active button
-                    document.querySelectorAll('.filter-btn').forEach(btn => {
-                        btn.classList.remove('active', 'bg-amber-800', 'text-white');
-                        btn.classList.add('bg-white', 'text-amber-800', 'border', 'border-amber-300');
-                    });
-                    
-                    this.classList.remove('bg-white', 'text-amber-800', 'border', 'border-amber-300');
-                    this.classList.add('active', 'bg-amber-800', 'text-white');
-                    
-                    // Filter items
-                    const filter = this.getAttribute('data-filter');
-                    const items = document.querySelectorAll('#filterable-gallery .gallery-item');
-                    
-                    items.forEach(item => {
-                        const category = item.getAttribute('data-category');
-                        
-                        if (filter === 'all') {
-                            item.style.display = 'block';
-                            item.classList.add('animate-fadeIn');                            
-                        } else if (filter === category) {
-                            item.style.display = 'grid', 'grid-row-3';
-                            item.classList.add('animate-fadeIn');
-                        } else {
-                            item.style.display = 'none';
-                            item.classList.remove('animate-fadeIn');
-                        }
-                    });
-                });
-            });
-        </script>
-
-
-
-
-    <!-- Content Wrapper -->
-    <div class="content-wrapper">
-        <!-- Gallery Options......  -->
-        <div> 
-            Gallery Option 1
-            <section>
-                <header class="text-center mb-12 pt-12">
-                    <h1 class="text-4xl font-bold text-rose-900 mb-2">Beauty Gallery Designs</h1>
-                    <p class="text-gray-600 max-w-2xl mx-auto">Explore 5 creative gallery section designs for a beauty website. Each design has unique layout and interactive features.</p>
-                </header>
-
-                <main class="max-w-7xl mx-auto">
-                    <!-- Navigation for gallery sections -->
-                    <div class="flex flex-wrap justify-center gap-3 mb-10">
-                        <a href="#gallery1" class="px-4 py-2 rounded-full beauty-pink hover:bg-rose-200 transition">Mosaic Layout</a>
-                        <a href="#gallery2" class="px-4 py-2 rounded-full beauty-gold hover:bg-amber-200 transition">Interactive Filter</a>
-                    </div>
-                    
-                    <!-- Gallery 1: Mosaic Layout -->
-                    <section id="gallery1" class="gallery-section mb-16 p-6 rounded-2xl beauty-pink">
-                        <div class="flex items-center justify-between mb-6">
-                            <div>
-                                <h2 class="text-3xl font-bold text-rose-900">1. Mosaic Layout Gallery</h2>
-                                <p class="text-gray-600">Asymmetric grid with varying image sizes for visual interest</p>
-                            </div>
-                            <span class="px-4 py-1 rounded-full bg-rose-100 text-rose-800 font-medium">Creative</span>
-                        </div>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <!-- Large center image -->
-                            <div class="md:col-span-2 row-span-2 gallery-item">
-                                <div class="relative overflow-hidden rounded-xl h-full">
-                                    <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                        alt="Makeup palette and brushes" class="w-full h-full object-cover">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
-                                        <div>
-                                            <h3 class="text-white text-xl font-bold">Professional Kit</h3>
-                                            <p class="text-rose-100">Complete makeup collection for artists</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Top right image -->
-                            <div class="gallery-item">
-                                <div class="relative overflow-hidden rounded-xl h-48">
-                                    <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                                        alt="Woman with red lipstick" class="w-full h-full object-cover">
-                                    <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                                        <button class="bg-white text-rose-800 px-4 py-2 rounded-full font-medium">View Details</button>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Bottom right image 1 -->
-                            <div class="gallery-item">
-                                <div class="relative overflow-hidden rounded-xl h-48">
-                                    <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                                        alt="Skincare products" class="w-full h-full object-cover">
-                                    <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
-                                        <p class="text-white font-medium">Organic Skincare Line</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Bottom right image 2 -->
-                            <div class="gallery-item">
-                                <div class="relative overflow-hidden rounded-xl h-48">
-                                    <img src="https://images.unsplash.com/photo-1612810806563-4cb8265db55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                                        alt="Nail polish collection" class="w-full h-full object-cover">
-                                    <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
-                                        <p class="text-white font-medium">Summer Nail Collection</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-6 text-center">
-                            <button class="px-6 py-3 bg-rose-800 text-white rounded-full font-medium hover:bg-rose-900 transition">View All Products</button>
-                        </div>
-                    </section>
-                    
-                    <!-- Gallery 2: Interactive Filter Gallery -->
-                    <section id="gallery2" class="gallery-section mb-16 p-6 rounded-2xl beauty-gold">
-                        <div class="flex items-center justify-between mb-6">
-                            <div>
-                                <h2 class="text-3xl font-bold text-amber-900">2. Interactive Filter Gallery</h2>
-                                <p class="text-gray-600">Filterable content with smooth category transitions</p>
-                            </div>
-                            <span class="px-4 py-1 rounded-full bg-amber-100 text-amber-800 font-medium">Interactive</span>
-                        </div>
-                        
-                        <!-- Filter buttons -->
-                        <div class="flex flex-wrap justify-center gap-3 mb-8">
-                            <button class="filter-btn active px-4 py-2 rounded-full bg-amber-800 text-white transition" data-filter="all">All Products</button>
-                            <button class="filter-btn px-4 py-2 rounded-full bg-white text-amber-800 border border-amber-300 transition" data-filter="makeup">Makeup</button>
-                            <button class="filter-btn px-4 py-2 rounded-full bg-white text-amber-800 border border-amber-300 transition" data-filter="skincare">Skincare</button>
-                            <button class="filter-btn px-4 py-2 rounded-full bg-white text-amber-800 border border-amber-300 transition" data-filter="fragrance">Fragrance</button>
-                            <button class="filter-btn px-4 py-2 rounded-full bg-white text-amber-800 border border-amber-300 transition" data-filter="tools">Tools</button>
-                        </div>
-                        
-                        <!-- Gallery items -->
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="filterable-gallery">
-                            <!-- Makeup item -->
-                            <div class="gallery-item animate-fadeIn" data-category="makeup">
-                                <div class="bg-white rounded-xl overflow-hidden shadow-md">
-                                    <div class="h-48 overflow-hidden">
-                                        <img src="https://images.unsplash.com/photo-1591085686350-798c0f9faa7f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                                            alt="Lipstick collection" class="w-full h-full object-cover">
-                                    </div>
-                                    <div class="p-4">
-                                        <div class="flex justify-between items-start">
-                                            <h3 class="font-bold text-gray-800">Matte Lipstick Set</h3>
-                                            <span class="text-xs bg-amber-100 text-amber-800 px-2 py-1 rounded-full">Makeup</span>
-                                        </div>
-                                        <p class="text-gray-600 text-sm mt-2">Long-lasting matte finish in 5 trendy shades</p>
-                                        <div class="flex justify-between items-center mt-4">
-                                            <span class="font-bold text-amber-800">$24.99</span>
-                                            <button class="text-amber-800 hover:text-amber-900">
-                                                <i class="fas fa-shopping-cart"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Skincare item -->
-                            <div class="gallery-item animate-fadeIn" data-category="skincare">
-                                <div class="bg-white rounded-xl overflow-hidden shadow-md">
-                                    <div class="h-48 overflow-hidden">
-                                        <img src="https://images.unsplash.com/photo-1556228578-9c360e1d8d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                                            alt="Face serum" class="w-full h-full object-cover">
-                                    </div>
-                                    <div class="p-4">
-                                        <div class="flex justify-between items-start">
-                                            <h3 class="font-bold text-gray-800">Vitamin C Serum</h3>
-                                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Skincare</span>
-                                        </div>
-                                        <p class="text-gray-600 text-sm mt-2">Brightening serum with hyaluronic acid</p>
-                                        <div class="flex justify-between items-center mt-4">
-                                            <span class="font-bold text-amber-800">$32.50</span>
-                                            <button class="text-amber-800 hover:text-amber-900">
-                                                <i class="fas fa-shopping-cart"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Fragrance item -->
-                            <div class="gallery-item animate-fadeIn" data-category="fragrance">
-                                <div class="bg-white rounded-xl overflow-hidden shadow-md">
-                                    <div class="h-48 overflow-hidden">
-                                        <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                                            alt="Perfume bottle" class="w-full h-full object-cover">
-                                    </div>
-                                    <div class="p-4">
-                                        <div class="flex justify-between items-start">
-                                            <h3 class="font-bold text-gray-800">Eau de Parfum</h3>
-                                            <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">Fragrance</span>
-                                        </div>
-                                        <p class="text-gray-600 text-sm mt-2">Floral and woody notes for all-day freshness</p>
-                                        <div class="flex justify-between items-center mt-4">
-                                            <span class="font-bold text-amber-800">$89.99</span>
-                                            <button class="text-amber-800 hover:text-amber-900">
-                                                <i class="fas fa-shopping-cart"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Tools item -->
-                            <div class="gallery-item animate-fadeIn" data-category="tools">
-                                <div class="bg-white rounded-xl overflow-hidden shadow-md">
-                                    <div class="h-48 overflow-hidden">
-                                        <img src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                                            alt="Makeup brushes" class="w-full h-full object-cover">
-                                    </div>
-                                    <div class="p-4">
-                                        <div class="flex justify-between items-start">
-                                            <h3 class="font-bold text-gray-800">Professional Brushes</h3>
-                                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Tools</span>
-                                        </div>
-                                        <p class="text-gray-600 text-sm mt-2">12-piece vegan brush set for flawless application</p>
-                                        <div class="flex justify-between items-center mt-4">
-                                            <span class="font-bold text-amber-800">$45.00</span>
-                                            <button class="text-amber-800 hover:text-amber-900">
-                                                <i class="fas fa-shopping-cart"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    
-                    <!-- Gallery 3: Lookbook Style -->
-                    <section id="gallery3" class="gallery-section mb-16 p-6 rounded-2xl beauty-lavender">
-                        <div class="flex items-center justify-between mb-6">
-                            <div>
-                                <h2 class="text-3xl font-bold text-purple-900">3. Lookbook Style Gallery</h2>
-                                <p class="text-gray-600">Editorial style with inspirational beauty looks</p>
-                            </div>
-                            <span class="px-4 py-1 rounded-full bg-purple-100 text-purple-800 font-medium">Inspirational</span>
-                        </div>
-                        
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                            <!-- Left column -->
-                            <div class="space-y-8">
-                                <!-- Large lookbook item -->
-                                <div class="gallery-item">
-                                    <div class="relative overflow-hidden rounded-2xl">
-                                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                            alt="Elegant makeup look" class="w-full h-96 object-cover">
-                                        <div class="absolute top-6 left-6">
-                                            <span class="bg-white/90 text-purple-800 px-4 py-2 rounded-full text-sm font-medium">Featured Look</span>
-                                        </div>
-                                        <div class="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 to-transparent">
-                                            <h3 class="text-white text-2xl font-bold">Evening Glam</h3>
-                                            <p class="text-purple-200 mt-2">Smoky eyes and nude lips for a night out</p>
-                                            <div class="flex gap-3 mt-4">
-                                                <span class="text-xs bg-white/30 text-white px-3 py-1 rounded-full">Eyeshadow</span>
-                                                <span class="text-xs bg-white/30 text-white px-3 py-1 rounded-full">Foundation</span>
-                                                <span class="text-xs bg-white/30 text-white px-3 py-1 rounded-full">Highlighter</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Small lookbook item -->
-                                <div class="gallery-item">
-                                    <div class="relative overflow-hidden rounded-2xl h-64">
-                                        <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                            alt="Natural makeup look" class="w-full h-full object-cover">
-                                        <div class="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent flex items-center p-6">
-                                            <div>
-                                                <h3 class="text-white text-xl font-bold">Natural Day Look</h3>
-                                                <p class="text-purple-100">Fresh and minimal for everyday wear</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Right column -->
-                            <div class="space-y-8">
-                                <!-- Medium lookbook item -->
-                                <div class="gallery-item">
-                                    <div class="relative overflow-hidden rounded-2xl h-64">
-                                        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                            alt="Bold lipstick look" class="w-full h-full object-cover">
-                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
-                                            <div>
-                                                <h3 class="text-white text-xl font-bold">Bold Lips</h3>
-                                                <p class="text-purple-100">Statement red lips with minimal eye makeup</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Large lookbook item -->
-                                <div class="gallery-item">
-                                    <div class="relative overflow-hidden rounded-2xl h-96">
-                                        <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                            alt="Creative makeup look" class="w-full h-full object-cover">
-                                        <div class="absolute top-6 right-6">
-                                            <span class="bg-white/90 text-purple-800 px-4 py-2 rounded-full text-sm font-medium">Editor's Pick</span>
-                                        </div>
-                                        <div class="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 to-transparent">
-                                            <h3 class="text-white text-2xl font-bold">Artistic Expression</h3>
-                                            <p class="text-purple-200 mt-2">Creative use of colors and textures</p>
-                                            <div class="flex gap-3 mt-4">
-                                                <span class="text-xs bg-white/30 text-white px-3 py-1 rounded-full">Colorful</span>
-                                                <span class="text-xs bg-white/30 text-white px-3 py-1 rounded-full">Creative</span>
-                                                <span class="text-xs bg-white/30 text-white px-3 py-1 rounded-full">Editorial</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-8 text-center">
-                            <button class="px-6 py-3 bg-purple-800 text-white rounded-full font-medium hover:bg-purple-900 transition">Explore All Looks</button>
-                        </div>
-                    </section>
-                    
-                    <!-- Add extra content to make scrolling more noticeable -->
-                    <section class="mb-16 p-6 rounded-2xl bg-gradient-to-r from-rose-50 to-amber-50">
-                        <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">More Beauty Inspiration</h2>
-                        <p class="text-gray-600 text-lg mb-8 text-center max-w-3xl mx-auto">Scroll down to see the navbar become sticky after 500px. The navbar will remain fixed at the top as you continue scrolling through the content below.</p>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <div class="bg-white p-6 rounded-xl shadow-md">
-                                <h3 class="font-bold text-gray-800 mb-3">Trend Alert: Glass Skin</h3>
-                                <p class="text-gray-600 mb-4">Achieve the dewy, luminous complexion that's taking over beauty trends worldwide.</p>
-                                <span class="text-sm text-rose-600 font-medium">Read More →</span>
-                            </div>
-                            <div class="bg-white p-6 rounded-xl shadow-md">
-                                <h3 class="font-bold text-gray-800 mb-3">Sustainable Beauty</h3>
-                                <p class="text-gray-600 mb-4">Discover eco-friendly brands and practices for a more sustainable beauty routine.</p>
-                                <span class="text-sm text-rose-600 font-medium">Read More →</span>
-                            </div>
-                            <div class="bg-white p-6 rounded-xl shadow-md">
-                                <h3 class="font-bold text-gray-800 mb-3">Skincare 101</h3>
-                                <p class="text-gray-600 mb-4">Learn the basics of building an effective skincare routine for your skin type.</p>
-                                <span class="text-sm text-rose-600 font-medium">Read More →</span>
-                            </div>
-                        </div>
-                    </section>
-                    
-                    <!-- Even more content to ensure scrolling -->
-                    <section class="mb-16 p-6 rounded-2xl bg-gradient-to-r from-purple-50 to-pink-50">
-                        <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Pro Tips & Tutorials</h2>
-                        <div class="max-w-4xl mx-auto">
-                            <div class="space-y-6">
-                                <div class="bg-white p-6 rounded-xl shadow-sm">
-                                    <h3 class="font-bold text-xl text-gray-800 mb-2">How to Choose the Right Foundation</h3>
-                                    <p class="text-gray-600">Finding your perfect foundation match involves more than just skin tone. Learn about undertones, formulas, and application techniques for a flawless finish.</p>
-                                </div>
-                                <div class="bg-white p-6 rounded-xl shadow-sm">
-                                    <h3 class="font-bold text-xl text-gray-800 mb-2">Mastering the Winged Eyeliner</h3>
-                                    <p class="text-gray-600">Step-by-step guide to creating the perfect winged eyeliner for different eye shapes. Includes tips for beginners and pro techniques.</p>
-                                </div>
-                                <div class="bg-white p-6 rounded-xl shadow-sm">
-                                    <h3 class="font-bold text-xl text-gray-800 mb-2">Seasonal Skincare Adjustments</h3>
-                                    <p class="text-gray-600">Your skincare routine should change with the seasons. Learn how to adapt your products and routines for winter dryness and summer humidity.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </main>
-            </section>  
-            <!-- gallery option 2 -->
-        </div> 
-
-        <!-- Gallery Options End......   -->
-    </div>
-
-    <script>
-        // Navbar sticky after 500px functionality
-        const navbar = document.getElementById('main-navbar');
-        const STICKY_THRESHOLD = 500; // Become sticky after 500px
         
-        window.addEventListener('scroll', function() {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        <div class="mt-12 text-center animate-fade-in animation-delay-600 fade-up delay-500">
+            <button class="px-6 py-3 bg-orange-800 text-white rounded-full font3 font-medium hover:bg-orange-900 transition-all-custom transform hover:-translate-y-1 hover:shadow-lg">
+                View All Products
+            </button>
             
-            if (scrollTop > STICKY_THRESHOLD) {
-                // Add sticky class
-                navbar.classList.remove('navbar-normal');
-                navbar.classList.add('navbar-sticky');
-                // Add body class for padding adjustment
-                document.body.classList.add('sticky-nav-active');
-            } else {
-                // Remove sticky class
-                navbar.classList.remove('navbar-sticky');
-                navbar.classList.add('navbar-normal');
-                // Remove body class
-                document.body.classList.remove('sticky-nav-active');
+            <!-- Gallery stats (optional addition) -->
+            <div class="mt-6 text-gray-600 text-sm">
+                <p>Click on any image to view in full screen • Use arrow keys to navigate</p>
+            </div>
+        </div>
+        </section>             
+    </div>
+    </section>
+  
+    <!-- ========== Start Section ========== -->
+    <!-- Testimonial Section with Scroll Animation -->
+    <!-- ========== End Section ========== -->
+    <section id="testimonial" class="testimonial-section p-4 md:p-6 pt-18 relative bg-linear-to-br from-white via-pink-50/70 to-rose-100/70 overflow-hidden">
+        <!-- Salon Tool Decorations - Will be positioned randomly via JS -->
+        <div class="salon-tool text-4xl text-pink-400">
+            <i class="fas fa-spa"></i>
+        </div>
+        <!-- ... (other salon tools remain the same) ... -->
+        
+        <!-- Main section -->
+        <div class="max-w-6xl mx-auto relative z-10 px-2">
+            <!-- Testimonial Section -->
+            <div class="text-center fade-up">
+                <h1 class="text-3xl md:text-4xl font-bold text-amber-600/80 mb-3 tracking-wider">              
+                    Testimonials
+                </h1>
+                <p class="font2 text-pretty text-slate-900/80 text-lg md:text-2xl max-w-2xl mx-auto tracking-wider pb-7 px-4">
+                    Discover what our beautiful clients say about their transformation
+                </p>
+            </div>
+
+            <div id="testimonial-section" class="relative zoom-in delay-200">
+                <div class="h-[550px] md:h-[600px] min-h-[520px] relative perspective-1000 overflow-visible flex items-center justify-center touch-none">
+                    <div id="testimonial-3d" class="relative w-full h-full flex items-center justify-center">
+                        <!-- Testimonial cards will be added via JS -->
+                    </div>
+                </div>
+                
+                <!-- Indicator dots -->
+                <div class="flex justify-center space-x-3 mt-6 fade-up delay-400">
+                    <div id="indicator-0" class="w-8 h-1 bg-pink-500 rounded-full cursor-pointer transition-all duration-300"></div>
+                    <div id="indicator-1" class="w-3 h-1 bg-pink-300 rounded-full cursor-pointer transition-all duration-300"></div>
+                    <div id="indicator-2" class="w-3 h-1 bg-pink-300 rounded-full cursor-pointer transition-all duration-300"></div>
+                    <div id="indicator-3" class="w-3 h-1 bg-pink-300 rounded-full cursor-pointer transition-all duration-300"></div>
+                    <div id="indicator-4" class="w-3 h-1 bg-pink-300 rounded-full cursor-pointer transition-all duration-300"></div>
+                </div>
+                
+                <!-- Testimonial title -->
+                <div id="testimonial-title" class="text-center mt-8 fade-up delay-500">
+                    <h3 class="text-xl font3 font-bold text-pink-800">Ebose Foody</h3>
+                    <p class="text-pink-600 mt-2">
+                        <i class="fas fa-medal text-pink-500 mr-2"></i>
+                        Testimonial 1 of 5
+                        <i class="fas fa-medal text-pink-500 ml-2"></i>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== Start Section ========== -->
+    <!-- Team Members Section with Scroll Animation -->
+    <!-- ========== End Section ========== -->
+    <section id="team" class="team-section bg-linear-to-br from-rose-100/70 via-pink-50/70 to-white">
+        <div class="container mx-auto px-6 pt-24 pb-10">
+            <!-- head section -->
+            <div class="mb-12 flex flex-col justify-center items-center text-center fade-up">                
+                <h2 class="mb-6 text-4xl font font-bold leading-tight text-amber-600 sm:text-4xl tracking-wider">
+                Skilled Beauty Professionals
+                </h2>
+                <p class="text-slate-800/80 font2 text-2xl leading-loose text-pretty">
+                Our team of certified beauty experts brings years of experience and passion to every service.
+                </p>
+            </div>
+            <!-- body section -->
+            <div class="grid gap-8 mx-auto sm:grid-cols-2 lg:grid-cols-4 lg:max-w-screen-lg stagger-children">
+                <!-- Team Member 1 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl">
+                    <div class="relative h-80 overflow-hidden">
+                        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                        src="./image/skinclinic1.jpeg" alt="Senior Stylist" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                    <div class="text-white">
+                    <h3 class="text-xl font-bold">Sophia Williams</h3>
+                    <p class="text-amber-300 text-sm mt-1">Senior Hair Stylist</p>
+                </div>
+            </div>
+                <div class="absolute top-4 right-9 lg:opacity-0 max-md:opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+                    <div class="flex space-x-2">
+                    <a href="#" class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center space-x-5 text-white hover:bg-white/30 transition">
+                        <i class="fab fa-instagram"></i>                        
+                    </a>
+                    <a href="#" class="w-10 h-10 backdrop-blur-sm rounded-full flex items-center justify-center space-x-5 text-white hover:bg-white/30 transition">
+                        <i class="fab fa-facebook"></i>                        
+                    </a>
+                    <a href="#" class="w-10 h-10 backdrop-blur-sm rounded-full flex items-center justify-center space-x-5 text-white hover:bg-white/30 transition">
+                        <i class="fab fa-tiktok"></i>                        
+                    </a>
+                </div>
+                </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl delay-100">
+                <div class="relative h-80 overflow-hidden">
+                    <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                        src="./image/skincare.png" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                    <div class="text-white">
+                    <h3 class="text-xl font-bold">Michael Chen</h3>
+                    <p class="text-amber-300 text-sm mt-1">Makeup Artist</p>
+                    </div>
+                </div>
+                <div class="absolute top-4 right-9 lg:opacity-0 max-md:opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+                    <div class="flex space-x-2">
+                    <a href="#" class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center space-x-5 text-white hover:bg-white/30 transition">
+                        <i class="fab fa-instagram"></i>                        
+                    </a>
+                    <a href="#" class="w-10 h-10 backdrop-blur-sm rounded-full flex items-center justify-center space-x-5 text-white hover:bg-white/30 transition">
+                        <i class="fab fa-facebook"></i>                        
+                    </a>
+                    <a href="#" class="w-10 h-10 backdrop-blur-sm rounded-full flex items-center justify-center space-x-5 text-white hover:bg-white/30 transition">
+                        <i class="fab fa-tiktok"></i>                        
+                    </a>
+                </div>
+                </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl delay-200">
+                <div class="relative h-80 overflow-hidden">
+                    <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                        src="./image/beauty18.png" alt="Nail Technician" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                    <div class="text-white">
+                    <h3 class="text-xl font-bold">Emma Rodriguez</h3>
+                    <p class="text-amber-300 text-sm mt-1">Nail Technician</p>
+                    </div>
+                </div>
+                <div class="absolute top-4 right-9 lg:opacity-0 max-md:opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+                    <div class="flex space-x-2">
+                    <a href="#" class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center space-x-5 text-white hover:bg-white/30 transition">
+                        <i class="fab fa-instagram"></i>                        
+                    </a>
+                    <a href="#" class="w-10 h-10 backdrop-blur-sm rounded-full flex items-center justify-center space-x-5 text-white hover:bg-white/30 transition">
+                        <i class="fab fa-facebook"></i>                        
+                    </a>
+                    <a href="#" class="w-10 h-10 backdrop-blur-sm rounded-full flex items-center justify-center space-x-5 text-white hover:bg-white/30 transition">
+                        <i class="fab fa-tiktok"></i>                        
+                    </a>
+                </div>
+                </div>
+                </div>
+
+                <!-- Team Member 4 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl delay-300">
+                <div class="relative h-80 overflow-hidden">
+                    <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                        src="./image/beauty22.jpeg" alt="Spa Therapist" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                    <div class="text-white">
+                    <h3 class="text-xl font-bold">Isabella Park</h3>
+                    <p class="text-amber-300 font2 text-sm mt-1">Spa Therapist</p>
+                    </div>
+                </div>
+                <div class="absolute top-4 right-9 lg:opacity-0 max-md:opacity-800 group-hover:opacity-100 transition-opacity duration-300">
+                    <div class="flex space-x-2">
+                    <a href="#" class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center space-x-5 text-white hover:bg-white/30 transition">
+                        <i class="fab fa-instagram"></i>                        
+                    </a>
+                    <a href="#" class="w-10 h-10 backdrop-blur-sm rounded-full flex items-center justify-center space-x-5 text-white hover:bg-white/30 transition">
+                        <i class="fab fa-facebook"></i>                        
+                    </a>
+                    <a href="#" class="w-10 h-10 backdrop-blur-sm rounded-full flex items-center justify-center space-x-5 text-white hover:bg-white/30 transition">
+                        <i class="fab fa-tiktok"></i>                        
+                    </a>
+                </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>     
+    
+    <!-- ========== Start Section ========== -->
+    <!-- Client Goggle map(location) and Form Section with Scroll Animation -->
+    <!-- ========== End Section ========== -->
+    <section id='reservations' class="contact-section bg-linear-to-b from-white to-pink-50 to-slate-50">      
+        <div class="container mx-auto px-6 pt-24 pb-10 grid lg:grid-cols-2 grid-cols-1 items-start gap-y-24 md:gap-x-12">
+            <!-- Form Section -->
+            <div class="form-container fade-right delay-100">
+                <!-- Header -->
+                <div class="text-center mb-8">
+                    <div class="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-spa text-orange-400 text-2xl"></i>
+                    </div>
+                    <h1 class="text-3xl font font-light tracking-wide text-gray-800 mb-2">Beauty Salon Booking</h1>
+                    <p class="text-gray-600 font2 tracking-wider">Book your appointment with elegance</p>
+                </div>
+
+                <!-- Booking Form -->
+                <div class="bg-white rounded-xl shadow-md border border-gray-100 px-6 py-4 scale-up delay-200">
+                    <form id="bookingForm" class="space-y-3">
+                        <!-- ... (form content remains the same) ... -->
+                    </form>
+                </div>
+                
+                <!-- Footer Note -->
+                <div class="text-center mt-6 fade-up delay-400">
+                    <p class="text-sm text-slate-500">
+                        <i class="fas fa-clock text-slate-400 mr-1"></i>
+                        Open Monday - Saturday, 9AM - 8PM
+                    </p>
+                </div>
+            </div>
+            <!-- location Section -->
+            <div id="location" class="fade-left delay-100">
+                <h2 class="pb-16 text-3xl text-center font font-bold tittle tracking-wide bg-linear-to-br from-amber-400 via-amber-500 to-orange-500 bg-clip-text text-transparent">Our Location</h2>
+                <iframe class="w-full h-150 shadow-lg shadow-zinc-700 rounded-xl scale-up delay-200" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1981.1608176473123!2d5.389934889972215!3d6.730556509528993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10476b3a73a647af%3A0x1f5e1479db602eac!2sPizzaplus!5e0!3m2!1sen!2sng!4v1766385687851!5m2!1sen!2sng" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>        
+    </section>
+
+    <!-- ========== Start Section ========== -->
+    <!-- Footer Section with Scroll Animation -->
+    <!-- ========== End Section ========== -->
+    <section class="footer-section bg-stone-800 text-stone-400 text-lg font2">
+        <div class="pb-8 flex flex-col fade-up">
+            <div class="grid grid-cols-1 lg:grid-cols-2 items-center">
+                <!-- Top Footer -->
+                <div class="py-10 px-8 md:px-16 grid grid-cols-1 justify-center items-center gap-y-5 min-lg:border-r-1 border-stone-500">
+                    <span class="flex w-full justify-center">
+                        <img src="./image/mylogo.png" alt="Company logo" class="w-35 h-35 hover:scale-110 transition duration-500">
+                    </span>
+                    <p class="text-pretty tracking-wide leading-loose text-start">
+                        <span class="text-amber-500 scale-120 font">At Hair Glow Salon</span>, beauty is more than a service—it's an experience. 
+                        Founded with passion and elegance, we provide premium hairstyling, makeup artistry, 
+                        spa treatments, and personalized beauty care that bring out your confidence and natural glow.
+                    </p>
+                    <ul class="stagger-children">
+                        <li class="flex items-center space-x-3">
+                            <a href="#" class="w-10 h-10 backdrop-blur-sm rounded-full flex items-center justify-center space-x-5 text-white hover:bg-white/30 transition">
+                                <i class="fa-solid fa-location-dot"></i>                          
+                            </a>
+                            <h2>Estate gate, Okada, Edo State</h2>
+                        </li>
+                        <li class="flex items-center space-x-3 delay-100">
+                            <a href="#" class="w-10 h-10 backdrop-blur-sm rounded-full flex items-center justify-center space-x-5 text-white hover:bg-white/30 transition">
+                                <i class="fa-solid fa-phone"></i>                        
+                            </a>
+                            <h2>+234 901 23479</h2>
+                        </li>
+                        <li class="flex items-center space-x-3 delay-200">
+                            <a href="#" class="w-10 h-10 backdrop-blur-sm rounded-full flex items-center justify-center space-x-5 text-white hover:bg-white/30 transition">
+                                <i class="fa-regular fa-message"></i>                        
+                            </a>
+                            <h2>ngubipaul@gmail.com</h2>
+                        </li>
+                    </ul>
+                    <div class="flex space-x-5 stagger-children">
+                        <a class="group bg-linear-to-b from-orange-500/80 md:from-yellow-200/20 to-orange-950/50 md:to-orange-300/50 hover:bg-linear-to-t hover:from-orange-600/80 hover:to-yellow-500/600 hover:shadow-sm shadow-stone-100 px-2 py-1 rounded-md transition duration-600" href="#"><i class="group-hover:scale-110 transition duration-600 fab fa-x"></i></a>
+                        <a class="group bg-linear-to-b from-orange-500/80 md:from-yellow-200/20 to-orange-950/50 md:to-orange-300/50 hover:bg-linear-to-t hover:from-orange-600/80 hover:to-yellow-500/600 hover:shadow-sm shadow-stone-100 px-2 py-1 rounded-md transition duration-600 delay-100" href="#"><i class="group-hover:scale-110 transition duration-600 fab fa-facebook"></i></a>
+                        <a class="group bg-linear-to-b from-orange-500/80 md:from-yellow-200/20 to-orange-950/50 md:to-orange-300/50 hover:bg-linear-to-t hover:from-orange-600/80 hover:to-yellow-500/600 hover:shadow-sm shadow-stone-100 px-2 py-1 rounded-md transition duration-600 delay-200" href="#"><i class="group-hover:scale-110 transition duration-600 fab fa-instagram"></i></a>
+                        <a class="group bg-linear-to-b from-orange-500/80 md:from-yellow-200/20 to-orange-950/50 md:to-orange-300/50 hover:bg-linear-to-t hover:from-orange-600/80 hover:to-yellow-500/600 hover:shadow-sm shadow-stone-100 px-2 py-1 rounded-md transition duration-600 delay-300" href="#"><i class="group-hover:scale-110 transition duration-600 fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="px-16 pt-15 max-lg:pb-15 flex flex-col max-lg:justify-center max-lg:items-center lg:grid grid-row-2 items-start max-lg:space-y-15 stagger-children">
+                    <!-- ... (footer content remains the same) ... -->
+                </div>
+            </div>
+
+            <div class="font2 font-light border-t-1 px-16 pt-6 border-stone-500 text-stone-100 flex flex-col md:flex-row justify-center md:justify-between items-center max-md:space-y-5 fade-up delay-400">
+                <span class="text-sm tracking-wide">
+                    © <span class="underline"><a class="bg-linear-to-r from-amber-300 to-orange-500 hover:from-orange-500/80 hover:from-amber-900 bg-clip-text text-transparent transition duration-500" target='_blank' href="https://github.com/Paullaid">Hair Glow</a></span>, All Right Reserved.
+                </span>
+                <span class="text-sm tracking-wide">
+                    Designed By <span class="underline"><a class="bg-linear-to-r from-amber-300 to-orange-500 hover:from-orange-500/80 hover:from-amber-900 bg-clip-text text-transparent transition duration-500" target='_blank' href="www.linkedin.com/in/ngubi-paul-74a593364">Ngubi Paul .F.</a></span>
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== Start Back to Top Button ========== -->
+    <button id="backToTop" 
+            aria-label="Back to top" 
+            title="Back to top"
+            class="fixed bottom-8 right-8 w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-amber-500 to-amber-700 text-white rounded-full flex items-center justify-center text-xl md:text-2xl cursor-pointer shadow-lg shadow-amber-900/50 border-2 border-white/30 opacity-0 invisible transition-all duration-300 transform translate-y-5 hover:scale-110 hover:shadow-xl hover:shadow-amber-900/70 active:scale-95 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 z-50">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+    <!-- ========== End Back to Top Button ========== -->
+
+    <!-- Scroll Animation Script -->
+    <script>
+        // Scroll Animation Observer
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hero section animation
+            const heroSection = document.querySelector('.hero-section');
+            if (heroSection) {
+                // Add animated class immediately for hero section
+                setTimeout(() => {
+                    heroSection.classList.add('hero-animated');
+                }, 300);
             }
-        });
-        
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        if (mobileMenuButton) {
-            mobileMenuButton.addEventListener('click', function() {
-                mobileMenu.classList.toggle('hidden');
-                // Toggle icon between bars and times
-                const icon = mobileMenuButton.querySelector('i');
-                if (icon.classList.contains('fa-bars')) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-times');
-                } else {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
+            
+            // Intersection Observer for scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Handle different animation types
+                        if (entry.target.classList.contains('scroll-animate')) {
+                            entry.target.classList.add('animated');
+                        }
+                        
+                        if (entry.target.classList.contains('fade-up') || 
+                            entry.target.classList.contains('fade-left') || 
+                            entry.target.classList.contains('fade-right') ||
+                            entry.target.classList.contains('scale-up') ||
+                            entry.target.classList.contains('zoom-in') ||
+                            entry.target.classList.contains('rotate-in')) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0) translateX(0) scale(1) rotate(0)';
+                        }
+                        
+                        if (entry.target.classList.contains('stagger-children')) {
+                            entry.target.classList.add('animated');
+                            // Animate children with delay
+                            const children = entry.target.children;
+                            Array.from(children).forEach((child, index) => {
+                                setTimeout(() => {
+                                    child.style.opacity = '1';
+                                    child.style.transform = 'translateY(0)';
+                                }, index * 100);
+                            });
+                        }
+                        
+                        // Once animated, we can unobserve
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all elements with animation classes
+            const animatedElements = document.querySelectorAll(
+                '.scroll-animate, .fade-up, .fade-left, .fade-right, .scale-up, .zoom-in, .rotate-in, .stagger-children'
+            );
+            
+            animatedElements.forEach(element => {
+                // Set initial state
+                if (element.classList.contains('scroll-animate') || 
+                    element.classList.contains('fade-up') || 
+                    element.classList.contains('fade-left') || 
+                    element.classList.contains('fade-right')) {
+                    element.style.opacity = '0';
                 }
+                
+                if (element.classList.contains('stagger-children')) {
+                    const children = element.children;
+                    Array.from(children).forEach(child => {
+                        child.style.opacity = '0';
+                        child.style.transform = 'translateY(30px)';
+                    });
+                }
+                
+                observer.observe(element);
             });
-        }
-        
-        // Close mobile menu when clicking on a link
-        const mobileLinks = document.querySelectorAll('#mobile-menu a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                mobileMenu.classList.add('hidden');
-                // Reset icon to bars
-                const icon = mobileMenuButton.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            });
-        });
-        
-        // Interactive filter functionality for Gallery 2
-        document.querySelectorAll('.filter-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                // Update active button
-                document.querySelectorAll('.filter-btn').forEach(btn => {
-                    btn.classList.remove('active', 'bg-amber-800', 'text-white');
-                    btn.classList.add('bg-white', 'text-amber-800', 'border', 'border-amber-300');
+            
+            // Additional animation for hero section elements
+            const heroTitle = document.querySelector('.hero-title');
+            const heroSubtitle = document.querySelector('.hero-subtitle');
+            const heroButtons = document.querySelector('.hero-buttons');
+            
+            if (heroTitle && heroSubtitle && heroButtons) {
+                setTimeout(() => {
+                    heroTitle.style.opacity = '1';
+                    heroTitle.style.transform = 'translateY(0)';
+                }, 500);
+                
+                setTimeout(() => {
+                    heroSubtitle.style.opacity = '1';
+                    heroSubtitle.style.transform = 'translateY(0)';
+                }, 800);
+                
+                setTimeout(() => {
+                    heroButtons.style.opacity = '1';
+                    heroButtons.style.transform = 'translateY(0)';
+                }, 1100);
+            }
+            
+            // Add floating animation to some elements on hover
+            document.querySelectorAll('.service-option, .gallery-item, .testimonial-card').forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.classList.add('float-animation');
                 });
                 
-                this.classList.remove('bg-white', 'text-amber-800', 'border', 'border-amber-300');
-                this.classList.add('active', 'bg-amber-800', 'text-white');
+                item.addEventListener('mouseleave', function() {
+                    this.classList.remove('float-animation');
+                });
+            });
+            
+            // Animate stats counters
+            function animateCounter(element, finalValue, duration = 2000) {
+                const startValue = 0;
+                const increment = finalValue / (duration / 16); // 60fps
+                let currentValue = startValue;
                 
-                // Filter items
-                const filter = this.getAttribute('data-filter');
-                const items = document.querySelectorAll('#filterable-gallery .gallery-item');
-                
-                items.forEach(item => {
-                    const category = item.getAttribute('data-category');
-                    
-                    if (filter === 'all' || filter === category) {
-                        item.style.display = 'block';
-                        item.classList.add('animate-fadeIn');
+                const timer = setInterval(() => {
+                    currentValue += increment;
+                    if (currentValue >= finalValue) {
+                        element.textContent = finalValue + "+";
+                        clearInterval(timer);
                     } else {
-                        item.style.display = 'none';
-                        item.classList.remove('animate-fadeIn');
+                        element.textContent = Math.floor(currentValue) + "+";
+                    }
+                }, 16);
+            }
+            
+            // Animate stats when they come into view
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const statElements = entry.target.querySelectorAll('h3');
+                        statElements.forEach(stat => {
+                            const value = parseInt(stat.textContent);
+                            if (!isNaN(value)) {
+                                animateCounter(stat, value);
+                            }
+                        });
+                        statsObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            const statsSection = document.querySelector('.about-section');
+            if (statsSection) {
+                statsObserver.observe(statsSection);
+            }
+            
+            // Add parallax effect to some sections
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                
+                // Parallax for hero section
+                const heroBg = document.querySelector('.hero-section');
+                if (heroBg) {
+                    heroBg.style.transform = `translateY(${scrolled * 0.5}px)`;
+                }
+                
+                // Parallax for pricing section
+                const pricingBg = document.querySelector('.pricing-section');
+                if (pricingBg) {
+                    pricingBg.style.transform = `translateY(${scrolled * 0.3}px)`;
+                }
+                
+                // Animate elements on scroll with different speeds
+                document.querySelectorAll('.fade-up, .fade-left, .fade-right').forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight * 0.8) {
+                        const speed = element.classList.contains('delay-100') ? 0.1 :
+                                     element.classList.contains('delay-200') ? 0.2 :
+                                     element.classList.contains('delay-300') ? 0.3 :
+                                     element.classList.contains('delay-400') ? 0.4 :
+                                     element.classList.contains('delay-500') ? 0.5 : 0;
+                        
+                        const translateY = scrolled * speed * 0.1;
+                        element.style.transform = `translateY(${translateY}px)`;
                     }
                 });
             });
         });
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    // Calculate offset based on navbar state
-                    const navbarHeight = navbar.classList.contains('navbar-sticky') ? 80 : 0;
-                    
-                    window.scrollTo({
-                        top: targetElement.offsetTop - navbarHeight - 20,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Initialize navbar state on page load
-        window.addEventListener('DOMContentLoaded', function() {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            if (scrollTop > STICKY_THRESHOLD) {
-                navbar.classList.remove('navbar-normal');
-                navbar.classList.add('navbar-sticky');
-                document.body.classList.add('sticky-nav-active');
-            } else {
-                navbar.classList.remove('navbar-sticky');
-                navbar.classList.add('navbar-normal');
-                document.body.classList.remove('sticky-nav-active');
-            }
-        });
     </script>
+
+    <!-- ... rest of your existing scripts remain the same ... -->
 </body>
 </html>

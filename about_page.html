@@ -237,7 +237,8 @@
         }
     </style> 
   
-    <style>       <!-- My Testimonial Styles -->
+    <!-- My Testimonial Styles -->  
+    <style>    
         /* Performance optimizations */
         .testimonial-card {
             will-change: transform, opacity;
@@ -247,6 +248,8 @@
             -webkit-transform-style: preserve-3d;
             transform: translate3d(0,0,0);
             -webkit-transform: translate3d(0,0,0);
+            /* Prevent touch events */
+            pointer-events: auto;
         }
         
         /* Salon tool styling for random positioning */
@@ -290,6 +293,22 @@
             .salon-tool {
                 opacity: 0.3;
             }
+            
+            /* CRITICAL: Disable ALL pointer events for cards on mobile */
+            .testimonial-card {
+                pointer-events: none !important;
+                touch-action: none !important;
+            }
+            
+            /* The entire testimonial container should allow scrolling */
+            #testimonial-section {
+                touch-action: pan-y;
+            }
+            
+            /* Make sure the container doesn't capture touch */
+            #testimonial-3d {
+                pointer-events: none;
+            }
         }
         
         /* Extra small screens (320px) optimizations */
@@ -311,6 +330,23 @@
                 opacity: 0.25;
                 font-size: 1.5rem !important;
             }
+            
+            /* Extra protection for scrolling */
+            #testimonial-section > div {
+                pointer-events: none;
+            }
+            
+            /* But allow indicators to work */
+            .flex.justify-center.space-x-3.mt-6 {
+                pointer-events: auto !important;
+                position: relative;
+                z-index: 20;
+            }
+        }
+        
+        /* Indicator dots should always be clickable */
+        .flex.justify-center.space-x-3.mt-6 > div {
+            pointer-events: auto !important;
         }
     </style>
 
@@ -369,35 +405,35 @@
 
                     <!-- Desktop Navigation -->
                     <div class="hidden md:flex items-center space-x-4">
-                        <a href="./index.html" class="group flex flex-col items-center text-gray-700 px-3 py-2 text-lg tracking-wide font-medium">
+                        <a href="./index.html" class="group flex flex-col items-center text-gray-700 px-3 py-2 text-lg tracking-wide font-medium transform translate-y-1.5 hover:translate-y-0">
                             <div class="hidden group-hover:block w-3 h-3 bg-gradient-to-t from-violet-200 to-orange-500 rounded-full animate-bounce"></div>
-                            <div class="lg:text-2xl text-slate-200 group-hover:text-amber-500 group-hover:animate-pulse transition duration-500">Home</div>
+                            <div class="lg:text-2xl font2 text-slate-200 group-hover:text-amber-500 group-hover:animate-pulse transition duration-500">Home</div>
                         </a>
                         <a href="./about_page.html" class="group flex flex-col items-center text-gray-700 px-3 py-2 text-lg tracking-wide font-medium">
                             <div class="w-3 h-3 bg-gradient-to-t from-violet-200 to-orange-500 rounded-full animate-bounce"></div>
-                            <div class="lg:text-2xl text-slate-200 group-hover:text-amber-500 group-hover:animate-pulse transition duration-500">About</div>
+                            <div class="lg:text-2xl font2 text-slate-200 group-hover:text-amber-500 group-hover:animate-pulse transition duration-500">About</div>
                         </a>
                         <div class="group relative">
-                            <button class="flex flex-col items-center text-gray-700 px-3 py-2 text-lg tracking-wide font-medium">
+                            <button class="flex flex-col items-center text-gray-700 px-3 py-2 text-lg tracking-wide font-medium transform translate-y-1.5 hover:translate-y-0">
                                 <div class="hidden group-hover:inline-block w-3 h-3 bg-gradient-to-t from-violet-200 to-orange-500 rounded-full animate-bounce"></div>
-                                <div class="lg:text-2xl text-slate-200 group-hover:text-amber-500 group-hover:animate-pulse transition duration-500">Pages</div>
+                                <div class="lg:text-2xl font2 text-slate-200 group-hover:text-amber-500 group-hover:animate-pulse transition duration-500">Pages</div>
                             </button>
                             <div class=" hidden group-hover:flex absolute  left-0 w-56 flex-col bg-gradient-to-br from-white to-amber-100/98 py-4 rounded-sm transform translate-y-12 group-hover:translate-y-0 animate-fade-in transition duration-500 z-20">
-                                <a href="./services_page.html" class="py-3 px-6 text-lg font-light hover:bg-amber-800 text-slate-800 hover:text-amber-50 tracking-wide hover:animate-pulse transition duration-600">Services</a>
-                                <a href="./gallery_page.html" class="py-3 px-6 text-lg font-light hover:bg-amber-800 text-slate-800 hover:text-amber-50 tracking-wide hover:animate-pulse transition duration-600">Photo Gallery</a>
-                                <a href="#location" class="py-3 px-6 text-lg font-light hover:bg-amber-800 text-slate-800 hover:text-amber-50 tracking-wide hover:animate-pulse transition duration-600">Our Location</a>
-                                <a href="#testimonial" class="py-3 px-6 text-lg font-light hover:bg-amber-800 text-slate-800 hover:text-amber-50 tracking-wide hover:animate-pulse transition duration-600">Testimonials</a>
-                                <a href="#team" class="py-3 px-6 text-lg font-light hover:bg-amber-800 text-slate-800 hover:text-amber-50 tracking-wide hover:animate-pulse transition duration-600">Our Team</a>
+                                <a href="./services_page.html" class="py-3 px-6 text-lg font2 font-light hover:bg-amber-800 text-slate-800 hover:text-amber-50 tracking-wide hover:animate-pulse transition duration-600">Services</a>
+                                <a href="./gallery_page.html" class="py-3 px-6 text-lg font2 font-light hover:bg-amber-800 text-slate-800 hover:text-amber-50 tracking-wide hover:animate-pulse transition duration-600">Photo Gallery</a>
+                                <a href="#location" class="py-3 px-6 text-lg font2 font-light hover:bg-amber-800 text-slate-800 hover:text-amber-50 tracking-wide hover:animate-pulse transition duration-600">Our Location</a>
+                                <a href="#testimonial" class="py-3 px-6 text-lg font2 font-light hover:bg-amber-800 text-slate-800 hover:text-amber-50 tracking-wide hover:animate-pulse transition duration-600">Testimonials</a>
+                                <a href="#team" class="py-3 px-6 text-lg font2 font-light hover:bg-amber-800 text-slate-800 hover:text-amber-50 tracking-wide hover:animate-pulse transition duration-600">Our Team</a>
                             </div>
                         </div>
                         
-                        <a href="./prices_page.html" class="group flex flex-col items-center text-gray-700 px-3 py-2 text-lg tracking-wide font-medium">
+                        <a href="./prices_page.html" class="group flex flex-col items-center text-gray-700 px-3 py-2 text-lg tracking-wide font-medium transform translate-y-1.5 hover:translate-y-0">
                             <div class="hidden group-hover:block w-3 h-3 bg-gradient-to-t from-violet-200 to-orange-500 rounded-full animate-bounce"></div>
-                            <div class="lg:text-2xl text-slate-200 group-hover:text-amber-500 group-hover:animate-pulse transition duration-500">Prices</div>
+                            <div class="lg:text-2xl font2 text-slate-200 group-hover:text-amber-500 group-hover:animate-pulse transition duration-500">Prices</div>
                         </a>
                         
                             <!-- Appointment Button -->
-                        <a href="#reservations" class="lg:text-2xl ml-4 px-4 py-2 bg-gradient-to-b from-amber-600  to-amber-800/60 text-white font-medium tracking-wide rounded-full hover:bg-linear-to-t hover:from-amber-800/60 hover:to-amber-600 transition duration-500 transform hover:-translate-y-0.5 hover:shadow-lg">
+                        <a href="#reservations" class="lg:text-2xl ml-4 px-4 py-2 bg-gradient-to-b from-amber-600  to-amber-800/60 text-white font2 font-medium tracking-wide rounded-full hover:bg-linear-to-t hover:from-amber-800/60 hover:to-amber-600 transition duration-500 transform hover:-translate-y-0.5 hover:shadow-lg">
                             Reservations
                         </a>
                     </div>
@@ -500,65 +536,92 @@
                                         <!-- About Us  -->
                         <!-- ========== End Section ========== -->
     
-    <section style="background-image: url(./image/tools1.0.jpg);" class="bg-center bg-cover bg-fixed h-full">
-        <div class="bg-slate-200/85 h-full w-full py-24 px-8 grid lg:grid-cols-2 gap-12 items-start">    
-            <!-- Image Part-->
-            <div class="w-full relative flex flex-col items-center">
-                <div class="absolute z-1 -top-6 -left-6 w-40 h-40 bg-pink-300 rounded-full opacity-70 blur-2xl"></div>
-                <img src="./image/skinclinic4.png" alt="Salon Image"  class="bg-cover bg-center rounded-3xl shadow-lg md:w-130 lg:w-320 h-90 object-cover hover:scale-104 transition duration-1000">
-
-                <aside class="w-fit lg:w-full max-lg:pr-8 mt-4 flex items-end bg-linear-to-br from-zinc-50/60 to-pink-100/40 rounded-sm">
-                    <img src="./image/hair-care.png" alt="" class="w-28 h-32 p-3">
-                    <div class="flex flex-col pl-5 text-slate-800">
-                        <span class="text-xl md:text-3xl font2 mb-3">+2349063123479</span>
-                        <span class="text-lg font2 mb-3 tracking-wide text-pretty">Call us direct 24/7 for get a free consultation</span>
-                    </div>
-                </aside>
-            </div> 
-
-            <!-- Text Content -->
-            <div class="flex flex-col items-center space-y-6">
-                <h2 class="text-5xl tracking-wide font font-extrabold leading-wide text-slate-700" >
-                    About <span class="text-amber-500">Us</span>
-                </h2>
-                
-                <p class="text-slate-800 font3 leading-relaxed text-xl text-center">
-                    At <span class="font-bold font2 text-slate-800">Hair Glow Salon</span>, beauty is more than a service—it's an experience. 
-                    Founded with passion and elegance, we provide premium hairstyling, makeup artistry, 
-                    spa treatments, and personalized beauty care that bring out your confidence and natural glow.
+    <section id="testimonial" class="p-4 md:p-6 pt-18 relative bg-linear-to-br from-white via-pink-50/70 to-rose-100/70 overflow-hidden">
+        <!-- Salon Tool Decorations - Will be positioned randomly via JS -->
+        <div class="salon-tool text-4xl text-pink-400">
+            <i class="fas fa-spa"></i>
+        </div>
+        <div class="salon-tool text-3xl text-rose-300">
+            <i class="fas fa-hand-sparkles"></i>
+        </div>
+        <div class="salon-tool text-5xl text-pink-300">
+            <i class="fas fa-crown"></i>
+        </div>
+        <div class="salon-tool text-2xl text-rose-400">
+            <i class="fas fa-cut"></i>
+        </div>
+        <div class="salon-tool text-3xl text-pink-200">
+            <i class="fas fa-feather-alt"></i>
+        </div>
+        <div class="salon-tool text-4xl text-rose-200">
+            <i class="fas fa-magic"></i>
+        </div>
+        <div class="salon-tool text-2xl text-pink-300">
+            <i class="fas fa-paint-brush"></i>
+        </div>
+        <div class="salon-tool text-3xl text-rose-300">
+            <i class="fas fa-heart"></i>
+        </div>
+        <div class="salon-tool text-4xl text-pink-200">
+            <i class="fas fa-star"></i>
+        </div>
+        <div class="salon-tool text-3xl text-rose-400">
+            <i class="fas fa-gem"></i>
+        </div>
+        <!-- Add more icons for richer background -->
+        <div class="salon-tool text-3xl text-pink-300">
+            <i class="fas fa-spray-can"></i>
+        </div>
+        <div class="salon-tool text-2xl text-rose-300">
+            <i class="fas fa-brush"></i>
+        </div>
+        <div class="salon-tool text-4xl text-pink-200">
+            <i class="fas fa-glasses"></i>
+        </div>
+        <div class="salon-tool text-3xl text-rose-200">
+            <i class="fas fa-scissors"></i>
+        </div>
+        <div class="salon-tool text-2xl text-pink-400">
+            <i class="fas fa-palette"></i>
+        </div>
+        
+        <!-- Main section -->
+        <div class="max-w-6xl mx-auto relative z-10 px-2">
+            <!-- Testimonial Section -->
+            <div class="text-center">
+                <h1 class="text-3xl md:text-4xl font-bold text-amber-600/80 mb-3 tracking-wider">              
+                    Testimonials
+                </h1>
+                <p class="font2 text-pretty text-slate-900/80 text-lg md:text-2xl max-w-2xl mx-auto tracking-wider pb-7 px-4">
+                    Discover what our beautiful clients say about their transformation
                 </p>
+            </div>
 
-                <div class="">
-                    <h2 class="text-center pb-5 text-2xl md:text-4xl font2 text-slate-800 tracking-wide">Working Hours</h2>
-                    <div class="space-y-4">
-                        <div class="text-xl font2 text-slate-800 space-y-2 space-x-8 flex flex-col md:flex-row lg:flex-col"> <div class="text-2xl md:text-3xl">Monday - Friday:</div> <div class="flex items-center space-x-3"> <span>9:00 AM</span> <div class="w-25 md:w-40 lg:w-25 xl:w-50 h-0.5 bg-slate-600"></div> <span>8:00 PM</span> </div></div>
-                        <div class="text-xl font2 text-slate-800 space-y-2 space-x-8 flex flex-col md:flex-row lg:flex-col"> <div class="text-2xl md:text-3xl">Saturday:</div> <div class="flex items-center space-x-3"> <span>10:00 AM</span> <div class="w-25 md:w-40 lg:w-25 xl:w-50 h-0.5 bg-slate-600"></div> <span>8:00 PM</span> </div></div>
-                        <div class="text-xl font2 text-slate-800 space-y-2 space-x-8 flex flex-col md:flex-row lg:flex-col"> <div class="text-2xl md:text-3xl">Sunday:</div> <div class="flex items-center space-x-3"> Closed </div></div>
+            <div id="testimonial-section" class="relative">
+                <div class="h-[550px] md:h-[600px] min-h-[520px] relative perspective-1000 overflow-visible flex items-center justify-center touch">
+                    <div id="testimonial-3d" class="relative w-full h-full flex items-center justify-center">
+                        <!-- Testimonial cards will be added via JS -->
                     </div>
                 </div>
-
-                <!-- Stats -->
-                <div class="grid grid-cols-3 gap-x-3 md:gap-x-5 text-center">
-                    <div class="group bg-slate-200/70 py-8 px-4 rounded-sm transition duration-500">
-                        <h3 class="text-2xl md:text-4xl font3 font-bold text-amber-500 group-hover:scale-130 transition duration-500">12+</h3>
-                        <p class="text-gray-600 text-sm group-hover:font-bold group-hover:text-md group-hover:text-slate-800 transition duration-500">Years of Experience</p>
-                    </div>
-                    <div class="group bg-slate-200/70 py-8 px-4 rounded-sm transition duration-500">
-                        <h3 class="text-2xl md:text-4xl font3 font-bold text-amber-500 group-hover:scale-130 transition duration-500">100+</h3>
-                        <p class="text-gray-600 text-sm group-hover:font-bold group-hover:text-md group-hover:text-slate-800 transition duration-500">Happy Clients</p>
-                    </div>
-                    <div class="group bg-slate-200/70 py-8 px-4 rounded-sm transition duration-500">
-                        <h3 class="text-2xl md:text-4xl font3 font-bold text-amber-500 group-hover:scale-130 transition duration-500">40+</h3>
-                        <p class="text-gray-600 text-sm group-hover:font-bold group-hover:text-md group-hover:text-slate-800 transition duration-500">Beauty Services</p>
-                    </div>
+                
+                <!-- Indicator dots -->
+                <div class="flex justify-center space-x-3 mt-6">
+                    <div id="indicator-0" class="w-8 h-1 bg-pink-500 rounded-full cursor-pointer transition-all duration-300"></div>
+                    <div id="indicator-1" class="w-3 h-1 bg-pink-300 rounded-full cursor-pointer transition-all duration-300"></div>
+                    <div id="indicator-2" class="w-3 h-1 bg-pink-300 rounded-full cursor-pointer transition-all duration-300"></div>
+                    <div id="indicator-3" class="w-3 h-1 bg-pink-300 rounded-full cursor-pointer transition-all duration-300"></div>
+                    <div id="indicator-4" class="w-3 h-1 bg-pink-300 rounded-full cursor-pointer transition-all duration-300"></div>
                 </div>
-
-                <!-- Button -->
-                <a href="#services" 
-                    class="inline-block mt-4 text-xl text-pink-100 font2 font-medium px-8
-                     py-4 rounded-lg shadow-lg bg-linear-to-br from-amber-500/90 to-rose-600/90 hover:bg-pink-700 transition duration-500">
-                    Explore Our Services
-                </a>
+                
+                <!-- Testimonial title -->
+                <div id="testimonial-title" class="text-center mt-8">
+                    <h3 class="text-xl font3 font-bold text-pink-800">Ebose Foody</h3>
+                    <p class="text-pink-600 mt-2">
+                        <i class="fas fa-medal text-pink-500 mr-2"></i>
+                        Testimonial 1 of 5
+                        <i class="fas fa-medal text-pink-500 ml-2"></i>
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -1019,8 +1082,8 @@
             </div>
 
             <div class="font2 font-light border-t-1 px-16 pt-6 border-stone-500 text-stone-100 flex flex-col md:flex-row justify-center md:justify-between items-center max-md:space-y-5"><!-- Bottom Footer -->
-                <span class="text-sm tracking-wide"> © <span class="underline"><a  class="bg-linear-to-r from-amber-300 to-orange-500 hover:from-orange-500/80 hover:from-amber-900 bg-clip-text text-transparent transition duration-500"  href="#">Hair Glow</a></span>, All Right Reserved.</span>
-                <span class="text-sm tracking-wide">Designed By <span class="underline"><a class="bg-linear-to-r from-amber-300 to-orange-500 hover:from-orange-500/80 hover:from-amber-900 bg-clip-text text-transparent transition duration-500" href="#">Ngubi Paul .F.</a></span> </span>
+                <span class="text-sm tracking-wide"> © <span class="underline"><a  class="bg-linear-to-r from-amber-300 to-orange-500 hover:from-orange-500/80 hover:from-amber-900 bg-clip-text text-transparent transition duration-500" target='_blank' href="https://github.com/Paullaid">Hair Glow</a></span>, All Right Reserved.</span>
+                <span class="text-sm tracking-wide">Designed By <span class="underline"><a class="bg-linear-to-r from-amber-300 to-orange-500 hover:from-orange-500/80 hover:from-amber-900 bg-clip-text text-transparent transition duration-500" target='_blank' href="www.linkedin.com/in/ngubi-paul-74a593364">Ngubi Paul .F.</a></span> </span>
             </div>
         </div>
     </section>
@@ -1206,7 +1269,7 @@
         });
     </script>
                  <!-- Testimonial script section data for beauty salon -->
-    <script>
+     <script>
         const testimonialData = [
             { 
                 id: 1, 
@@ -1369,9 +1432,6 @@
             
             let lastTimestamp = 0;
             let rafId = null;
-            let isDragging = false;
-            let dragStartAngle = 0;
-            let dragStartX = 0;
             
             items.forEach((testimonial, i) => {
                 const item = document.createElement('div');
@@ -1386,7 +1446,13 @@
                     cardWidth = 'md:w-[340px]';
                 }
                 
-                item.className = `testimonial-card absolute ${cardWidth} rounded-xl shadow-lg transition-all duration-700 cursor-pointer transform hover:scale-102`;
+                item.className = `testimonial-card absolute ${cardWidth} rounded-xl shadow-lg transition-all duration-700 transform hover:scale-102`;
+                
+                // Remove cursor-pointer on mobile
+                if (!isMobile) {
+                    item.classList.add('cursor-pointer');
+                }
+                
                 item.innerHTML = `
                     <div class="bg-linear-to-b from-orange-500 to-orange-700 text-white flex flex-col items-center shadow-lg p-4 md:p-6 rounded-lg h-full">
                         <img src="${testimonial.image}" alt="${testimonial.name}" class="w-16 h-16 md:w-20 md:h-20 rounded-full transform -translate-y-8 md:-translate-y-12 border-4 border-white shadow-lg">
@@ -1412,25 +1478,20 @@
                 `;
                 container.appendChild(item);
                 
-                // Click/touch event
-                const handleActivate = () => {
-                    if (isDragging) return;
-                    
-                    const stepsToFront = (currentFrontIndex - i + total) % total;
-                    angle += stepsToFront * (Math.PI * 2 / total);
-                    currentFrontIndex = i;
-                    updateCarousel(true);
-                    updateIndicators();
-                    updateTitle();
-                    pauseAutoRotation(4000);
-                };
+                // ONLY add click event for desktop
+                if (!isMobile) {
+                    item.addEventListener('click', () => {
+                        const stepsToFront = (currentFrontIndex - i + total) % total;
+                        angle += stepsToFront * (Math.PI * 2 / total);
+                        currentFrontIndex = i;
+                        updateCarousel(true);
+                        updateIndicators();
+                        updateTitle();
+                        pauseAutoRotation(4000);
+                    });
+                }
                 
-                item.addEventListener('click', handleActivate);
-                item.addEventListener('touchstart', (e) => {
-                    if (e.touches.length === 1) {
-                        handleActivate();
-                    }
-                }, { passive: true });
+                // NO touch events at all for cards
             });
             
             function updateCarousel(isSmoothTransition = false) {
@@ -1490,7 +1551,8 @@
                         indicator.className = 'w-3 h-1 bg-orange-300 rounded-full cursor-pointer transition-all duration-300';
                     }
                     
-                    indicator.onclick = () => {
+                    // KEEP touch functionality for indicators (scroll bar)
+                    const handleIndicatorClick = () => {
                         const stepsToFront = (currentFrontIndex - i + total) % total;
                         angle += stepsToFront * (Math.PI * 2 / total);
                         currentFrontIndex = i;
@@ -1500,9 +1562,14 @@
                         pauseAutoRotation(4000);
                     };
                     
+                    // Click event
+                    indicator.onclick = handleIndicatorClick;
+                    
+                    // Touch event - ONLY for indicators
                     indicator.ontouchstart = (e) => {
                         e.preventDefault();
-                        indicator.onclick();
+                        e.stopPropagation(); // Prevent event from bubbling to container
+                        handleIndicatorClick();
                     };
                 }
             }
@@ -1526,14 +1593,12 @@
                 setTimeout(() => {
                     isRotating = true;
                     lastTimestamp = 0;
-                    if (!isDragging) {
-                        rafId = requestAnimationFrame(animate);
-                    }
+                    rafId = requestAnimationFrame(animate);
                 }, duration);
             }
             
             function animate(timestamp) {
-                if (!isRotating || isDragging) return;
+                if (!isRotating) return;
                 
                 if (!lastTimestamp) lastTimestamp = timestamp;
                 const deltaTime = Math.min(timestamp - lastTimestamp, 32);
@@ -1549,120 +1614,7 @@
                 rafId = requestAnimationFrame(animate);
             }
             
-            // Drag/swipe support
-            let dragStart = null;
-            let currentVelocity = 0;
-            let lastDragTime = 0;
-            
-            container.addEventListener('mousedown', startDrag);
-            container.addEventListener('touchstart', startDrag, { passive: true });
-            
-            function startDrag(e) {
-                isDragging = true;
-                dragStartAngle = angle;
-                dragStartX = e.type === 'mousedown' ? e.clientX : e.touches[0].clientX;
-                lastDragTime = Date.now();
-                currentVelocity = 0;
-                
-                pauseAutoRotation(5000);
-                
-                document.addEventListener('mousemove', drag);
-                document.addEventListener('touchmove', drag, { passive: true });
-                document.addEventListener('mouseup', endDrag);
-                document.addEventListener('touchend', endDrag);
-                
-                document.body.style.userSelect = 'none';
-            }
-            
-            function drag(e) {
-                if (!isDragging) return;
-                
-                const currentX = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
-                const deltaX = currentX - dragStartX;
-                const currentTime = Date.now();
-                const deltaTime = currentTime - lastDragTime;
-                
-                if (deltaTime > 0) {
-                    currentVelocity = -deltaX / deltaTime;
-                }
-                
-                const sensitivity = isMobile ? 0.02 : 0.015;
-                angle = dragStartAngle + deltaX * sensitivity;
-                
-                updateCarousel(false);
-                updateIndicators();
-                updateTitle();
-                
-                lastDragTime = currentTime;
-            }
-            
-            function endDrag() {
-                if (!isDragging) return;
-                
-                isDragging = false;
-                
-                if (Math.abs(currentVelocity) > 0.1) {
-                    const momentumDuration = 300;
-                    const startAngle = angle;
-                    const velocity = currentVelocity * 0.5;
-                    const startTime = Date.now();
-                    
-                    function applyMomentum() {
-                        const elapsed = Date.now() - startTime;
-                        const progress = Math.min(elapsed / momentumDuration, 1);
-                        const easeOut = 1 - Math.pow(1 - progress, 3);
-                        
-                        angle = startAngle + velocity * elapsed * easeOut;
-                        
-                        updateCarousel(false);
-                        updateIndicators();
-                        updateTitle();
-                        
-                        if (progress < 1) {
-                            requestAnimationFrame(applyMomentum);
-                        } else {
-                            const angleStep = (Math.PI * 2) / total;
-                            const targetIndex = Math.round(angle / angleStep) % total;
-                            const stepsToFront = (currentFrontIndex - targetIndex + total) % total;
-                            angle += stepsToFront * angleStep;
-                            currentFrontIndex = targetIndex;
-                            updateCarousel(true);
-                            updateIndicators();
-                            updateTitle();
-                            
-                            setTimeout(() => {
-                                isRotating = true;
-                                lastTimestamp = 0;
-                                rafId = requestAnimationFrame(animate);
-                            }, 2000);
-                        }
-                    }
-                    
-                    applyMomentum();
-                } else {
-                    const angleStep = (Math.PI * 2) / total;
-                    const targetIndex = Math.round(angle / angleStep) % total;
-                    const stepsToFront = (currentFrontIndex - targetIndex + total) % total;
-                    angle += stepsToFront * angleStep;
-                    currentFrontIndex = targetIndex;
-                    updateCarousel(true);
-                    updateIndicators();
-                    updateTitle();
-                    
-                    setTimeout(() => {
-                        isRotating = true;
-                        lastTimestamp = 0;
-                        rafId = requestAnimationFrame(animate);
-                    }, 2000);
-                }
-                
-                document.removeEventListener('mousemove', drag);
-                document.removeEventListener('touchmove', drag);
-                document.removeEventListener('mouseup', endDrag);
-                document.removeEventListener('touchend', endDrag);
-                
-                document.body.style.userSelect = '';
-            }
+            // NO touch or drag events on the container
             
             // Handle window resize
             let resizeTimeout;
@@ -1713,7 +1665,34 @@
                     -webkit-transform: translate3d(0,0,0);
                 }
                 
-                /* Extra smooth transitions for 320px */
+                /* Make sure cards don't interfere with scrolling on mobile */
+                @media (max-width: 768px) {
+                    #testimonial-3d, 
+                    #testimonial-3d > div,
+                    .testimonial-card,
+                    .testimonial-card > div {
+                        pointer-events: none !important;
+                        touch-action: pan-y !important;
+                    }
+                    
+                    /* But allow indicators */
+                    #indicator-0,
+                    #indicator-1,
+                    #indicator-2,
+                    #indicator-3,
+                    #indicator-4 {
+                        pointer-events: auto !important;
+                        touch-action: auto !important;
+                    }
+                    
+                    /* The testimonial section should scroll */
+                    #testimonial-section {
+                        pointer-events: auto;
+                        touch-action: pan-y;
+                    }
+                }
+                
+                /* Extra small screens */
                 @media (max-width: 375px) {
                     #testimonial-3d > div {
                         transition: transform 1000ms cubic-bezier(0.16, 1, 0.3, 1) !important,
